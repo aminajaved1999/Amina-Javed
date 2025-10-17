@@ -1,0 +1,62 @@
+.splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1a1a1a;
+  color: white;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Fade-in animation */
+  animation: fadeIn 0.5s ease-in-out;
+
+  /* For the fade-out transition */
+  opacity: 1;
+  transition: opacity 0.4s ease-out;
+}
+
+/* State for fading out */
+.splash-overlay.fading-out {
+  opacity: 0;
+}
+
+.menu-content {
+  text-align: center;
+}
+
+.menu-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.portfolio-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.portfolio-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.portfolio-links a:hover {
+  background-color: white;
+  color: #1a1a1a;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

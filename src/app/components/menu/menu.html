@@ -1,0 +1,16 @@
+<!-- menu.component.html -->
+@if (isVisible) {
+  <div class="splash-overlay" [class.fading-out]="isFadingOut">
+    <div class="menu-content">
+      <h1>Welcome</h1>
+      <p>Please select a portfolio to view:</p>
+
+      <nav class="portfolio-links">
+        <a routerLink="/portfolio1" (click)="onLinkClick($event)">Portfolio 1</a>
+        <a routerLink="/portfolio2" (click)="onLinkClick($event)">Portfolio 2</a>
+        <a routerLink="/portfolio3" (click)="onLinkClick($event)">Portfolio 3</a>
+        <a routerLink="/portfolio4" (click)="onLinkClick($event)">Portfolio 4</a>
+      </nav>
+    </div>
+  </div>
+}
