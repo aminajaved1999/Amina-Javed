@@ -2,17 +2,14 @@
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 
-async function bootstrap() {
+function bootstrap() {
   try {
-    const res = await fetch('./data/portfolio.json');
-    if (!res.ok) throw new Error(`Failed to load data (HTTP ${res.status})`);
-    const data = await res.json();
-    renderAll(data);
+    renderAll(PORTFOLIO_DATA);
     initAll();
   } catch (err) {
     console.error(err);
-    document.getElementById('loading-msg').textContent =
-      'Could not load portfolio data. Please refresh.';
+    const msg = document.getElementById('loading-msg');
+    if (msg) msg.textContent = 'Could not load portfolio data. Please refresh.';
   }
 }
 

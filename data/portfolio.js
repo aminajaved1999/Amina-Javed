@@ -1,4 +1,4 @@
-{
+const PORTFOLIO_DATA = {
   "profile": {
     "name": "Amina Javed",
     "headline": "Full Stack Software Engineer",
@@ -344,4 +344,4 @@
       "credentialUrl": ""
     }
   ]
-}
+};
