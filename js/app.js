@@ -157,6 +157,22 @@ function renderEducation(education) {
   `).join(''));
 }
 
+function sourceBadge(source, size = 'card') {
+  if (!source) return '';
+  const styles = {
+    professional:  'border-gray-600    bg-gray-800/60      text-gray-400',
+    certification: 'border-cyan-500/40 bg-cyan-500/10      text-cyan-400',
+    freelance:     'border-emerald-500/40 bg-emerald-500/10 text-emerald-400',
+    university:    'border-amber-500/40 bg-amber-500/10    text-amber-400',
+    personal:      'border-gray-600    bg-gray-800/60      text-gray-400',
+  };
+  const cls = styles[source.type] || styles.personal;
+  const textSize = size === 'modal' ? 'text-xs' : 'text-[10px]';
+  return `<span class="inline-flex items-center gap-1.5 border ${cls} font-mono ${textSize} px-2 py-1 rounded uppercase tracking-wide whitespace-nowrap">
+    <i class="${source.icon} text-[9px]"></i>${esc(source.label)}
+  </span>`;
+}
+
 function renderProjects(projects) {
   _projects = projects;
   set('project-grid', projects.map(p => {
@@ -205,9 +221,12 @@ function renderProjects(projects) {
 
     return `
       <div class="project-card cyber-card p-6 rounded-lg reveal" data-category="${p.categories.join(' ')}">
-        <div class="flex justify-between items-start mb-4">
+        <div class="flex justify-between items-start mb-3">
           <i class="${p.icon} text-2xl text-cyan-400"></i>
-          ${featuredBadge}
+          <div class="flex flex-wrap gap-1 justify-end">
+            ${featuredBadge}
+            ${sourceBadge(p.source)}
+          </div>
         </div>
         <h3 class="font-display text-lg font-bold text-white mb-2">${esc(p.title)}</h3>
         <p class="text-sm text-gray-400 mb-4 font-sans leading-relaxed">${esc(p.description)}</p>
@@ -515,6 +534,7 @@ function buildModalHTML(p) {
   const metaBadges = [
     p.period ? `<span class="inline-flex items-center gap-1 bg-magenta-500/20 border border-magenta-500/40 text-magenta-300 font-mono text-xs px-3 py-1 rounded-full"><i class="fas fa-calendar-alt"></i> ${esc(p.period)}</span>` : '',
     p.role   ? `<span class="inline-flex items-center gap-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs px-3 py-1 rounded-full"><i class="fas fa-user-astronaut"></i> ${esc(p.role)}</span>` : '',
+    p.source ? sourceBadge(p.source, 'modal') : '',
   ].filter(Boolean).join('');
 
   const features = (p.features || []).length

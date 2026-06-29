@@ -92,7 +92,12 @@ const PORTFOLIO_DATA = {
         "Automated scheduling system for smart AC unit management",
         "Entity Framework with optimized data layer for high-throughput operations"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     },
     {
       "title": "DevPort — Cloud Portfolio App",
@@ -121,7 +126,12 @@ const PORTFOLIO_DATA = {
         "CI/CD pipeline with GitHub Actions for automated deployments",
         "Azure cloud deployment with zero-downtime updates"
       ],
-      "proprietary": false
+      "proprietary": false,
+      "source": {
+        "type": "certification",
+        "label": "Microsoft | Coursera",
+        "icon": "fab fa-microsoft"
+      }
     },
     {
       "title": "SecondChance — Exchange Platform",
@@ -150,7 +160,12 @@ const PORTFOLIO_DATA = {
         "Docker containerization for consistent deployment environments",
         "Kubernetes orchestration with IBM Cloud CI/CD pipeline"
       ],
-      "proprietary": false
+      "proprietary": false,
+      "source": {
+        "type": "certification",
+        "label": "IBM | Coursera",
+        "icon": "fas fa-certificate"
+      }
     },
     {
       "title": "Little Lemon — Reservation App",
@@ -179,7 +194,12 @@ const PORTFOLIO_DATA = {
         "React frontend with React Router for seamless navigation",
         "useReducer for complex dynamic table reservation form state"
       ],
-      "proprietary": false
+      "proprietary": false,
+      "source": {
+        "type": "certification",
+        "label": "Meta | Coursera",
+        "icon": "fab fa-meta"
+      }
     },
     {
       "title": "GeoHealth Tracker",
@@ -212,7 +232,12 @@ const PORTFOLIO_DATA = {
         "Real-time statistics panel with live facility counts",
         "Fully responsive single-page design with Tailwind CSS"
       ],
-      "proprietary": false
+      "proprietary": false,
+      "source": {
+        "type": "freelance",
+        "label": "Freelance",
+        "icon": "fas fa-laptop-code"
+      }
     },
     {
       "title": "E-commerce DevOps PoC",
@@ -247,7 +272,12 @@ const PORTFOLIO_DATA = {
         "Zero-downtime deployment strategy to Render PaaS",
         "Modular codebase designed for scalable feature additions"
       ],
-      "proprietary": false
+      "proprietary": false,
+      "source": {
+        "type": "freelance",
+        "label": "Freelance",
+        "icon": "fas fa-laptop-code"
+      }
     },
     {
       "title": "WIP Analysis Tool",
@@ -276,7 +306,12 @@ const PORTFOLIO_DATA = {
         "SQL Server integration for data persistence and audit tracking",
         "Intuitive WinForms UI with progress feedback and error handling"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     },
     {
       "title": "Tracket — Ticketing System",
@@ -305,7 +340,12 @@ const PORTFOLIO_DATA = {
         "High-performance query optimization for large ticket volumes",
         "Scalable backend architecture following SOLID principles"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     },
     {
       "title": "TruckDestino — Fleet Management",
@@ -334,7 +374,12 @@ const PORTFOLIO_DATA = {
         "Extended fleet tracking functionality via new API endpoints",
         "Maintained backward compatibility during phased migration"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     },
     {
       "title": "QuickBooks IIF Generator",
@@ -364,7 +409,12 @@ const PORTFOLIO_DATA = {
         "EPPlus integration for Excel-based intermediate file handling",
         "Eliminated all manual QuickBooks import effort for the finance team"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     },
     {
       "title": "GPMS — Garment Production",
@@ -394,7 +444,12 @@ const PORTFOLIO_DATA = {
         "Comprehensive unit testing ensuring system reliability",
         "Clean architectural practices for long-term maintainability"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     },
     {
       "title": "MEZBAN — Travel Platform (FYP)",
@@ -423,7 +478,12 @@ const PORTFOLIO_DATA = {
         "Scalable Angular frontend with modular component architecture",
         "RESTful backend with JWT authentication and role management"
       ],
-      "proprietary": false
+      "proprietary": false,
+      "source": {
+        "type": "university",
+        "label": "FAST NUCES — Final Year Project",
+        "icon": "fas fa-graduation-cap"
+      }
     },
     {
       "title": "Tracko IS — Vehicle Tracker",
@@ -454,7 +514,12 @@ const PORTFOLIO_DATA = {
         "Complex legacy bug resolution and application performance optimization",
         "Data consistency improvements across integrated systems"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     },
     {
       "title": "Denim Labels Utility",
@@ -483,7 +548,12 @@ const PORTFOLIO_DATA = {
         "Significantly reduced manual labeling errors and turnaround time",
         "User-friendly WinForms interface with batch processing support"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     },
     {
       "title": "Warehouse Management System",
@@ -512,7 +582,12 @@ const PORTFOLIO_DATA = {
         "Optimized backend for performance under heavy operational load",
         "Scalable architecture supporting future warehouse workflow extensions"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     },
     {
       "title": "Terminal Management System",
@@ -541,7 +616,12 @@ const PORTFOLIO_DATA = {
         "Stability improvements ensuring reliable day-to-day operation",
         "Adherence to strict coding standards for a business-critical system"
       ],
-      "proprietary": true
+      "proprietary": true,
+      "source": {
+        "type": "professional",
+        "label": "Beacon Impex Pvt. Ltd.",
+        "icon": "fas fa-building"
+      }
     }
   ],
   "skills": [
