@@ -163,10 +163,32 @@ function renderProjects(projects) {
       ? `<span class="bg-magenta-500/20 border border-magenta-500/50 text-magenta-300 font-mono text-[10px] px-2 py-1 rounded uppercase">Featured</span>`
       : '';
 
+    const githubBtn = p.github
+      ? `<a href="${p.github}" target="_blank" rel="noopener noreferrer"
+            class="flex-1 flex items-center justify-center gap-2 py-2 px-3
+                   border border-gray-600 hover:border-cyan-400
+                   text-gray-400 hover:text-cyan-400
+                   font-mono text-[11px] uppercase tracking-wider rounded
+                   transition-all duration-200">
+           <i class="fab fa-github"></i> Code
+         </a>`
+      : '';
+
+    const demoBtn = p.demo
+      ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer"
+            class="flex-1 flex items-center justify-center gap-2 py-2 px-3
+                   border border-cyan-500/50 hover:border-cyan-400
+                   text-cyan-400 hover:bg-cyan-500/10
+                   font-mono text-[11px] uppercase tracking-wider rounded
+                   transition-all duration-200"
+            style="box-shadow: 0 0 8px rgba(0,243,255,0.1);">
+           <i class="fas fa-external-link-alt"></i> Live
+         </a>`
+      : '';
+
     const links = (p.github || p.demo)
-      ? `<div class="flex gap-4 mt-4 pt-4 border-t border-gray-700/40">
-           ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener noreferrer" class="font-mono text-xs text-gray-400 hover:text-cyan-400 flex items-center gap-1 transition-colors"><i class="fab fa-github text-sm"></i> Code</a>` : ''}
-           ${p.demo  ? `<a href="${p.demo}"   target="_blank" rel="noopener noreferrer" class="font-mono text-xs text-gray-400 hover:text-cyan-400 flex items-center gap-1 transition-colors"><i class="fas fa-external-link-alt text-sm"></i> Live</a>` : ''}
+      ? `<div class="flex gap-2 mt-4 pt-4 border-t border-gray-700/40">
+           ${githubBtn}${demoBtn}
          </div>`
       : '';
 
