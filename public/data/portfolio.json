@@ -1,0 +1,107 @@
+{
+  "profile": {
+    "name": "Amina Javed",
+    "brandSuffix": "{<API>}",
+    "role": "Junior Software Engineer",
+    "headline": "Amina Javed: Building Purposeful, Reliable Solutions",
+    "summary": "Computer Science graduate specializing in scalable backend development with a disciplined mindset and a focus on system reliability. I build and maintain robust APIs using the .NET stack, Python (Django), and Node.js (MEAN), valuing growth, sincerity, and purpose in every technical challenge.",
+    "avatarInitials": "AJ",
+    "primaryCta": { "label": "Explore My Work", "href": "#projects" },
+    "secondaryCta": { "label": "Get in Touch", "href": "#contact" }
+  },
+  "navigation": [
+    { "label": "About", "href": "#about" },
+    { "label": "Skills", "href": "#skills" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "skills": [
+    {
+      "title": "Languages & Backend",
+      "icon": "code",
+      "items": [
+        "ASP.NET (.NET Web Framework, Core)",
+        "Python (Django, DRF)",
+        "TypeScript/JavaScript (Node.js)",
+        "PHP / CodeIgniter"
+      ]
+    },
+    {
+      "title": "APIs & Design",
+      "icon": "api",
+      "items": [
+        "RESTful API Development",
+        "MEAN Stack (MongoDB, Express, Node)",
+        "Blazor (for UI components)",
+        "Third-Party API Integration (WhatsApp, Google Places)"
+      ]
+    },
+    {
+      "title": "Data Management",
+      "icon": "database",
+      "items": [
+        "MySQL / PostgreSQL",
+        "MongoDB (NoSQL)",
+        "EF Core (Code-First) / ORM",
+        "Database Optimization"
+      ]
+    },
+    {
+      "title": "Cloud & DevOps",
+      "icon": "cloud",
+      "items": [
+        "Docker & Kubernetes",
+        "Azure Deployment",
+        "CI/CD using GitHub Actions",
+        "API Documentation"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "DevPort - Cloud Portfolio Web App",
+      "techStack": "ASP.NET Core, Blazor, EF Core, Azure, GitHub Actions (CI/CD)",
+      "description": "Developed a cloud-based web application to showcase user portfolios. The backend utilizes ASP.NET Core and EF Core (Code-First) to manage data and implement secure login via ASP.NET Identity. Key features include RESTful API development, caching implementation for performance, and a robust CI/CD pipeline using GitHub Actions for deployment to Azure.",
+      "link": "https://github.com/aminajaved1999",
+      "linkLabel": "View Code / Deployment Link"
+    },
+    {
+      "title": "Little Lemon - Restaurant Reservation API",
+      "techStack": "Python (Django, DRF), MySQL, Djoser, Unit Testing",
+      "description": "Built a dedicated backend API for a restaurant reservation system using Django and the Django REST Framework. Responsibilities included developing endpoints for menu management and table bookings, integrating MySQL for data persistence, and implementing Djoser for secure user authentication. Ensured API reliability through comprehensive unit testing and utilized Insomnia for functional validation.",
+      "link": "https://github.com/aminajaved1999",
+      "linkLabel": "View Code / Documentation"
+    },
+    {
+      "title": "Second Chance - Item Exchange Platform Backend",
+      "techStack": "Node.js, Express, MongoDB, Docker, Kubernetes, CI/CD (IBM Cloud)",
+      "description": "Developed the core backend infrastructure for a platform enabling users to exchange household items. Key technical aspects included building secure RESTful APIs for item listings and search, implementing JWT authentication, and integrating a sentiment analysis feature. The application was containerized using Docker and deployed via Kubernetes with CI/CD on IBM Cloud.",
+      "link": "https://github.com/aminajaved1999",
+      "linkLabel": "View Code / Documentation"
+    }
+  ],
+  "contact": {
+    "title": "Let's Connect",
+    "message": "I'm currently seeking new opportunities focused on distributed systems and cloud architecture. Reach out to discuss potential roles or technical challenges!",
+    "links": [
+      {
+        "type": "email",
+        "label": "aminajaved1999@gmail.com",
+        "url": "mailto:aminajaved1999@gmail.com"
+      },
+      {
+        "type": "linkedin",
+        "label": "LinkedIn/aminajaved1999",
+        "url": "https://linkedin.com/in/aminajaved1999"
+      },
+      {
+        "type": "phone",
+        "label": "+92 323 7382323",
+        "url": "tel:+923237382323"
+      }
+    ]
+  },
+  "footer": {
+    "text": "© 2025 Amina Javed. Built with ASP.NET, Python, and scalable APIs."
+  }
+}
