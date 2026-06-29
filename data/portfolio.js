@@ -782,5 +782,63 @@ const PORTFOLIO_DATA = {
       "category": "google",
       "credentialUrl": ""
     }
+  ],
+  "achievements": [
+    {
+      "title": "Dean's List of Honor",
+      "detail": "Fall 2018",
+      "org": "FAST NUCES, Faisalabad",
+      "icon": "fas fa-star",
+      "type": "academic"
+    },
+    {
+      "title": "Runner Up — Badminton Doubles",
+      "detail": "TAKKRA 2022",
+      "org": "UCP, Lahore",
+      "icon": "fas fa-trophy",
+      "type": "sports"
+    },
+    {
+      "title": "Runner Up — Badminton Tournament",
+      "detail": "2021",
+      "org": "FAST NUCES, Faisalabad",
+      "icon": "fas fa-trophy",
+      "type": "sports"
+    },
+    {
+      "title": "Runner Up — Badminton Tournament",
+      "detail": "2019",
+      "org": "FAST NUCES, Faisalabad",
+      "icon": "fas fa-trophy",
+      "type": "sports"
+    },
+    {
+      "title": "FAST Silent Steps Society",
+      "detail": "7 Semesters",
+      "org": "Fundraising & Charity Events",
+      "icon": "fas fa-hands-helping",
+      "type": "community"
+    },
+    {
+      "title": "Security Team — DAIRA'22",
+      "detail": "National Event, Mar 2022",
+      "org": "FAST NUCES, Faisalabad",
+      "icon": "fas fa-shield-alt",
+      "type": "community"
+    },
+    {
+      "title": "Registration Team — DAIRA'19",
+      "detail": "National Event, Mar 2019",
+      "org": "FAST NUCES, Faisalabad",
+      "icon": "fas fa-id-badge",
+      "type": "community"
+    },
+    {
+      "title": "Management Team — Convocation 2019",
+      "detail": "Usher, 2019",
+      "org": "FAST NUCES, Faisalabad",
+      "icon": "fas fa-users",
+      "type": "community"
+    }
   ]
 };

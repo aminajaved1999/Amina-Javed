@@ -19,6 +19,7 @@ function renderAll(data) {
   renderHero(data.profile);
   renderExperience(data.experience);
   renderEducation(data.education);
+  renderAchievements(data.achievements || []);
   renderProjects(data.projects);
   renderSkills(data.skills);
   renderCertifications(data.certifications);
@@ -172,6 +173,31 @@ function sourceBadge(source, size = 'card') {
   return `<span class="inline-flex items-center gap-1.5 border ${cls} font-mono ${textSize} px-2 py-1 rounded uppercase tracking-wide ${wrap}" title="${esc(source.label)}">
     <i class="${source.icon} text-[9px] shrink-0"></i><span class="truncate">${esc(source.label)}</span>
   </span>`;
+}
+
+function renderAchievements(achievements) {
+  const colors = {
+    academic:  { border: 'rgba(0,243,255,0.3)',  icon: '#00f3ff',  bg: 'rgba(0,243,255,0.06)'  },
+    sports:    { border: 'rgba(245,158,11,0.35)', icon: '#f59e0b',  bg: 'rgba(245,158,11,0.06)' },
+    community: { border: 'rgba(188,19,254,0.3)',  icon: '#bc13fe',  bg: 'rgba(188,19,254,0.06)' },
+  };
+
+  set('achievements-list', achievements.map(a => {
+    const c = colors[a.type] || colors.community;
+    return `
+      <div class="reveal cyber-card flex items-start gap-4 p-5 rounded-lg"
+           style="border-color:${c.border}; background:${c.bg};">
+        <div class="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
+             style="border:1px solid ${c.border}; background:rgba(0,0,0,0.4);">
+          <i class="${a.icon}" style="color:${c.icon}; font-size:1rem;"></i>
+        </div>
+        <div class="min-w-0">
+          <h4 class="font-display font-bold text-white text-sm leading-snug mb-1">${esc(a.title)}</h4>
+          <p class="font-mono text-[11px]" style="color:${c.icon}; opacity:0.85;">${esc(a.detail)}</p>
+          <p class="font-mono text-[10px] text-gray-500 mt-0.5">${esc(a.org)}</p>
+        </div>
+      </div>`;
+  }).join(''));
 }
 
 function renderProjects(projects) {
