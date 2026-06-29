@@ -176,14 +176,14 @@ function sourceBadge(source, size = 'card') {
 }
 
 function renderAchievements(achievements) {
-  const colors = {
-    academic:  { border: 'rgba(0,243,255,0.3)',  icon: '#00f3ff',  bg: 'rgba(0,243,255,0.06)'  },
-    sports:    { border: 'rgba(245,158,11,0.35)', icon: '#f59e0b',  bg: 'rgba(245,158,11,0.06)' },
-    community: { border: 'rgba(188,19,254,0.3)',  icon: '#bc13fe',  bg: 'rgba(188,19,254,0.06)' },
+  const types = {
+    academic:  { border: 'rgba(0,243,255,0.3)',   icon: '#00f3ff', bg: 'rgba(0,243,255,0.06)',   label: 'Academic',  labelCls: 'border-cyan-500/40 bg-cyan-500/10 text-cyan-400'    },
+    sports:    { border: 'rgba(245,158,11,0.35)',  icon: '#f59e0b', bg: 'rgba(245,158,11,0.06)',  label: 'Sports',    labelCls: 'border-amber-500/40 bg-amber-500/10 text-amber-400'  },
+    community: { border: 'rgba(188,19,254,0.3)',   icon: '#bc13fe', bg: 'rgba(188,19,254,0.06)',  label: 'Community', labelCls: 'border-magenta-500/40 bg-magenta-500/10 text-magenta-400' },
   };
 
   set('achievements-list', achievements.map(a => {
-    const c = colors[a.type] || colors.community;
+    const c = types[a.type] || types.community;
     return `
       <div class="reveal cyber-card flex items-start gap-4 p-5 rounded-lg"
            style="border-color:${c.border}; background:${c.bg};">
@@ -191,8 +191,13 @@ function renderAchievements(achievements) {
              style="border:1px solid ${c.border}; background:rgba(0,0,0,0.4);">
           <i class="${a.icon}" style="color:${c.icon}; font-size:1rem;"></i>
         </div>
-        <div class="min-w-0">
-          <h4 class="font-display font-bold text-white text-sm leading-snug mb-1">${esc(a.title)}</h4>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h4 class="font-display font-bold text-white text-sm leading-snug">${esc(a.title)}</h4>
+            <span class="shrink-0 inline-flex items-center font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border ${c.labelCls}">
+              ${esc(c.label)}
+            </span>
+          </div>
           <p class="font-mono text-[11px]" style="color:${c.icon}; opacity:0.85;">${esc(a.detail)}</p>
           <p class="font-mono text-[10px] text-gray-500 mt-0.5">${esc(a.org)}</p>
         </div>
