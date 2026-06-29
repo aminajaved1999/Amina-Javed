@@ -168,8 +168,9 @@ function sourceBadge(source, size = 'card') {
   };
   const cls = styles[source.type] || styles.personal;
   const textSize = size === 'modal' ? 'text-xs' : 'text-[10px]';
-  return `<span class="inline-flex items-center gap-1.5 border ${cls} font-mono ${textSize} px-2 py-1 rounded uppercase tracking-wide whitespace-nowrap">
-    <i class="${source.icon} text-[9px]"></i>${esc(source.label)}
+  const wrap     = size === 'modal' ? '' : 'max-w-[160px] truncate';
+  return `<span class="inline-flex items-center gap-1.5 border ${cls} font-mono ${textSize} px-2 py-1 rounded uppercase tracking-wide ${wrap}" title="${esc(source.label)}">
+    <i class="${source.icon} text-[9px] shrink-0"></i><span class="truncate">${esc(source.label)}</span>
   </span>`;
 }
 
@@ -430,6 +431,7 @@ function initScrollReveal() {
 }
 
 function initCardTilt() {
+  if (window.matchMedia('(hover: none)').matches) return; // skip on touch devices
   document.querySelectorAll('.cyber-card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
@@ -607,7 +609,7 @@ function buildModalHTML(p) {
       ${p.proprietary
           ? modalProprietaryNote
           : (githubBtn || demoBtn)
-            ? `<div class="flex gap-3 pt-4 border-t border-gray-700/50">${githubBtn}${demoBtn}</div>`
+            ? `<div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-700/50">${githubBtn}${demoBtn}</div>`
             : ''}
     </div>`;
 }
