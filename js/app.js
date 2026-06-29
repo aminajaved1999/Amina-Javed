@@ -378,7 +378,7 @@ function renderContact(p) {
 function updateCounts(data) {
   const projectsLabel = document.getElementById('projects-count-label');
   const certsLabel    = document.getElementById('certs-count-label');
-  if (projectsLabel) projectsLabel.textContent = `// ${data.projects.length} Systems deployed successfully`;
+  if (projectsLabel) projectsLabel.textContent = `// ${data.projects.length} Projects on record`;
   if (certsLabel)    certsLabel.textContent    = `${data.certifications.length} Active Vendor Certs`;
 }
 
