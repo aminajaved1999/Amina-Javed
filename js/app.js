@@ -16,7 +16,7 @@ function bootstrap() {
 // ─── Render coordinator ───────────────────────────────────────────────────────
 
 function renderAll(data) {
-  renderHero(data.profile);
+  renderHero(data);
   renderExperience(data.experience);
   renderEducation(data.education);
   renderAchievements(data.achievements || []);
@@ -30,7 +30,18 @@ function renderAll(data) {
 
 // ─── Section renderers ────────────────────────────────────────────────────────
 
-function renderHero(p) {
+function calcYearsExp(startYear, startMonth) {
+  const now   = new Date();
+  const years = now.getFullYear() - startYear;
+  const extra = (now.getMonth() + 1) >= startMonth ? 0 : -1;
+  return (years + extra) + '+';
+}
+
+function renderHero(data) {
+  const p        = data.profile;
+  const yearsExp = calcYearsExp(p.stats.expStartYear, p.stats.expStartMonth);
+  const projCount = data.projects.length;
+  const certCount = data.certifications.length;
   const initials = p.name.split(' ').map(n => n[0]).join('');
 
   const resumeBtn = p.resume
@@ -80,15 +91,15 @@ function renderHero(p) {
       <p class="font-mono text-cyan-400 text-sm mb-6">// ${p.headline.toLowerCase().replace(/\s+/g, '_')}.exe</p>
       <div class="grid grid-cols-3 gap-4 mb-6">
         <div class="bg-black/50 border border-gray-700/50 p-3 rounded text-center">
-          <div class="text-2xl font-display font-bold text-magenta-400">${p.stats.yearsExp}</div>
+          <div class="text-2xl font-display font-bold text-magenta-400">${yearsExp}</div>
           <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Years Exp</div>
         </div>
         <div class="bg-black/50 border border-gray-700/50 p-3 rounded text-center">
-          <div class="text-2xl font-display font-bold text-magenta-400">${p.stats.deployments}</div>
-          <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Deployments</div>
+          <div class="text-2xl font-display font-bold text-magenta-400">${projCount}</div>
+          <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Projects</div>
         </div>
         <div class="bg-black/50 border border-gray-700/50 p-3 rounded text-center">
-          <div class="text-2xl font-display font-bold text-magenta-400">${p.stats.certs}</div>
+          <div class="text-2xl font-display font-bold text-magenta-400">${certCount}</div>
           <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Certs</div>
         </div>
       </div>

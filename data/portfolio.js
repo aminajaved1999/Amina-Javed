@@ -10,9 +10,8 @@ const PORTFOLIO_DATA = {
     "phone": "+92 323 7382323",
     "resume": "",
     "stats": {
-      "yearsExp": "3+",
-      "deployments": 16,
-      "certs": 14
+      "expStartYear": 2022,
+      "expStartMonth": 7
     },
     "topSkills": [
       "C#",
