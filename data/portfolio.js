@@ -80,7 +80,7 @@ const PORTFOLIO_DATA = {
         "EF Core",
         "JWT"
       ],
-      "github": "https://github.com/aminajaved1999/ZEPHYR-OFFICE",
+      "github": "",
       "demo": "",
       "period": "11/2024 – 06/2025",
       "role": "Backend Engineer",
@@ -91,7 +91,8 @@ const PORTFOLIO_DATA = {
         "Real-time MQTT integration for device monitoring and remote control",
         "Automated scheduling system for smart AC unit management",
         "Entity Framework with optimized data layer for high-throughput operations"
-      ]
+      ],
+      "proprietary": true
     },
     {
       "title": "DevPort — Cloud Portfolio App",
@@ -119,7 +120,8 @@ const PORTFOLIO_DATA = {
         "Blazor UI components for interactive portfolio display",
         "CI/CD pipeline with GitHub Actions for automated deployments",
         "Azure cloud deployment with zero-downtime updates"
-      ]
+      ],
+      "proprietary": false
     },
     {
       "title": "SecondChance — Exchange Platform",
@@ -147,7 +149,8 @@ const PORTFOLIO_DATA = {
         "IBM Watson NLU sentiment analysis on item reviews",
         "Docker containerization for consistent deployment environments",
         "Kubernetes orchestration with IBM Cloud CI/CD pipeline"
-      ]
+      ],
+      "proprietary": false
     },
     {
       "title": "Little Lemon — Reservation App",
@@ -175,7 +178,8 @@ const PORTFOLIO_DATA = {
         "Djoser-powered secure user authentication and token management",
         "React frontend with React Router for seamless navigation",
         "useReducer for complex dynamic table reservation form state"
-      ]
+      ],
+      "proprietary": false
     },
     {
       "title": "GeoHealth Tracker",
@@ -207,7 +211,8 @@ const PORTFOLIO_DATA = {
         "Dynamic category filtering by facility type",
         "Real-time statistics panel with live facility counts",
         "Fully responsive single-page design with Tailwind CSS"
-      ]
+      ],
+      "proprietary": false
     },
     {
       "title": "E-commerce DevOps PoC",
@@ -241,7 +246,8 @@ const PORTFOLIO_DATA = {
         "Docker containerization for consistent dev and production environments",
         "Zero-downtime deployment strategy to Render PaaS",
         "Modular codebase designed for scalable feature additions"
-      ]
+      ],
+      "proprietary": false
     },
     {
       "title": "WIP Analysis Tool",
@@ -258,7 +264,7 @@ const PORTFOLIO_DATA = {
         "EPPlus",
         "SQL Server"
       ],
-      "github": "https://github.com/aminajaved1999/Wip_Analysis_Tool-OFFICE",
+      "github": "",
       "demo": "",
       "period": "07/2025 – Present",
       "role": "Desktop Application Developer",
@@ -269,7 +275,8 @@ const PORTFOLIO_DATA = {
         "Accurate Excel report export replacing error-prone manual DTS processes",
         "SQL Server integration for data persistence and audit tracking",
         "Intuitive WinForms UI with progress feedback and error handling"
-      ]
+      ],
+      "proprietary": true
     },
     {
       "title": "Tracket — Ticketing System",
@@ -297,7 +304,8 @@ const PORTFOLIO_DATA = {
         "Cross-system integration endpoints for seamless data exchange",
         "High-performance query optimization for large ticket volumes",
         "Scalable backend architecture following SOLID principles"
-      ]
+      ],
+      "proprietary": true
     },
     {
       "title": "TruckDestino — Fleet Management",
@@ -325,7 +333,8 @@ const PORTFOLIO_DATA = {
         "Legacy bug resolution and data consistency enforcement",
         "Extended fleet tracking functionality via new API endpoints",
         "Maintained backward compatibility during phased migration"
-      ]
+      ],
+      "proprietary": true
     },
     {
       "title": "QuickBooks IIF Generator",
@@ -354,7 +363,8 @@ const PORTFOLIO_DATA = {
         "Validated WinForms UI for intuitive file upload and export operations",
         "EPPlus integration for Excel-based intermediate file handling",
         "Eliminated all manual QuickBooks import effort for the finance team"
-      ]
+      ],
+      "proprietary": true
     },
     {
       "title": "GPMS — Garment Production",
@@ -383,7 +393,8 @@ const PORTFOLIO_DATA = {
         "Optimized database queries for production throughput requirements",
         "Comprehensive unit testing ensuring system reliability",
         "Clean architectural practices for long-term maintainability"
-      ]
+      ],
+      "proprietary": true
     },
     {
       "title": "MEZBAN — Travel Platform (FYP)",
@@ -411,7 +422,8 @@ const PORTFOLIO_DATA = {
         "Personalized accommodation recommendations based on traveler preferences",
         "Scalable Angular frontend with modular component architecture",
         "RESTful backend with JWT authentication and role management"
-      ]
+      ],
+      "proprietary": false
     },
     {
       "title": "Tracko IS — Vehicle Tracker",
@@ -441,7 +453,8 @@ const PORTFOLIO_DATA = {
         "Multiple WinForms automation modules for operational workflows",
         "Complex legacy bug resolution and application performance optimization",
         "Data consistency improvements across integrated systems"
-      ]
+      ],
+      "proprietary": true
     },
     {
       "title": "Denim Labels Utility",
@@ -469,7 +482,8 @@ const PORTFOLIO_DATA = {
         "EPPlus-powered Excel parsing with robust error handling",
         "Significantly reduced manual labeling errors and turnaround time",
         "User-friendly WinForms interface with batch processing support"
-      ]
+      ],
+      "proprietary": true
     },
     {
       "title": "Warehouse Management System",
@@ -497,7 +511,8 @@ const PORTFOLIO_DATA = {
         "Seamless data integration with existing business systems",
         "Optimized backend for performance under heavy operational load",
         "Scalable architecture supporting future warehouse workflow extensions"
-      ]
+      ],
+      "proprietary": true
     },
     {
       "title": "Terminal Management System",
@@ -525,7 +540,8 @@ const PORTFOLIO_DATA = {
         "Code optimization improving overall application performance",
         "Stability improvements ensuring reliable day-to-day operation",
         "Adherence to strict coding standards for a business-critical system"
-      ]
+      ],
+      "proprietary": true
     }
   ],
   "skills": [

@@ -187,11 +187,21 @@ function renderProjects(projects) {
          </a>`
       : '';
 
-    const links = (p.github || p.demo)
-      ? `<div class="flex gap-2 mt-4 pt-4 border-t border-gray-700/40">
-           ${githubBtn}${demoBtn}
+    const proprietaryBadge = p.proprietary
+      ? `<div class="mt-4 pt-4 border-t border-gray-700/40">
+           <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-gray-500 border border-gray-700 px-2.5 py-1 rounded">
+             <i class="fas fa-lock text-[9px]"></i> Proprietary — Beacon Impex Pvt. Ltd.
+           </span>
          </div>`
       : '';
+
+    const links = p.proprietary
+      ? proprietaryBadge
+      : (p.github || p.demo)
+        ? `<div class="flex gap-2 mt-4 pt-4 border-t border-gray-700/40">
+             ${githubBtn}${demoBtn}
+           </div>`
+        : '';
 
     return `
       <div class="project-card cyber-card p-6 rounded-lg reveal" data-category="${p.categories.join(' ')}">
@@ -539,6 +549,12 @@ function buildModalHTML(p) {
          <i class="fas fa-external-link-alt"></i> Live Demo
        </a>` : '';
 
+  const modalProprietaryNote = p.proprietary
+    ? `<div class="flex items-center gap-2 pt-4 border-t border-gray-700/50">
+         <i class="fas fa-lock text-gray-600 text-xs"></i>
+         <span class="font-mono text-xs text-gray-500">Source code is proprietary — developed professionally at Beacon Impex Pvt. Ltd.</span>
+       </div>` : '';
+
   return `
     ${gallery}
     <div class="p-6 md:p-8">
@@ -568,10 +584,11 @@ function buildModalHTML(p) {
         </div>
       </div>
 
-      ${(githubBtn || demoBtn) ? `
-        <div class="flex gap-3 pt-4 border-t border-gray-700/50">
-          ${githubBtn}${demoBtn}
-        </div>` : ''}
+      ${p.proprietary
+          ? modalProprietaryNote
+          : (githubBtn || demoBtn)
+            ? `<div class="flex gap-3 pt-4 border-t border-gray-700/50">${githubBtn}${demoBtn}</div>`
+            : ''}
     </div>`;
 }
 
