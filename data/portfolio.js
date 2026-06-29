@@ -109,7 +109,7 @@ const PORTFOLIO_DATA = {
       "description": "Single-page dashboard for exploring health facilities using live OpenStreetMap Overpass API data. Interactive mapping with marker clustering for high performance, dynamic filtering, and real-time statistics.",
       "tags": ["Vanilla JS", "Leaflet.js", "Tailwind CSS", "OpenStreetMap"],
       "github": "https://github.com/aminajaved1999/GeoHealth-Tracker",
-      "demo": ""
+      "demo": "https://aminajaved1999.github.io/intro-to-web-dev-portfolio"
     },
     {
       "title": "E-commerce DevOps PoC",
