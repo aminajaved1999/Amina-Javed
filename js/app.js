@@ -158,6 +158,7 @@ function renderEducation(education) {
 }
 
 function renderProjects(projects) {
+  _projects = projects;
   set('project-grid', projects.map(p => {
     const featuredBadge = p.featured
       ? `<span class="bg-magenta-500/20 border border-magenta-500/50 text-magenta-300 font-mono text-[10px] px-2 py-1 rounded uppercase">Featured</span>`
@@ -318,6 +319,7 @@ function initAll() {
   initCardTilt();
   initMobileMenu();
   initNavbarScroll();
+  initProjectModals();
 }
 
 function initProjectFilter() {
@@ -431,6 +433,146 @@ function initMobileMenu() {
       btn.querySelector('i').className = 'fas fa-bars';
     });
   });
+}
+
+// ─── Project detail modal ─────────────────────────────────────────────────────
+
+let _projects = [];
+
+function initProjectModals() {
+  document.querySelectorAll('.project-card').forEach((card, i) => {
+    card.addEventListener('click', () => openModal(_projects[i]));
+  });
+
+  document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+}
+
+function openModal(project) {
+  if (!project) return;
+  document.getElementById('modal-inner').innerHTML = buildModalHTML(project);
+  document.getElementById('project-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // image gallery navigation
+  const imgs = project.images || [];
+  if (imgs.length > 1) {
+    let cur = 0;
+    const imgEl  = document.getElementById('modal-gallery-img');
+    const counter = document.getElementById('modal-img-counter');
+    const update  = () => {
+      imgEl.src = imgs[cur];
+      if (counter) counter.textContent = `${cur + 1} / ${imgs.length}`;
+    };
+    document.getElementById('modal-prev')?.addEventListener('click', e => {
+      e.stopPropagation();
+      cur = (cur - 1 + imgs.length) % imgs.length;
+      update();
+    });
+    document.getElementById('modal-next')?.addEventListener('click', e => {
+      e.stopPropagation();
+      cur = (cur + 1) % imgs.length;
+      update();
+    });
+  }
+}
+
+function closeModal() {
+  document.getElementById('project-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function buildModalHTML(p) {
+  const imgs = p.images || [];
+
+  const gallery = imgs.length
+    ? `<div class="modal-img-gallery">
+         <img id="modal-gallery-img" src="${imgs[0]}" alt="${esc(p.title)} screenshot">
+         ${imgs.length > 1 ? `
+           <button class="modal-img-nav prev" id="modal-prev"><i class="fas fa-chevron-left"></i></button>
+           <button class="modal-img-nav next" id="modal-next"><i class="fas fa-chevron-right"></i></button>
+           <span class="modal-img-counter" id="modal-img-counter">1 / ${imgs.length}</span>
+         ` : ''}
+       </div>`
+    : `<div class="modal-img-placeholder">
+         <i class="fas fa-satellite text-4xl" style="color:rgba(0,243,255,0.2)"></i>
+         <span class="font-mono text-xs" style="color:rgba(0,243,255,0.3)">No preview available</span>
+       </div>`;
+
+  const metaBadges = [
+    p.period ? `<span class="inline-flex items-center gap-1 bg-magenta-500/20 border border-magenta-500/40 text-magenta-300 font-mono text-xs px-3 py-1 rounded-full"><i class="fas fa-calendar-alt"></i> ${esc(p.period)}</span>` : '',
+    p.role   ? `<span class="inline-flex items-center gap-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs px-3 py-1 rounded-full"><i class="fas fa-user-astronaut"></i> ${esc(p.role)}</span>` : '',
+  ].filter(Boolean).join('');
+
+  const features = (p.features || []).length
+    ? `<div class="mb-6">
+         <h4 class="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Key Highlights</h4>
+         <ul class="space-y-2">
+           ${p.features.map(f => `
+             <li class="flex items-start gap-2 text-sm text-gray-300">
+               <span class="text-cyan-400 mt-0.5 shrink-0">›</span>
+               <span>${esc(f)}</span>
+             </li>`).join('')}
+         </ul>
+       </div>`
+    : '';
+
+  const githubBtn = p.github
+    ? `<a href="${p.github}" target="_blank" rel="noopener noreferrer"
+          class="flex-1 flex items-center justify-center gap-2 py-2.5 px-4
+                 border border-gray-600 hover:border-cyan-400
+                 text-gray-400 hover:text-cyan-400
+                 font-mono text-xs uppercase tracking-wider rounded transition-all">
+         <i class="fab fa-github"></i> View Code
+       </a>` : '';
+
+  const demoBtn = p.demo
+    ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer"
+          class="flex-1 flex items-center justify-center gap-2 py-2.5 px-4
+                 border border-cyan-500/50 hover:border-cyan-400
+                 text-cyan-400 hover:bg-cyan-500/10
+                 font-mono text-xs uppercase tracking-wider rounded transition-all"
+          style="box-shadow:0 0 10px rgba(0,243,255,0.1)">
+         <i class="fas fa-external-link-alt"></i> Live Demo
+       </a>` : '';
+
+  return `
+    ${gallery}
+    <div class="p-6 md:p-8">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div class="flex items-center gap-3">
+          <i class="${p.icon} text-2xl text-cyan-400"></i>
+          <h2 id="modal-title" class="font-display text-xl md:text-2xl font-bold text-white">${esc(p.title)}</h2>
+        </div>
+        <button onclick="closeModal()"
+          class="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg
+                 border border-gray-700 hover:border-cyan-400 text-gray-400
+                 hover:text-cyan-400 transition-colors text-sm">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      ${metaBadges ? `<div class="flex flex-wrap gap-2 mb-5">${metaBadges}</div>` : ''}
+
+      <p class="text-gray-300 leading-relaxed mb-6">${esc(p.description)}</p>
+
+      ${features}
+
+      <div class="mb-6">
+        <h4 class="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Tech Stack</h4>
+        <div class="flex flex-wrap gap-2">
+          ${p.tags.map(t => `<span class="border border-cyan-500/30 bg-black/50 text-cyan-300 font-mono text-[11px] px-2 py-1 rounded">${esc(t)}</span>`).join('')}
+        </div>
+      </div>
+
+      ${(githubBtn || demoBtn) ? `
+        <div class="flex gap-3 pt-4 border-t border-gray-700/50">
+          ${githubBtn}${demoBtn}
+        </div>` : ''}
+    </div>`;
 }
 
 function initNavbarScroll() {

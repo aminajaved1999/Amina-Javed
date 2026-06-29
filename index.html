@@ -134,6 +134,72 @@
         }
         .timeline-item:hover .timeline-dot { background:#bc13fe; box-shadow:0 0 20px #bc13fe; transform:scale(1.2); }
 
+        /* Project Modal */
+        #project-modal {
+            display: none;
+            position: fixed; inset: 0; z-index: 200;
+            align-items: center; justify-content: center;
+            padding: 1rem;
+        }
+        #project-modal.open { display: flex; }
+
+        #modal-backdrop {
+            position: absolute; inset: 0;
+            background: rgba(3,3,5,0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        #modal-box {
+            position: relative;
+            width: 100%; max-width: 760px;
+            max-height: 90vh; overflow-y: auto;
+            background: rgba(8,12,26,0.95);
+            border: 1px solid rgba(0,243,255,0.25);
+            border-radius: 1rem;
+            box-shadow: 0 0 60px rgba(0,243,255,0.12), 0 0 120px rgba(0,0,0,0.8);
+            animation: modalIn 0.25s cubic-bezier(0.175,0.885,0.32,1.275);
+        }
+        @keyframes modalIn {
+            from { opacity:0; transform: scale(0.93) translateY(20px); }
+            to   { opacity:1; transform: scale(1)    translateY(0); }
+        }
+        #modal-box::-webkit-scrollbar { width: 4px; }
+        #modal-box::-webkit-scrollbar-thumb { background: #00f3ff44; border-radius: 4px; }
+
+        .modal-img-gallery { position: relative; }
+        .modal-img-gallery img {
+            width: 100%; height: 260px; object-fit: cover;
+            border-radius: 0.75rem 0.75rem 0 0;
+            display: block;
+        }
+        .modal-img-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(3,3,5,0.7); border: 1px solid rgba(0,243,255,0.3);
+            color: #00f3ff; width: 2rem; height: 2rem;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 0.8rem; transition: 0.2s;
+        }
+        .modal-img-nav:hover { background: rgba(0,243,255,0.15); }
+        .modal-img-nav.prev { left: 0.75rem; }
+        .modal-img-nav.next { right: 0.75rem; }
+        .modal-img-counter {
+            position: absolute; bottom: 0.5rem; right: 0.75rem;
+            font-family: 'Space Mono', monospace; font-size: 0.65rem;
+            color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.5);
+            padding: 0.1rem 0.4rem; border-radius: 999px;
+        }
+        .modal-img-placeholder {
+            width: 100%; height: 200px;
+            background: linear-gradient(135deg, rgba(10,15,30,0.8), rgba(30,20,50,0.8));
+            border-radius: 0.75rem 0.75rem 0 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 0.5rem;
+            border-bottom: 1px solid rgba(0,243,255,0.1);
+        }
+
+        .project-card { cursor: pointer; }
+        .project-card:hover { cursor: pointer; }
+
         /* Mobile nav */
         #mobile-menu { border-top: 1px solid rgba(0,243,255,0.1); background: rgba(3,3,5,0.95); }
         #mobile-menu a { display:block; padding:0.75rem 1.5rem; font-family:'Space Mono',monospace; font-size:0.8rem; letter-spacing:0.1em; color:#9ca3af; transition:color 0.2s; }
@@ -310,6 +376,14 @@
             </div>
         </div>
     </section>
+
+    <!-- ═══ PROJECT DETAIL MODAL ════════════════════════════════════════ -->
+    <div id="project-modal" role="dialog" aria-modal="true">
+        <div id="modal-backdrop"></div>
+        <div id="modal-box">
+            <div id="modal-inner"><!-- rendered by app.js --></div>
+        </div>
+    </div>
 
     <!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
     <footer class="py-8 bg-[#020203] relative z-10 text-center font-mono text-xs text-gray-600">
