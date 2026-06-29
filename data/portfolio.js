@@ -195,7 +195,12 @@ const PORTFOLIO_DATA = {
       "demo": "https://aminajaved1999.github.io/intro-to-web-dev-portfolio",
       "period": "2024",
       "role": "Frontend Developer",
-      "images": [],
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GeoHealth-Tracker/1.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GeoHealth-Tracker/2.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GeoHealth-Tracker/3.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GeoHealth-Tracker/4.png"
+      ],
       "features": [
         "Live OpenStreetMap Overpass API integration for real-time facility data",
         "Leaflet.js with marker clustering for high-performance map rendering",
@@ -223,7 +228,13 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "2024",
       "role": "Full Stack & DevOps",
-      "images": [],
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Ecommerce-DevOps-PoC/1.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Ecommerce-DevOps-PoC/2.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Ecommerce-DevOps-PoC/3.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Ecommerce-DevOps-PoC/4.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Ecommerce-DevOps-PoC/5.png"
+      ],
       "features": [
         "Django MVT architecture replacing a legacy monolithic system",
         "Full CI/CD pipeline with GitHub Actions for automated testing and builds",
