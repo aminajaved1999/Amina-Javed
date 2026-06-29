@@ -68,7 +68,7 @@ const PORTFOLIO_DATA = {
       "featured": true,
       "description": "Enterprise IoT platform managing smart AC systems. Multi-layered ASP.NET Web API with RESTful APIs, JWT RBAC, and MQTT integration for real-time remote control and automated scheduling.",
       "tags": ["C#", "ASP.NET Web API", "MQTT", "EF Core", "JWT"],
-      "github": "",
+      "github": "https://github.com/aminajaved1999/ZEPHYR-OFFICE",
       "demo": ""
     },
     {
@@ -108,7 +108,7 @@ const PORTFOLIO_DATA = {
       "featured": false,
       "description": "Single-page dashboard for exploring health facilities using live OpenStreetMap Overpass API data. Interactive mapping with marker clustering for high performance, dynamic filtering, and real-time statistics.",
       "tags": ["Vanilla JS", "Leaflet.js", "Tailwind CSS", "OpenStreetMap"],
-      "github": "",
+      "github": "https://github.com/aminajaved1999/GeoHealth-Tracker",
       "demo": ""
     },
     {
@@ -118,7 +118,7 @@ const PORTFOLIO_DATA = {
       "featured": false,
       "description": "Modern Django MVT e-commerce PoC replacing a legacy monolith. Full CI/CD pipeline with GitHub Actions and Docker, with automated testing and zero-downtime migration to Render.",
       "tags": ["Django", "Docker", "GitHub Actions", "CI/CD", "Render"],
-      "github": "",
+      "github": "https://github.com/aminajaved1999/ecommerce-devops-poc",
       "demo": ""
     },
     {
@@ -128,7 +128,7 @@ const PORTFOLIO_DATA = {
       "featured": false,
       "description": "C# WinForms application using EPPlus and SQL Server to import Excel data (catalog, forecast, POs, stock), automate WIP calculations with data validation, and export accurate reports — replacing manual DTS processes.",
       "tags": ["C#", "WinForms", "EPPlus", "SQL Server"],
-      "github": "",
+      "github": "https://github.com/aminajaved1999/Wip_Analysis_Tool-OFFICE",
       "demo": ""
     },
     {
@@ -178,7 +178,7 @@ const PORTFOLIO_DATA = {
       "featured": false,
       "description": "Final Year Project. MEAN stack accommodation platform helping travelers find lodging based on location, availability, and nearby amenities via Google Places API, with scalable architecture and personalized recommendations.",
       "tags": ["MongoDB", "Express.js", "Angular", "Node.js", "Google Places API"],
-      "github": "",
+      "github": "https://github.com/aminajaved1999/MEZBAN-FYP",
       "demo": ""
     },
     {
