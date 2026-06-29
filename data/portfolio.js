@@ -773,7 +773,7 @@ const PORTFOLIO_DATA = {
       "issuer": "Microsoft",
       "date": "06/2025",
       "category": "ms",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/JM83BAK534V9"
     },
     {
       "title": "Project Management",
