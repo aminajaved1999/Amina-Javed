@@ -717,7 +717,7 @@ const PORTFOLIO_DATA = {
       "issuer": "Meta",
       "date": "10/2023",
       "category": "meta",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/9E9XKYNPRXXH"
     },
     {
       "title": "IBM Front-End Development with Figma, Bootstrap & Git",
