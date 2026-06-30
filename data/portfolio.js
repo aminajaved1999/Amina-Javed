@@ -689,7 +689,7 @@ const PORTFOLIO_DATA = {
       "issuer": "Meta",
       "date": "06/2025",
       "category": "meta",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/specialization/GDS86I5P383R"
     },
     {
       "title": "Full-Stack Engineer",
@@ -703,14 +703,14 @@ const PORTFOLIO_DATA = {
       "issuer": "Meta",
       "date": "02/2024",
       "category": "meta",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/24FHYJUVQUCP"
     },
     {
       "title": "Back-End Developer",
       "issuer": "Meta",
       "date": "01/2024",
       "category": "meta",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/W7JGATZ9649F"
     },
     {
       "title": "Front-End Developer",
@@ -724,49 +724,49 @@ const PORTFOLIO_DATA = {
       "issuer": "IBM",
       "date": "06/2025",
       "category": "ibm",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/4UX87VCMDHM7"
     },
     {
       "title": "Back-End Development",
       "issuer": "IBM",
       "date": "06/2025",
       "category": "ibm",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/4MMWXAZ01RG6"
     },
     {
       "title": "JavaScript Backend Developer",
       "issuer": "IBM",
       "date": "06/2025",
       "category": "ibm",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/TQV7PKESIQQS"
     },
     {
       "title": "Full-Stack JavaScript Developer",
       "issuer": "IBM",
       "date": "08/2024",
       "category": "ibm",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/T2O6HAMC5Z9J"
     },
     {
       "title": "Full Stack Software Developer",
       "issuer": "IBM",
       "date": "02/2024",
       "category": "ibm",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/CES0M4XG70JX"
     },
     {
       "title": "Full-Stack Developer",
       "issuer": "Microsoft",
       "date": "06/2025",
       "category": "ms",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/2CPTH4F23Y8M"
     },
     {
       "title": "Back-End Developer",
       "issuer": "Microsoft",
       "date": "06/2025",
       "category": "ms",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/JVWX27N82JMF"
     },
     {
       "title": "Front-End Developer",
@@ -780,7 +780,14 @@ const PORTFOLIO_DATA = {
       "issuer": "Google",
       "date": "06/2025",
       "category": "google",
-      "credentialUrl": ""
+      "credentialUrl": "https://coursera.org/verify/professional-cert/COFGLB7OEY1N"
+    },
+    {
+      "title": "Academic English: Writing Specialization",
+      "issuer": "Coursera",
+      "date": "2025",
+      "category": "other",
+      "credentialUrl": "https://coursera.org/verify/specialization/WDTEYG3SBW8R"
     }
   ],
   "achievements": [
