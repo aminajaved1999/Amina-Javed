@@ -392,7 +392,15 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "2024",
       "role": "Backend Developer",
-      "images": [],
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/1.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/2.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/3.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/4.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/5.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/6.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/7.PNG"
+      ],
       "features": [
         "EF Core Code-First data modeling with clean migration history",
         "RESTful API design supporting full ticketing lifecycle workflows",
