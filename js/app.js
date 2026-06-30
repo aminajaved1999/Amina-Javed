@@ -53,12 +53,7 @@ function renderHero(data) {
        </a>`
     : '';
 
-  const githubBtn = p.github
-    ? `<a href="${p.github}" target="_blank" rel="noopener noreferrer"
-          class="border border-gray-600 hover:border-cyan-400 text-gray-300 hover:text-cyan-400 px-8 py-3 rounded-sm transition-colors font-mono text-sm tracking-widest flex items-center uppercase">
-          <i class="fab fa-github mr-2"></i> GitHub
-       </a>`
-    : '';
+  const githubBtn = '';
 
   set('hero-content', `
     <div class="reveal">
@@ -365,15 +360,6 @@ function renderContact(p) {
     }
   ];
 
-  if (p.github) {
-    links.push({
-      href: p.github,
-      icon: 'fab fa-github',
-      label: 'Source',
-      value: p.github.replace('https://', ''),
-      external: true
-    });
-  }
 
   set('contact-items', links.map(l => {
     const copyBtn = l.type === 'email'
