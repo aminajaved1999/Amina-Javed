@@ -65,7 +65,7 @@ function renderHero(data) {
         <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
         <span>STATUS: ONLINE &amp; READY</span>
       </div>
-      <h1 class="font-display text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase">
+      <h1 class="font-display text-[1.9rem] sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-4 uppercase">
         <span id="hero-line-1"></span><span id="hero-cursor-1" class="type-cursor">_</span><br>
         <span id="hero-line-2" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 glow-text"></span><span id="hero-cursor-2" class="type-cursor" style="display:none">_</span><br>
         <span id="hero-line-3" class="text-transparent bg-clip-text bg-gradient-to-r from-magenta-400 to-purple-600 glow-text-magenta"></span><span id="hero-cursor-3" class="type-cursor" style="display:none">_</span>
@@ -204,8 +204,8 @@ function renderAchievements(achievements) {
           <i class="${a.icon}" style="color:${c.icon}; font-size:1rem;"></i>
         </div>
         <div class="min-w-0 flex-1">
-          <div class="flex items-start justify-between gap-2 mb-1">
-            <h4 class="font-display font-bold text-white text-sm leading-snug">${esc(a.title)}</h4>
+          <div class="flex items-start gap-2 mb-1">
+            <h4 class="font-display font-bold text-white text-sm leading-snug flex-1 min-w-0">${esc(a.title)}</h4>
             <span class="shrink-0 inline-flex items-center font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border ${c.labelCls}">
               ${esc(c.label)}
             </span>
@@ -368,7 +368,7 @@ function renderContact(p) {
       <i class="${l.icon} text-cyan-400 text-2xl group-hover:scale-110 transition-transform"></i>
       <div class="text-left">
         <p class="font-mono text-xs text-gray-400 uppercase">${l.label}</p>
-        <p class="font-bold text-white group-hover:text-cyan-400 transition-colors">${esc(l.value)}</p>
+        <p class="font-bold text-white group-hover:text-cyan-400 transition-colors break-all text-sm">${esc(l.value)}</p>
       </div>
     </a>
   `).join(''));
@@ -563,8 +563,9 @@ function initMobileMenu() {
   if (!btn || !menu) return;
 
   btn.addEventListener('click', () => {
-    const open = menu.classList.toggle('hidden');
-    btn.querySelector('i').className = open ? 'fas fa-bars' : 'fas fa-times';
+    const isOpen = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', isOpen);
+    btn.querySelector('i').className = isOpen ? 'fas fa-bars' : 'fas fa-times';
   });
 
   // Close when a link is clicked
@@ -573,6 +574,14 @@ function initMobileMenu() {
       menu.classList.add('hidden');
       btn.querySelector('i').className = 'fas fa-bars';
     });
+  });
+
+  // Close if window resized to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      menu.classList.add('hidden');
+      btn.querySelector('i').className = 'fas fa-bars';
+    }
   });
 }
 

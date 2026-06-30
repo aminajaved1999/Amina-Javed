@@ -323,6 +323,22 @@
         #mobile-menu { border-top: 1px solid rgba(0,243,255,0.1); background: rgba(3,3,5,0.95); }
         #mobile-menu a { display:block; padding:0.75rem 1.5rem; font-family:'Space Mono',monospace; font-size:0.8rem; letter-spacing:0.1em; color:#9ca3af; transition:color 0.2s; }
         #mobile-menu a:hover { color:#00f3ff; }
+
+        /* ── Responsive typography ── */
+        @media (max-width: 639px) {
+            .section-heading    { font-size: 1.5rem !important; }
+            .section-heading-lg { font-size: 1.75rem !important; }
+        }
+
+        /* ── Skills/Certs section gap on stacked layout ── */
+        @media (max-width: 1023px) {
+            .skills-certs-grid { gap: 3rem !important; }
+        }
+
+        /* ── Cert list: override Tailwind h-[450px] ── */
+        @media (max-width: 1023px) {
+            #cert-list { height: auto !important; max-height: 380px; }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-white">
@@ -356,20 +372,20 @@
             <a href="#" class="font-display font-bold text-xl tracking-widest text-white glow-text">
                 <span class="text-cyan-400">SYS_</span>AMINA<span class="text-magenta-400">.JAVED</span>
             </a>
-            <div class="hidden md:flex space-x-8 font-mono text-sm tracking-widest text-gray-400">
+            <div class="hidden lg:flex space-x-6 font-mono text-xs tracking-widest text-gray-400">
                 <a href="#about"        class="hover:text-cyan-400 transition-colors">/ABOUT</a>
-                <a href="#experience"  class="hover:text-cyan-400 transition-colors">/EXPERIENCE</a>
-                <a href="#education"   class="hover:text-cyan-400 transition-colors">/EDUCATION</a>
-                <a href="#projects"    class="hover:text-cyan-400 transition-colors">/PORTFOLIO</a>
-                <a href="#skills"      class="hover:text-cyan-400 transition-colors">/TECH</a>
+                <a href="#experience"   class="hover:text-cyan-400 transition-colors">/EXPERIENCE</a>
+                <a href="#education"    class="hover:text-cyan-400 transition-colors">/EDUCATION</a>
+                <a href="#projects"     class="hover:text-cyan-400 transition-colors">/PORTFOLIO</a>
+                <a href="#skills"       class="hover:text-cyan-400 transition-colors">/TECH</a>
                 <a href="#achievements" class="hover:text-cyan-400 transition-colors">/WINS</a>
-                <a href="#contact"     class="hover:text-cyan-400 transition-colors">/CONTACT</a>
+                <a href="#contact"      class="hover:text-cyan-400 transition-colors">/CONTACT</a>
             </div>
-            <a id="nav-contact-btn" href="#contact" class="hidden md:block btn-cyber px-6 py-2 rounded-sm">INIT_CONTACT</a>
-            <button class="md:hidden text-cyan-400 text-2xl" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <a id="nav-contact-btn" href="#contact" class="hidden lg:block btn-cyber px-5 py-2 rounded-sm">INIT_CONTACT</a>
+            <button class="lg:hidden text-cyan-400 text-2xl" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
         </div>
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
+        <div id="mobile-menu" class="hidden lg:hidden">
             <a href="#about"        >/ABOUT</a>
             <a href="#experience"  >/EXPERIENCE</a>
             <a href="#education"   >/EDUCATION</a>
@@ -392,7 +408,7 @@
     <section class="py-24 relative z-10" id="experience">
         <div class="max-w-4xl mx-auto px-6">
             <div class="reveal mb-12">
-                <h2 class="font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
+                <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
                     <span class="text-magenta-400 mr-2">//</span> Mission Log
                 </h2>
                 <p class="font-mono text-sm text-gray-400 mt-2">Professional experience timeline</p>
@@ -407,7 +423,7 @@
     <section class="py-24 relative z-10" id="education">
         <div class="max-w-4xl mx-auto px-6">
             <div class="reveal mb-12">
-                <h2 class="font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
+                <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
                     <span class="text-magenta-400 mr-2">//</span> Academic Record
                 </h2>
                 <p class="font-mono text-sm text-gray-400 mt-2">Formal education and degrees</p>
@@ -422,7 +438,7 @@
     <section class="py-24 relative z-10" id="achievements">
         <div class="max-w-4xl mx-auto px-6">
             <div class="reveal mb-12">
-                <h2 class="font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
+                <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
                     <span class="text-magenta-400 mr-2">//</span> Achievements
                 </h2>
                 <p class="font-mono text-sm text-gray-400 mt-2">Academic, sports &amp; community</p>
@@ -437,7 +453,7 @@
     <section class="py-24 relative z-10 bg-black/40 border-y border-gray-800" id="projects">
         <div class="max-w-7xl mx-auto px-6">
             <div class="reveal mb-10 text-center">
-                <h2 class="font-display text-4xl font-bold text-white uppercase glow-text tracking-wider">Data Archive</h2>
+                <h2 class="section-heading-lg font-display text-4xl font-bold text-white uppercase glow-text tracking-wider">Data Archive</h2>
                 <p class="font-mono text-cyan-400 mt-3" id="projects-count-label">// Loading systems...</p>
             </div>
 
@@ -462,12 +478,12 @@
 
     <!-- ═══ SKILLS + CERTS ════════════════════════════════════════════════ -->
     <section class="py-24 relative z-10" id="skills">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+        <div class="skills-certs-grid max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
 
             <!-- Skills Matrix -->
             <div>
                 <div class="reveal mb-10">
-                    <h2 class="font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
+                    <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
                         <span class="text-magenta-400 mr-2">//</span> Core Tech Matrix
                     </h2>
                 </div>
@@ -479,7 +495,7 @@
             <!-- Certifications -->
             <div>
                 <div class="reveal mb-10">
-                    <h2 class="font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
+                    <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
                         <span class="text-magenta-400 mr-2">//</span> Certifications
                     </h2>
                     <p class="font-mono text-cyan-400 mt-2 text-sm" id="certs-count-label">Loading certs...</p>
@@ -511,7 +527,7 @@
     <!-- ═══ CONTACT ═══════════════════════════════════════════════════════ -->
     <section class="py-24 relative z-10 bg-black/80 border-t border-cyan-900/50" id="contact">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="font-display text-4xl font-bold text-white uppercase glow-text mb-6">Initialize Communication</h2>
+            <h2 class="section-heading-lg font-display text-4xl font-bold text-white uppercase glow-text mb-6">Initialize Communication</h2>
             <p class="text-gray-400 font-sans text-lg mb-12">
                 System architecture, legacy modernization, or scalable APIs. Open a channel.
             </p>
