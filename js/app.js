@@ -71,7 +71,7 @@ function applyExperienceSEO(data) {
         if (node['@type'] === 'FAQPage') {
           node.mainEntity.forEach(q => {
             if (q.name === 'Who is Amina Javed?') {
-              q.acceptedAnswer.text = `Amina Javed is a Full Stack Software Engineer based in Faisalabad, Pakistan. She has ${exp.preciseText} of professional experience (since ${exp.sinceText}), currently works at Beacon Impex Pvt. Ltd., holds a BCS from FAST NUCES, and has ${certCount} professional certifications from Meta, IBM, Microsoft, and Google. Her portfolio is at https://aminajaved.com`;
+              q.acceptedAnswer.text = `Amina Javed is the Full Stack Software Engineer from Faisalabad, Pakistan (aminajaved.com, LinkedIn aminajaved1999). She works at Beacon Impex Pvt. Ltd. since ${exp.sinceText}, has ${exp.preciseText} of experience, BCS from FAST NUCES, ${certCount} certifications, ${projCount} projects. Open to work. Full bio: https://aminajaved.com/about.html`;
             }
           });
         }
@@ -82,10 +82,19 @@ function applyExperienceSEO(data) {
 
   const heroBio = document.getElementById('static-hero-bio');
   if (heroBio) {
-    heroBio.textContent = `Amina Javed is a Full Stack Software Engineer with ${exp.preciseText} of professional experience (since ${exp.sinceText}) specializing in the .NET ecosystem — C#, ASP.NET Core, Blazor, WinForms, SQL Server, and REST APIs. She builds enterprise backends, desktop applications, and cloud-native systems at Beacon Impex Pvt. Ltd. BCS graduate from FAST NUCES. ${certCount} professional certifications from Meta, IBM, Microsoft, and Google. ${projCount} portfolio projects.`;
+    heroBio.textContent = buildIdentityText(exp, certCount, projCount);
+  }
+
+  const identitySummary = document.getElementById('identity-summary');
+  if (identitySummary) {
+    identitySummary.textContent = buildIdentityText(exp, certCount, projCount);
   }
 
   document.title = document.title.replace(/\d+\+ years?/i, exp.shortText);
+}
+
+function buildIdentityText(exp, certCount, projCount) {
+  return `Amina Javed is a Full Stack Software Engineer in Faisalabad, Pakistan (aminajaved.com). She has ${exp.preciseText} of professional experience since ${exp.sinceText}, works at Beacon Impex Pvt. Ltd., holds a BCS from FAST NUCES, ${certCount} certifications from Meta/IBM/Microsoft/Google, and ${projCount} portfolio projects in .NET, Blazor, and enterprise backends. Open to work. LinkedIn: aminajaved1999 · GitHub: aminajaved1999.`;
 }
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
@@ -171,7 +180,7 @@ function renderHero(data) {
         <span id="hero-line-2" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 glow-text"></span><span id="hero-cursor-2" class="type-cursor" style="display:none">_</span><br>
         <span id="hero-line-3" class="text-transparent bg-clip-text bg-gradient-to-r from-magenta-400 to-purple-600 glow-text-magenta"></span><span id="hero-cursor-3" class="type-cursor" style="display:none">_</span>
       </h1>
-      <p class="text-gray-300 text-lg md:text-xl font-sans max-w-lg mb-8 leading-relaxed">${esc(p.bio)}</p>
+      <p class="text-gray-300 text-lg md:text-xl font-sans max-w-lg mb-8 leading-relaxed">${esc(buildIdentityText(exp, certCount, projCount))}</p>
       <div class="flex flex-wrap gap-4">
         <a href="#projects" class="btn-cyber px-8 py-3 rounded-sm font-bold">
           <i class="fas fa-satellite-dish mr-2"></i> EXPLORE DATA
