@@ -17,6 +17,7 @@ function bootstrap() {
 
 function renderAll(data) {
   renderHero(data);
+  initTypingAnimation();
   renderExperience(data.experience);
   renderEducation(data.education);
   renderAchievements(data.achievements || []);
@@ -65,9 +66,9 @@ function renderHero(data) {
         <span>STATUS: ONLINE &amp; READY</span>
       </div>
       <h1 class="font-display text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase">
-        Architecting <br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 glow-text">Enterprise</span> <br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-magenta-400 to-purple-600 glow-text-magenta">Systems.</span>
+        <span id="hero-line-1"></span><span id="hero-cursor-1" class="type-cursor">_</span><br>
+        <span id="hero-line-2" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 glow-text"></span><span id="hero-cursor-2" class="type-cursor" style="display:none">_</span><br>
+        <span id="hero-line-3" class="text-transparent bg-clip-text bg-gradient-to-r from-magenta-400 to-purple-600 glow-text-magenta"></span><span id="hero-cursor-3" class="type-cursor" style="display:none">_</span>
       </h1>
       <p class="text-gray-300 text-lg md:text-xl font-sans max-w-lg mb-8 leading-relaxed">${esc(p.bio)}</p>
       <div class="flex flex-wrap gap-4">
@@ -380,6 +381,46 @@ function updateCounts(data) {
   const certsLabel    = document.getElementById('certs-count-label');
   if (projectsLabel) projectsLabel.textContent = `// ${data.projects.length} Projects on record`;
   if (certsLabel)    certsLabel.textContent    = `${data.certifications.length} Active Vendor Certs`;
+}
+
+// ─── Typing animation ─────────────────────────────────────────────────────────
+
+function initTypingAnimation() {
+  const lines = [
+    { textId: 'hero-line-1', cursorId: 'hero-cursor-1', text: 'Architecting',  speed: 75  },
+    { textId: 'hero-line-2', cursorId: 'hero-cursor-2', text: 'Enterprise',    speed: 85  },
+    { textId: 'hero-line-3', cursorId: 'hero-cursor-3', text: 'Systems.',      speed: 100 },
+  ];
+
+  function typeLine(lineIdx) {
+    if (lineIdx >= lines.length) return;
+    const { textId, cursorId, text, speed } = lines[lineIdx];
+    const textEl   = document.getElementById(textId);
+    const cursorEl = document.getElementById(cursorId);
+    if (!textEl || !cursorEl) return;
+
+    // Hide previous cursor, show this line's cursor
+    if (lineIdx > 0) {
+      const prev = document.getElementById(lines[lineIdx - 1].cursorId);
+      if (prev) prev.style.display = 'none';
+    }
+    cursorEl.style.display = 'inline';
+
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < text.length) {
+        textEl.textContent += text[i++];
+      } else {
+        clearInterval(interval);
+        // Pause between lines, then move to next
+        const pause = lineIdx < lines.length - 1 ? 280 : 0;
+        setTimeout(() => typeLine(lineIdx + 1), pause);
+      }
+    }, speed);
+  }
+
+  // Small initial delay so the page settles before typing starts
+  setTimeout(() => typeLine(0), 400);
 }
 
 // ─── Interactivity ────────────────────────────────────────────────────────────

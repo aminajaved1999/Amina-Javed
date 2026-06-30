@@ -265,6 +265,18 @@
             #back-to-top { bottom: 1.25rem; right: 1.25rem; }
         }
 
+        /* Typing cursor */
+        .type-cursor {
+            display: inline;
+            color: #00f3ff;
+            font-weight: 300;
+            animation: blink-cur 0.75s step-end infinite;
+        }
+        @keyframes blink-cur {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+
         /* Scroll progress bar */
         #scroll-progress {
             position: fixed;
