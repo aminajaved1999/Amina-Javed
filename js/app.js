@@ -226,13 +226,14 @@ function renderAchievements(achievements) {
 
 function renderProjects(projects) {
   _projects = projects;
-  set('project-grid', projects.map(p => {
+  set('project-grid', projects.map((p, i) => {
     const featuredBadge = p.featured
       ? `<span class="bg-magenta-500/20 border border-magenta-500/50 text-magenta-300 font-mono text-[10px] px-2 py-1 rounded uppercase">Featured</span>`
       : '';
 
     const demoBtn = p.demo
       ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer"
+            onclick="event.stopPropagation()"
             class="flex-1 flex items-center justify-center gap-2 py-2 px-3
                    border border-cyan-500/50 hover:border-cyan-400
                    text-cyan-400 hover:bg-cyan-500/10
@@ -258,7 +259,7 @@ function renderProjects(projects) {
         : '';
 
     return `
-      <div class="project-card cyber-card p-6 rounded-lg reveal" data-category="${p.categories.join(' ')}">
+      <div class="project-card cyber-card p-6 rounded-lg reveal" data-category="${p.categories.join(' ')}" data-index="${i}">
         <div class="flex justify-between items-start mb-3">
           <i class="${p.icon} text-2xl text-cyan-400"></i>
           <div class="flex flex-wrap gap-1 justify-end">
@@ -630,8 +631,14 @@ function initMobileMenu() {
 let _projects = [];
 
 function initProjectModals() {
-  document.querySelectorAll('.project-card').forEach((card, i) => {
-    card.addEventListener('click', () => openModal(_projects[i]));
+  const grid = document.getElementById('project-grid');
+  if (!grid) return;
+
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.project-card');
+    if (!card || card.dataset.index === undefined) return;
+    if (e.target.closest('a[href]')) return;
+    openModal(_projects[Number(card.dataset.index)]);
   });
 
   document.getElementById('modal-backdrop').addEventListener('click', closeModal);
