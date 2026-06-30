@@ -344,6 +344,26 @@ function renderAchievements(achievements) {
   }).join(''));
 }
 
+function buildProjectSearchText(p) {
+  const categoryLabels = {
+    enterprise: 'industry work enterprise',
+    web: 'web cloud',
+    desktop: 'desktop apps',
+  };
+  const parts = [
+    p.title,
+    p.description,
+    ...(p.tags || []),
+    ...(p.categories || []).flatMap(c => [c, categoryLabels[c] || '']),
+    p.source?.label,
+    p.source?.type,
+    p.featured ? 'featured' : '',
+    p.proprietary ? 'proprietary beacon impex' : '',
+    p.role,
+  ];
+  return parts.filter(Boolean).join(' ').toLowerCase();
+}
+
 function renderProjects(projects) {
   _projects = projects;
   set('project-grid', projects.map((p, i) => {
@@ -378,8 +398,10 @@ function renderProjects(projects) {
         ? `<div class="flex gap-2 mt-4 pt-4 border-t border-gray-700/40">${demoBtn}</div>`
         : '';
 
+    const searchText = buildProjectSearchText(p);
+
     return `
-      <div class="project-card cyber-card p-6 rounded-lg reveal" data-category="${p.categories.join(' ')}" data-index="${i}"
+      <div class="project-card cyber-card p-6 rounded-lg reveal" data-category="${p.categories.join(' ')}" data-search="${esc(searchText)}" data-index="${i}"
            role="button" tabindex="0" aria-label="View details for ${esc(p.title)}">
         <div class="flex justify-between items-start mb-3">
           <i class="${p.icon} text-2xl text-cyan-400"></i>
@@ -727,9 +749,67 @@ function initContentProtection() {
   });
 }
 
-function initProjectFilter() {
-  const filterBtns  = document.querySelectorAll('.filter-btn');
+let _projectFilter = 'all';
+let _projectSearchQuery = '';
+let _projectSearchTimer = null;
+
+function projectMatchesFilters(card) {
+  const categoryMatch = _projectFilter === 'all' || card.dataset.category.includes(_projectFilter);
+  const searchMatch = !_projectSearchQuery || (card.dataset.search || '').includes(_projectSearchQuery);
+  return categoryMatch && searchMatch;
+}
+
+function updateProjectFilterLabel(visibleCount) {
+  const label = document.getElementById('projects-count-label');
+  if (!label) return;
+  const total = _projects.length;
+  if (_projectFilter === 'all' && !_projectSearchQuery) {
+    label.textContent = `// ${total} Projects on record`;
+  } else if (visibleCount === 0) {
+    label.textContent = '// No projects match';
+  } else {
+    label.textContent = `// ${visibleCount} of ${total} projects`;
+  }
+}
+
+function applyProjectFilters(animate = true) {
   const projectCards = document.querySelectorAll('.project-card');
+  const emptyEl = document.getElementById('project-search-empty');
+  let visibleCount = 0;
+
+  projectCards.forEach(card => {
+    const match = projectMatchesFilters(card);
+    if (match) visibleCount++;
+
+    if (!animate) {
+      card.style.display = match ? 'block' : 'none';
+      card.style.opacity = match ? '1' : '0';
+      card.style.transform = match ? 'scale(1) translateY(0)' : 'scale(0.9) translateY(20px)';
+      return;
+    }
+
+    card.style.opacity = '0';
+    card.style.transform = 'scale(0.9) translateY(20px)';
+    card.style.transition = 'opacity 0.3s, transform 0.3s';
+
+    setTimeout(() => {
+      card.style.display = match ? 'block' : 'none';
+      if (match) {
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1) translateY(0)';
+        }, 50);
+      }
+    }, 300);
+  });
+
+  if (emptyEl) emptyEl.classList.toggle('hidden', visibleCount > 0);
+  updateProjectFilterLabel(visibleCount);
+}
+
+function initProjectFilter() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const searchInput = document.getElementById('project-search');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -739,27 +819,29 @@ function initProjectFilter() {
       });
       btn.classList.add('active');
       btn.setAttribute('aria-pressed', 'true');
-
-      const filter = btn.dataset.filter;
-
-      projectCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'scale(0.9) translateY(20px)';
-        card.style.transition = 'opacity 0.3s, transform 0.3s';
-
-        setTimeout(() => {
-          const match = filter === 'all' || card.dataset.category.includes(filter);
-          card.style.display = match ? 'block' : 'none';
-          if (match) {
-            setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'scale(1) translateY(0)';
-            }, 50);
-          }
-        }, 300);
-      });
+      _projectFilter = btn.dataset.filter;
+      applyProjectFilters(true);
     });
   });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      clearTimeout(_projectSearchTimer);
+      _projectSearchTimer = setTimeout(() => {
+        _projectSearchQuery = searchInput.value.trim().toLowerCase();
+        applyProjectFilters(true);
+      }, 150);
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        _projectSearchQuery = '';
+        applyProjectFilters(true);
+        searchInput.blur();
+      }
+    });
+  }
 }
 
 function initCertFilter() {

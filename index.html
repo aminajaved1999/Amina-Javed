@@ -219,6 +219,7 @@
         button:focus-visible,
         .filter-btn:focus-visible,
         .cert-filter-btn:focus-visible,
+        #project-search:focus-visible,
         .project-card:focus-visible,
         .journey-dot:focus-visible,
         #back-to-top:focus-visible,
@@ -369,6 +370,34 @@
             background: rgba(0,243,255,0.15);
             box-shadow: 0 0 20px rgba(0,243,255,0.4);
             text-shadow: 0 0 5px #00f3ff;
+        }
+
+        .project-search-wrap { position: relative; }
+        .project-search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(0, 243, 255, 0.5);
+            font-size: 0.75rem;
+            pointer-events: none;
+        }
+        .project-search-input {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8125rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(75, 85, 99, 0.8);
+            border-radius: 0.375rem;
+            padding: 0.65rem 1rem 0.65rem 2.5rem;
+            color: #e5e7eb;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .project-search-input::placeholder { color: rgba(156, 163, 175, 0.85); }
+        .project-search-input:hover { border-color: rgba(0, 243, 255, 0.35); }
+        .project-search-input:focus {
+            outline: none;
+            border-color: rgba(0, 243, 255, 0.6);
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.12);
         }
 
         .filter-btn, .cert-filter-btn { transition: all 0.3s ease; }
@@ -941,6 +970,18 @@
                 <p class="font-mono text-cyan-400 mt-3" id="projects-count-label">// Loading systems...</p>
             </div>
 
+            <!-- Project Search -->
+            <div class="reveal max-w-md mx-auto mb-8">
+                <div class="project-search-wrap">
+                    <i class="fas fa-search project-search-icon" aria-hidden="true"></i>
+                    <input type="search" id="project-search" class="project-search-input w-full"
+                           placeholder="Search projects, tags, stack…"
+                           autocomplete="off"
+                           aria-label="Search projects by title, tags, or technology"
+                           enterkeyhint="search">
+                </div>
+            </div>
+
             <!-- Project Filters -->
             <div class="reveal flex flex-wrap justify-center gap-3 mb-12 font-mono text-sm">
                 <button type="button" class="filter-btn active border border-gray-600 text-gray-300 px-4 py-2 rounded uppercase tracking-wider"
@@ -959,6 +1000,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="project-grid">
                 <!-- rendered by app.js -->
             </div>
+            <p id="project-search-empty" class="hidden font-mono text-sm text-gray-400 text-center py-10" role="status" aria-live="polite">
+                // No projects match. Try different keywords or clear the search.
+            </p>
         </div>
     </section>
 
@@ -1158,7 +1202,7 @@
 
     <!-- Deferred — does not block first paint -->
     <script defer src="./data/portfolio.js?v=20260701m"></script>
-    <script defer src="./js/app.js?v=20260701m"></script>
+    <script defer src="./js/app.js?v=20260701n"></script>
 
 </body>
 </html>
