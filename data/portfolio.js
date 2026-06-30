@@ -692,13 +692,6 @@ const PORTFOLIO_DATA = {
       "credentialUrl": "https://coursera.org/verify/specialization/GDS86I5P383R"
     },
     {
-      "title": "Meta Full-Stack Engineer",
-      "issuer": "Meta",
-      "date": "02/2024",
-      "category": "meta",
-      "credentialUrl": ""
-    },
-    {
       "title": "Meta Database Engineer",
       "issuer": "Meta",
       "date": "02/2024",
