@@ -447,6 +447,7 @@ function initTypingAnimation() {
 // ─── Interactivity ────────────────────────────────────────────────────────────
 
 function initAll() {
+  initContentProtection();
   initProjectFilter();
   initCertFilter();
   initScrollReveal();
@@ -480,6 +481,35 @@ function initBackToTop() {
 
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+function initContentProtection() {
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  document.addEventListener('dragstart', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+
+  document.addEventListener('keydown', e => {
+    const key = e.key.toLowerCase();
+    const ctrl = e.ctrlKey || e.metaKey;
+
+    if (key === 'f12') {
+      e.preventDefault();
+      return;
+    }
+
+    if (!ctrl) return;
+
+    if (['s', 'u', 'p'].includes(key)) {
+      e.preventDefault();
+      return;
+    }
+
+    if (e.shiftKey && ['i', 'j', 'c', 'k'].includes(key)) {
+      e.preventDefault();
+    }
   });
 }
 

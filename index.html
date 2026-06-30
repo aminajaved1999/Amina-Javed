@@ -69,6 +69,24 @@
             background-color: #030305;
             color: #e2e8f0;
             overflow-x: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        a, button, input, textarea, select, [role="button"] {
+            -webkit-user-select: auto;
+            user-select: auto;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+
+        .modal-img-gallery img {
+            pointer-events: auto;
         }
 
         #webgl-container {
@@ -604,7 +622,8 @@
 
     <!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
     <footer class="py-8 bg-[#020203] relative z-10 text-center font-mono text-xs text-gray-600">
-        <p>SYS_USER: Amina Javed &nbsp;//&nbsp; LOC: Faisalabad, PK &nbsp;//&nbsp; STATUS: SECURE</p>
+        <p>&copy; 2026 Amina Javed. All rights reserved.</p>
+        <p class="mt-1">SYS_USER: Amina Javed &nbsp;//&nbsp; LOC: Faisalabad, PK &nbsp;//&nbsp; STATUS: SECURE</p>
     </footer>
 
     <!-- ═══ THREE.JS — Cinematic Space Background ═══════════════════════ -->
@@ -695,8 +714,8 @@
     </script>
 
     <!-- ═══ Portfolio data + app ════════════════════════════════════════ -->
-    <script src="./data/portfolio.js?v=20260630b"></script>
-    <script src="./js/app.js?v=20260630b"></script>
+    <script src="./data/portfolio.js?v=20260630c"></script>
+    <script src="./js/app.js?v=20260630c"></script>
 
 </body>
 </html>
