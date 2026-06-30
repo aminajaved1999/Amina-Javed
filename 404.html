@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Amina Javed</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #030305;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            overflow: hidden;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* CSS starfield */
+        .stars {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.15; transform: scale(0.8); }
+            to   { opacity: 0.9;  transform: scale(1.2); }
+        }
+
+        /* HUD corners */
+        .hud {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            box-shadow: inset 0 0 120px rgba(0,0,0,0.85);
+        }
+        .hud::before, .hud::after {
+            content: '';
+            position: absolute;
+            width: 36px; height: 36px;
+        }
+        .hud::before { top: 20px; left: 20px; border-top: 2px solid #00f3ff; border-left: 2px solid #00f3ff; opacity: 0.45; }
+        .hud::after  { bottom: 20px; right: 20px; border-bottom: 2px solid #00f3ff; border-right: 2px solid #00f3ff; opacity: 0.45; }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 560px;
+        }
+
+        .error-code {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(6rem, 22vw, 10rem);
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(135deg, #00f3ff, #bc13fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 30px rgba(0,243,255,0.35));
+            margin-bottom: 1rem;
+        }
+
+        .status-line {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: rgba(0,243,255,0.55);
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+        }
+        .status-line span {
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: #bc13fe;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            animation: pulse 1.2s ease-in-out infinite;
+            vertical-align: middle;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px #bc13fe; }
+            50%       { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .message {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.78rem;
+            color: #64748b;
+            line-height: 1.9;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(0,243,255,0.1);
+            background: rgba(10,15,30,0.55);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0.5rem;
+            text-align: left;
+        }
+        .message .prompt { color: #00f3ff; }
+        .message .output { color: #94a3b8; }
+        .message .error  { color: #f87171; }
+        .cursor {
+            display: inline-block;
+            background: #00f3ff;
+            width: 7px; height: 14px;
+            vertical-align: middle;
+            margin-left: 2px;
+            animation: blink 0.8s step-end infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border: 1px solid #00f3ff;
+            color: #00f3ff;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: 0.25rem;
+            background: transparent;
+            transition: background 0.25s, box-shadow 0.25s;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: rgba(0,243,255,0.1);
+            box-shadow: 0 0 20px rgba(0,243,255,0.35);
+        }
+        .btn svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+
+    <!-- Starfield -->
+    <div class="stars" id="stars"></div>
+    <div class="hud"></div>
+
+    <div class="content">
+        <div class="error-code">404</div>
+
+        <p class="status-line">
+            <span></span>SECTOR_NOT_FOUND — Signal lost in deep space
+        </p>
+
+        <div class="message">
+            <div><span class="prompt">SYS &gt;</span> <span class="output">Attempting to locate requested sector...</span></div>
+            <div><span class="prompt">SYS &gt;</span> <span class="error">ERROR: Route not found in navigation map.</span></div>
+            <div><span class="prompt">SYS &gt;</span> <span class="output">Recommend returning to base coordinates.</span></div>
+            <div><span class="prompt">SYS &gt;</span> <span class="cursor"></span></div>
+        </div>
+
+        <a href="/" class="btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Return to Base
+        </a>
+    </div>
+
+    <script>
+        // Generate CSS starfield
+        const container = document.getElementById('stars');
+        for (let i = 0; i < 120; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            s.style.cssText = `
+                top:${Math.random()*100}%;
+                left:${Math.random()*100}%;
+                --d:${(2 + Math.random()*4).toFixed(1)}s;
+                opacity:${(0.2 + Math.random()*0.6).toFixed(2)};
+                ${Math.random()>.85 ? 'background:#00f3ff;' : Math.random()>.7 ? 'background:#bc13fe;' : ''}
+            `;
+            container.appendChild(s);
+        }
+    </script>
+</body>
+</html>
