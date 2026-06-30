@@ -49,7 +49,7 @@ function applyExperienceSEO(data) {
   };
 
   setMeta('meta[name="description"]', 'content',
-    `${otw}Full Stack Software Engineer with ${expOf} · .NET 8 · ASP.NET Core · Blazor · C# · Node.js · Python · ${projCount} projects · ${certCount} certifications · Faisalabad, Pakistan`);
+    `Official portfolio of Amina Javed — Full Stack Software Engineer, Faisalabad, Pakistan. ${otw}${expOf} · .NET · ASP.NET Core · Blazor · C# · ${projCount} projects · ${certCount} certifications · aminajaved1999`);
 
   setMeta('meta[property="og:description"]', 'content',
     `${otw}${exp.shortText} enterprise backend development · .NET · ASP.NET Core · Blazor · C# · ${projCount} projects · ${certCount} certifications across Meta, IBM, Microsoft & Google`);
