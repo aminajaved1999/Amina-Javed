@@ -87,7 +87,7 @@ function renderHero(data) {
     </div>
 
     <div class="reveal cyber-card p-8 rounded-lg relative hidden md:block">
-      <div class="absolute top-0 right-0 p-4 font-mono text-xs text-cyan-400/50">ID: aminajaved1999</div>
+      <div class="absolute top-0 right-0 p-4 font-mono text-xs text-cyan-300">ID: aminajaved1999</div>
       <div class="w-24 h-24 rounded-full border-2 border-cyan-400 mb-6 shadow-[0_0_20px_rgba(0,243,255,0.5)] overflow-hidden flex items-center justify-center"
            style="background:#030305;">
         ${p.photo
@@ -100,15 +100,15 @@ function renderHero(data) {
       <div class="grid grid-cols-3 gap-4 mb-6">
         <div class="bg-black/50 border border-gray-700/50 p-3 rounded text-center">
           <div class="text-2xl font-display font-bold text-magenta-400">${yearsExp}</div>
-          <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Years Exp</div>
+          <div class="text-[10px] font-mono text-gray-300 uppercase tracking-widest">Years Exp</div>
         </div>
         <div class="bg-black/50 border border-gray-700/50 p-3 rounded text-center">
           <div class="text-2xl font-display font-bold text-magenta-400">${projCount}</div>
-          <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Projects</div>
+          <div class="text-[10px] font-mono text-gray-300 uppercase tracking-widest">Projects</div>
         </div>
         <div class="bg-black/50 border border-gray-700/50 p-3 rounded text-center">
           <div class="text-2xl font-display font-bold text-magenta-400">${certCount}</div>
-          <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Certs</div>
+          <div class="text-[10px] font-mono text-gray-300 uppercase tracking-widest">Certs</div>
         </div>
       </div>
       <div class="flex flex-wrap gap-2 font-mono text-xs">
@@ -126,7 +126,7 @@ function renderExperience(experience) {
   set('experience-list', experience.map(job => {
     const dateBadge = job.featured
       ? `<div class="mt-2 md:mt-0 inline-block bg-magenta-500/20 border border-magenta-500/50 text-magenta-300 font-mono text-xs px-3 py-1 rounded-full">${esc(job.period)}</div>`
-      : `<div class="mt-2 md:mt-0 font-mono text-gray-400 text-xs px-3 py-1">${esc(job.period)}</div>`;
+      : `<div class="mt-2 md:mt-0 font-mono text-gray-300 text-xs px-3 py-1">${esc(job.period)}</div>`;
 
     const body = job.points
       ? `<ul class="space-y-2 text-gray-300 text-sm md:text-base font-sans list-none">
@@ -169,7 +169,7 @@ function renderEducation(education) {
             ${esc(edu.period)}
           </div>
         </div>
-        <p class="text-gray-400 text-sm mt-2 font-mono flex items-center gap-2">
+        <p class="text-gray-300 text-sm mt-2 font-mono flex items-center gap-2">
           <i class="fas fa-map-marker-alt text-magenta-400"></i> ${esc(edu.location)}
         </p>
       </div>
@@ -180,11 +180,11 @@ function renderEducation(education) {
 function sourceBadge(source, size = 'card') {
   if (!source) return '';
   const styles = {
-    professional:  'border-gray-600    bg-gray-800/60      text-gray-400',
+    professional:  'border-gray-600    bg-gray-800/60      text-gray-300',
     certification: 'border-cyan-500/40 bg-cyan-500/10      text-cyan-400',
     freelance:     'border-emerald-500/40 bg-emerald-500/10 text-emerald-400',
     university:    'border-amber-500/40 bg-amber-500/10    text-amber-400',
-    personal:      'border-gray-600    bg-gray-800/60      text-gray-400',
+    personal:      'border-gray-600    bg-gray-800/60      text-gray-300',
   };
   const cls = styles[source.type] || styles.personal;
   const textSize = size === 'modal' ? 'text-xs' : 'text-[10px]';
@@ -218,7 +218,7 @@ function renderAchievements(achievements) {
             </span>
           </div>
           <p class="font-mono text-[11px]" style="color:${c.icon}; opacity:0.85;">${esc(a.detail)}</p>
-          <p class="font-mono text-[10px] text-gray-500 mt-0.5">${esc(a.org)}</p>
+          <p class="font-mono text-[10px] text-gray-300 mt-0.5">${esc(a.org)}</p>
         </div>
       </div>`;
   }).join(''));
@@ -246,7 +246,7 @@ function renderProjects(projects) {
 
     const proprietaryBadge = p.proprietary
       ? `<div class="mt-4 pt-4 border-t border-gray-700/40">
-           <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-gray-500 border border-gray-700 px-2.5 py-1 rounded">
+           <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-gray-300 border border-gray-700 px-2.5 py-1 rounded">
              <i class="fas fa-lock text-[9px]"></i> Proprietary — Beacon Impex Pvt. Ltd.
            </span>
          </div>`
@@ -269,7 +269,7 @@ function renderProjects(projects) {
           </div>
         </div>
         <h3 class="font-display text-lg font-bold text-white mb-2">${esc(p.title)}</h3>
-        <p class="text-sm text-gray-400 mb-4 font-sans leading-relaxed">${esc(p.description)}</p>
+        <p class="text-sm text-gray-300 mb-4 font-sans leading-relaxed">${esc(p.description)}</p>
         <div class="flex flex-wrap gap-2 font-mono text-[10px] text-cyan-300">
           ${p.tags.map(t => `<span class="border border-cyan-500/30 bg-black/50 px-2 py-1">${esc(t)}</span>`).join('')}
         </div>
@@ -289,7 +289,7 @@ function renderSkills(skills) {
       <div class="cyber-card p-5 rounded-lg reveal" style="transition-delay: ${(i * delayStep).toFixed(1)}s;">
         <h3 class="font-mono text-cyan-400 text-sm mb-3 uppercase border-b border-gray-700 pb-2">
           <i class="${cat.icon} mr-2"></i>${esc(cat.category)}
-        </h4>
+        </h3>
         <div class="flex flex-wrap gap-2 font-mono text-[11px]">
           ${cat.items.map(item => `
             <span class="bg-gray-800 border border-gray-600 px-2 py-1 rounded text-gray-300 ${hoverClass} transition-colors cursor-default">${esc(item)}</span>
@@ -315,8 +315,8 @@ function renderCertifications(certs) {
       <div class="cert-item flex items-center space-x-4 ${borderClass} pt-${i === 0 ? '0' : '2'} hover:pl-2 transition-all" data-category="${cert.category}">
         ${certLogo(cert.category)}
         <div>
-          <h5 class="text-white font-semibold text-sm">${esc(cert.title)}</h5>
-          <p class="text-gray-400 text-xs font-mono">${esc(cert.date)}</p>
+          <h3 class="text-white font-semibold text-sm">${esc(cert.title)}</h3>
+          <p class="text-gray-300 text-xs font-mono">${esc(cert.date)}</p>
           ${credLink}
         </div>
       </div>`;
@@ -327,7 +327,7 @@ function renderLanguages(languages) {
   const styles = {
     native: { border: 'rgba(188,19,254,0.4)', bg: 'rgba(188,19,254,0.08)', level: 'border-magenta-500/40 bg-magenta-500/10 text-magenta-300' },
     fluent: { border: 'rgba(0,243,255,0.35)', bg: 'rgba(0,243,255,0.06)',  level: 'border-cyan-500/40 bg-cyan-500/10 text-cyan-300'          },
-    basic:  { border: 'rgba(148,163,184,0.3)', bg: 'rgba(148,163,184,0.05)', level: 'border-gray-500/40 bg-gray-500/10 text-gray-400'          },
+    basic:  { border: 'rgba(148,163,184,0.3)', bg: 'rgba(148,163,184,0.05)', level: 'border-gray-500/40 bg-gray-500/10 text-gray-300'          },
   };
 
   set('languages-list', languages.map(l => {
@@ -375,7 +375,7 @@ function renderContact(p) {
       ? `<button type="button"
            onclick="copyEmail(event,'${l.value}')"
            class="ml-auto shrink-0 w-8 h-8 flex items-center justify-center rounded-lg
-                  border border-gray-700 hover:border-cyan-400 text-gray-500
+                  border border-gray-700 hover:border-cyan-400 text-gray-400
                   hover:text-cyan-400 transition-all"
            title="Copy email address"
            aria-label="Copy email address to clipboard"
@@ -389,7 +389,7 @@ function renderContact(p) {
          class="cyber-card flex items-center gap-4 px-8 py-4 rounded-lg group">
         <i class="${l.icon} text-cyan-400 text-2xl group-hover:scale-110 transition-transform shrink-0"></i>
         <div class="text-left min-w-0 flex-1">
-          <p class="font-mono text-xs text-gray-400 uppercase">${l.label}</p>
+          <p class="font-mono text-xs text-gray-300 uppercase">${l.label}</p>
           <p class="font-bold text-white group-hover:text-cyan-400 transition-colors break-all text-sm">${esc(l.value)}</p>
         </div>
         ${copyBtn}
@@ -754,7 +754,7 @@ function buildModalHTML(p) {
        </div>`
     : `<div class="modal-img-placeholder">
          <i class="fas fa-satellite text-4xl" style="color:rgba(0,243,255,0.2)"></i>
-         <span class="font-mono text-xs" style="color:rgba(0,243,255,0.3)">No preview available</span>
+         <span class="font-mono text-xs text-cyan-300">No preview available</span>
        </div>`;
 
   const metaBadges = [
@@ -765,7 +765,7 @@ function buildModalHTML(p) {
 
   const features = (p.features || []).length
     ? `<div class="mb-6">
-         <h3 class="font-mono text-xs text-gray-400 uppercase tracking-widest mb-3">Key Highlights</h3>
+         <h3 class="font-mono text-xs text-gray-300 uppercase tracking-widest mb-3">Key Highlights</h3>
          <ul class="space-y-2">
            ${p.features.map(f => `
              <li class="flex items-start gap-2 text-sm text-gray-300">
@@ -788,8 +788,8 @@ function buildModalHTML(p) {
 
   const modalProprietaryNote = p.proprietary
     ? `<div class="flex items-center gap-2 pt-4 border-t border-gray-700/50">
-         <i class="fas fa-lock text-gray-600 text-xs"></i>
-         <span class="font-mono text-xs text-gray-500">Source code is proprietary — developed professionally at Beacon Impex Pvt. Ltd.</span>
+         <i class="fas fa-lock text-gray-400 text-xs"></i>
+         <span class="font-mono text-xs text-gray-300">Source code is proprietary — developed professionally at Beacon Impex Pvt. Ltd.</span>
        </div>` : '';
 
   return `
@@ -802,7 +802,7 @@ function buildModalHTML(p) {
         </div>
         <button type="button" onclick="closeModal()" aria-label="Close project details"
           class="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg
-                 border border-gray-700 hover:border-cyan-400 text-gray-400
+                 border border-gray-700 hover:border-cyan-400 text-gray-300
                  hover:text-cyan-400 transition-colors text-sm">
           <i class="fas fa-times" aria-hidden="true"></i>
         </button>
@@ -815,7 +815,7 @@ function buildModalHTML(p) {
       ${features}
 
       <div class="mb-6">
-        <h3 class="font-mono text-xs text-gray-400 uppercase tracking-widest mb-3">Tech Stack</h3>
+        <h3 class="font-mono text-xs text-gray-300 uppercase tracking-widest mb-3">Tech Stack</h3>
         <div class="flex flex-wrap gap-2">
           ${p.tags.map(t => `<span class="border border-cyan-500/30 bg-black/50 text-cyan-300 font-mono text-[11px] px-2 py-1 rounded">${esc(t)}</span>`).join('')}
         </div>
