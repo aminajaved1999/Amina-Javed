@@ -13,6 +13,9 @@
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <link rel="canonical" href="https://aminajaved.com/">
+    <link rel="author" href="https://aminajaved.com/">
+    <link rel="me" href="https://linkedin.com/in/aminajaved1999">
+    <link rel="me" href="https://github.com/aminajaved1999">
 
     <!-- Open Graph — Instagram, WhatsApp, Facebook, LinkedIn previews -->
     <meta property="og:type"            content="website">
@@ -39,39 +42,98 @@
     <meta name="twitter:description"   content="Open to work · Full Stack Software Engineer · .NET · ASP.NET Core · Blazor · C# · 4+ years · 17 projects · 14 certifications">
     <meta name="twitter:image"         content="https://aminajaved.com/og-image.png">
 
-    <!-- Structured data -->
+    <!-- Structured data — Google rich results & AI crawlers -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
           "@type": "WebSite",
+          "@id": "https://aminajaved.com/#website",
           "name": "Amina Javed — Portfolio",
-          "url": "https://aminajaved.com/"
+          "url": "https://aminajaved.com/",
+          "description": "Official portfolio of Amina Javed, Full Stack Software Engineer based in Faisalabad, Pakistan.",
+          "publisher": { "@id": "https://aminajaved.com/#person" }
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://aminajaved.com/#profile",
+          "url": "https://aminajaved.com/",
+          "name": "Amina Javed — Full Stack Software Engineer",
+          "description": "Professional portfolio of Amina Javed — Full Stack Software Engineer with 4+ years of .NET enterprise development experience.",
+          "mainEntity": { "@id": "https://aminajaved.com/#person" }
         },
         {
           "@type": "Person",
+          "@id": "https://aminajaved.com/#person",
           "name": "Amina Javed",
+          "givenName": "Amina",
+          "familyName": "Javed",
           "url": "https://aminajaved.com/",
           "image": "https://aminajaved.com/og-image.png",
           "jobTitle": "Full Stack Software Engineer",
+          "description": "Amina Javed is a Full Stack Software Engineer from Faisalabad, Pakistan with 4+ years of experience building enterprise backends, REST APIs, WinForms apps, and cloud-native systems in the .NET ecosystem. She holds 14 professional certifications from Meta, IBM, Microsoft, and Google.",
+          "email": "aminajaved1999@gmail.com",
+          "telephone": "+92-323-7382323",
+          "nationality": { "@type": "Country", "name": "Pakistan" },
+          "homeLocation": {
+            "@type": "Place",
+            "name": "Faisalabad, Pakistan",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Faisalabad",
+              "addressCountry": "PK"
+            }
+          },
           "worksFor": {
             "@type": "Organization",
-            "name": "Beacon Impex Pvt. Ltd."
+            "name": "Beacon Impex Pvt. Ltd.",
+            "address": { "@type": "PostalAddress", "addressLocality": "Faisalabad", "addressCountry": "PK" }
           },
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Faisalabad",
-            "addressCountry": "PK"
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "National University of Computer and Emerging Sciences (FAST NUCES)",
+            "sameAs": "https://www.nu.edu.pk/"
           },
-          "email": "aminajaved1999@gmail.com",
+          "knowsAbout": [
+            "Full Stack Development", "C#", ".NET", "ASP.NET Core", "Blazor", "WinForms",
+            "Entity Framework", "SQL Server", "REST APIs", "Node.js", "Python", "Docker", "Azure"
+          ],
+          "knowsLanguage": ["English", "Urdu", "Punjabi", "Arabic"],
           "sameAs": [
             "https://linkedin.com/in/aminajaved1999",
-            "https://github.com/aminajaved1999"
-          ],
-          "knowsAbout": [
-            "C#", ".NET", "ASP.NET Core", "Blazor", "WinForms",
-            "Node.js", "Python", "SQL Server", "Docker", "Azure", "MQTT"
+            "https://github.com/aminajaved1999",
+            "https://aminajaved1999.github.io/GeoHealth-Tracker/"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://aminajaved.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Who is Amina Javed?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Amina Javed is a Full Stack Software Engineer based in Faisalabad, Pakistan. She has 4+ years of professional experience, currently works at Beacon Impex Pvt. Ltd., holds a BCS from FAST NUCES, and has 14 professional certifications from Meta, IBM, Microsoft, and Google. Her portfolio is at https://aminajaved.com"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does Amina Javed do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Amina Javed builds enterprise software including ASP.NET Web APIs, WinForms desktop applications, Blazor web apps, RESTful backends, SQL Server databases, and IoT integrations. She specializes in the .NET ecosystem with skills in C#, .NET 8, Entity Framework, Docker, and Azure."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is Amina Javed open to work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Amina Javed is currently open to work and seeking full-time software engineering opportunities. Contact her at aminajaved1999@gmail.com or via LinkedIn at linkedin.com/in/aminajaved1999."
+              }
+            }
           ]
         }
       ]
@@ -510,7 +572,23 @@
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden z-10" id="about">
         <div class="max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center"
              id="hero-content">
-            <!-- rendered by app.js -->
+            <!-- Static crawlable content (enhanced by app.js) -->
+            <article itemscope itemtype="https://schema.org/Person">
+                <meta itemprop="name" content="Amina Javed">
+                <meta itemprop="url" content="https://aminajaved.com/">
+                <meta itemprop="jobTitle" content="Full Stack Software Engineer">
+                <meta itemprop="email" content="aminajaved1999@gmail.com">
+                <h1 class="font-display text-4xl font-bold text-white mb-3" itemprop="name">Amina Javed</h1>
+                <p class="text-cyan-400 font-mono text-sm mb-4" itemprop="jobTitle">Full Stack Software Engineer · Faisalabad, Pakistan · Open to work</p>
+                <p class="text-gray-300 leading-relaxed mb-4" itemprop="description">
+                    Amina Javed is a Full Stack Software Engineer with 4+ years of experience specializing in the .NET ecosystem — C#, ASP.NET Core, Blazor, WinForms, SQL Server, and REST APIs. She builds enterprise backends, desktop applications, and cloud-native systems at Beacon Impex Pvt. Ltd. BCS graduate from FAST NUCES. 14 professional certifications from Meta, IBM, Microsoft, and Google. 17 portfolio projects.
+                </p>
+                <p class="text-gray-400 text-sm">
+                    <a href="https://linkedin.com/in/aminajaved1999" itemprop="sameAs" rel="me">LinkedIn</a> ·
+                    <a href="https://github.com/aminajaved1999" itemprop="sameAs" rel="me">GitHub</a> ·
+                    <a href="mailto:aminajaved1999@gmail.com">aminajaved1999@gmail.com</a>
+                </p>
+            </article>
         </div>
     </section>
 
