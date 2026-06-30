@@ -342,7 +342,18 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "07/2025 – Present",
       "role": "Desktop Application Developer",
-      "images": [],
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/0.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/1.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/2.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/3.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/4.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/5.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/6.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/7.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/8.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/9.PNG"
+      ],
       "features": [
         "Multi-source Excel data import: catalog, forecast, POs, and stock",
         "Automated WIP calculations with built-in data validation rules",
