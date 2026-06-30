@@ -671,7 +671,10 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "2022 – 2023",
       "role": "Software Engineer",
-      "images": [],
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Terminal-Management-System/1.PNG",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Terminal-Management-System/2.PNG"
+      ],
       "features": [
         "Critical legacy .NET Framework desktop application maintenance",
         "Resolution of long-standing bugs affecting business operations",
