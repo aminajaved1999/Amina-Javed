@@ -515,6 +515,9 @@ function renderContact(p) {
         ${copyBtn}
       </a>`;
   }).join(''));
+
+  const cta = document.getElementById('contact-cta');
+  if (cta) cta.classList.toggle('hidden', !p.openToWork);
 }
 
 // ─── Dynamic count labels ─────────────────────────────────────────────────────
@@ -888,10 +891,49 @@ function initMobileMenu() {
 // ─── Project detail modal ─────────────────────────────────────────────────────
 
 let _projects = [];
+let _modalReturnFocus = null;
+let _modalTrapHandler = null;
+let _modalEscapeHandler = null;
+
+function getFocusables(container) {
+  return Array.from(container.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter(el => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true');
+}
+
+function trapModalFocus(modal) {
+  const box = document.getElementById('modal-box');
+  if (!box) return;
+
+  _modalTrapHandler = (e) => {
+    if (e.key !== 'Tab' || !modal.classList.contains('open')) return;
+    const focusables = getFocusables(box);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last  = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+
+  document.addEventListener('keydown', _modalTrapHandler);
+}
+
+function releaseModalFocusTrap() {
+  if (_modalTrapHandler) {
+    document.removeEventListener('keydown', _modalTrapHandler);
+    _modalTrapHandler = null;
+  }
+}
 
 function initProjectModals() {
-  const grid = document.getElementById('project-grid');
-  if (!grid) return;
+  const grid  = document.getElementById('project-grid');
+  const modal = document.getElementById('project-modal');
+  if (!grid || !modal) return;
 
   grid.addEventListener('click', e => {
     const card = e.target.closest('.project-card');
@@ -910,18 +952,24 @@ function initProjectModals() {
 
   document.getElementById('modal-backdrop').addEventListener('click', closeModal);
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
+  _modalEscapeHandler = (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  };
+  document.addEventListener('keydown', _modalEscapeHandler);
 }
 
 function openModal(project) {
   if (!project) return;
+  _modalReturnFocus = document.activeElement;
   document.getElementById('modal-inner').innerHTML = buildModalHTML(project);
   const modal = document.getElementById('project-modal');
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+
+  const closeBtn = document.getElementById('modal-close-btn');
+  if (closeBtn) closeBtn.focus();
+  trapModalFocus(modal);
 
   // image gallery navigation
   const imgs = project.images || [];
@@ -948,9 +996,15 @@ function openModal(project) {
 
 function closeModal() {
   const modal = document.getElementById('project-modal');
+  if (!modal.classList.contains('open')) return;
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  releaseModalFocusTrap();
+  if (_modalReturnFocus && typeof _modalReturnFocus.focus === 'function') {
+    _modalReturnFocus.focus();
+  }
+  _modalReturnFocus = null;
 }
 
 function buildModalHTML(p) {
@@ -1013,7 +1067,7 @@ function buildModalHTML(p) {
           <i class="${p.icon} text-2xl text-cyan-400"></i>
           <h2 id="modal-title" class="font-display text-xl md:text-2xl font-bold text-white">${esc(p.title)}</h2>
         </div>
-        <button type="button" onclick="closeModal()" aria-label="Close project details"
+        <button type="button" id="modal-close-btn" onclick="closeModal()" aria-label="Close project details"
           class="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg
                  border border-gray-700 hover:border-cyan-400 text-gray-300
                  hover:text-cyan-400 transition-colors text-sm">
