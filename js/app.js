@@ -55,12 +55,19 @@ function renderHero(data) {
 
   const githubBtn = '';
 
-  set('hero-content', `
-    <div class="reveal">
-      <div class="inline-flex items-center space-x-2 border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 rounded-full mb-6 font-mono text-xs text-cyan-400">
+  const statusBadge = p.openToWork
+    ? `<div class="inline-flex items-center space-x-2 border border-green-500/40 bg-green-500/10 px-3 py-1 rounded-full mb-6 font-mono text-xs text-green-400">
+        <span class="otw-dot" aria-hidden="true"></span>
+        <span>OPEN TO WORK</span>
+       </div>`
+    : `<div class="inline-flex items-center space-x-2 border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 rounded-full mb-6 font-mono text-xs text-cyan-400">
         <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
         <span>STATUS: ONLINE &amp; READY</span>
-      </div>
+       </div>`;
+
+  set('hero-content', `
+    <div class="reveal">
+      ${statusBadge}
       <h1 class="font-display text-[1.9rem] sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-4 uppercase">
         <span id="hero-line-1"></span><span id="hero-cursor-1" class="type-cursor">_</span><br>
         <span id="hero-line-2" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 glow-text"></span><span id="hero-cursor-2" class="type-cursor" style="display:none">_</span><br>

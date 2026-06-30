@@ -147,6 +147,29 @@
         }
         @keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
 
+        .otw-dot {
+            position: relative;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+            flex-shrink: 0;
+        }
+        .otw-dot::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(34, 197, 94, 0.6);
+            animation: otw-pulse 2s ease-out infinite;
+        }
+        @keyframes otw-pulse {
+            0%   { transform: scale(0.8); opacity: 1; }
+            70%  { transform: scale(1.8); opacity: 0; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
         .reveal {
             opacity: 0;
             transform: translateY(32px);
