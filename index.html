@@ -147,8 +147,27 @@
         }
         @keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
 
-        .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.5,0,0,1); }
-        .reveal.active { opacity:1; transform:translateY(0); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                        transform 0.7s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Alternate entrance from left for timeline items */
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-24px);
+            transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+                        transform 0.65s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
         .timeline-dot {
             position:absolute; left:-25px; top:5px;

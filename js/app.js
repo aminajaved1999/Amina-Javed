@@ -135,7 +135,7 @@ function renderExperience(experience) {
       : `<p class="text-gray-300 text-sm md:text-base">${esc(job.description)}</p>`;
 
     return `
-      <div class="reveal timeline-item relative pl-8 md:pl-12">
+      <div class="reveal-left timeline-item relative pl-8 md:pl-12">
         <div class="timeline-dot"></div>
         <div class="cyber-card p-6 rounded-lg">
           <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
@@ -565,19 +565,39 @@ function initCertFilter() {
 }
 
 function initScrollReveal() {
-  const elements = document.querySelectorAll('.reveal');
+  const elements = document.querySelectorAll('.reveal, .reveal-left');
 
-  const check = () => {
-    const viewH = window.innerHeight;
-    elements.forEach(el => {
-      if (el.getBoundingClientRect().top < viewH - 80) {
-        el.classList.add('active');
-      }
-    });
-  };
+  // Auto-stagger siblings inside the same direct parent (grids, lists, etc.)
+  const seen = new Set();
+  elements.forEach(el => {
+    const parent = el.parentElement;
+    if (seen.has(parent)) return;
+    seen.add(parent);
+    const siblings = Array.from(parent.querySelectorAll(':scope > .reveal, :scope > .reveal-left'));
+    if (siblings.length > 1) {
+      siblings.forEach((sib, i) => {
+        // Don't override a delay already set (e.g. from skill cards)
+        if (!sib.style.transitionDelay) {
+          sib.style.transitionDelay = `${i * 0.09}s`;
+        }
+      });
+    }
+  });
 
-  check();
-  window.addEventListener('scroll', check, { passive: true });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+
+    elements.forEach(el => observer.observe(el));
+  } else {
+    // Fallback for old browsers
+    elements.forEach(el => el.classList.add('active'));
+  }
 }
 
 function initCardTilt() {
