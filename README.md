@@ -1,25 +1,23 @@
-# Amina Javed — Portfolio
+# Amina Javed — Full Stack Software Engineer
 
-Personal portfolio website.
+**Live site → [aminajaved.com](https://aminajaved.com)**
 
-## Structure
+Full Stack Software Engineer with 3+ years of experience specializing in the .NET ecosystem — ASP.NET Core, C#, Entity Framework, Node.js, Python (Django), Docker, and Azure. This is my personal portfolio website.
 
-```
-index.html          # main site
-data/
-  portfolio.json    # all content (edit here to update the site)
-js/
-  app.js            # dynamic renderer
-```
+---
 
-## Updating content
+## Tech Stack
 
-Edit `data/portfolio.json` to update any section — profile, experience,
-projects, skills, certifications, or contact. No HTML changes needed.
+**Backend & .NET** — C#, .NET 8, ASP.NET Web API, Entity Framework, REST APIs, JWT, MQTT, WCF  
+**Frontend & Desktop** — WinForms, Blazor, React.js, Angular, JavaScript, Tailwind CSS  
+**Data & DevOps** — SQL Server, MongoDB, MySQL, Docker, Kubernetes, GitHub Actions, Azure
 
-## Running locally
+## Certifications
 
-```bash
-python3 -m http.server 8080
-# open http://localhost:8080
-```
+14 professional certifications across Meta, IBM, Microsoft, and Google — covering full-stack development, backend engineering, front-end development, database design, and project management.
+
+## Contact
+
+- **Email** — aminajaved1999@gmail.com
+- **LinkedIn** — [linkedin.com/in/aminajaved1999](https://linkedin.com/in/aminajaved1999)
+- **Location** — Faisalabad, Pakistan
