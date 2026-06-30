@@ -387,16 +387,30 @@ function renderContact(p) {
     });
   }
 
-  set('contact-items', links.map(l => `
-    <a href="${l.href}" ${l.external ? 'target="_blank" rel="noopener noreferrer"' : ''}
-       class="cyber-card flex items-center justify-center gap-4 px-8 py-4 rounded-lg group">
-      <i class="${l.icon} text-cyan-400 text-2xl group-hover:scale-110 transition-transform"></i>
-      <div class="text-left">
-        <p class="font-mono text-xs text-gray-400 uppercase">${l.label}</p>
-        <p class="font-bold text-white group-hover:text-cyan-400 transition-colors break-all text-sm">${esc(l.value)}</p>
-      </div>
-    </a>
-  `).join(''));
+  set('contact-items', links.map(l => {
+    const copyBtn = l.type === 'email'
+      ? `<button
+           onclick="copyEmail(event,'${l.value}')"
+           class="ml-auto shrink-0 w-8 h-8 flex items-center justify-center rounded-lg
+                  border border-gray-700 hover:border-cyan-400 text-gray-500
+                  hover:text-cyan-400 transition-all"
+           title="Copy email address"
+           id="copy-email-btn">
+           <i class="fas fa-copy text-xs" id="copy-email-icon"></i>
+         </button>`
+      : '';
+
+    return `
+      <a href="${l.href}" ${l.external ? 'target="_blank" rel="noopener noreferrer"' : ''}
+         class="cyber-card flex items-center gap-4 px-8 py-4 rounded-lg group">
+        <i class="${l.icon} text-cyan-400 text-2xl group-hover:scale-110 transition-transform shrink-0"></i>
+        <div class="text-left min-w-0 flex-1">
+          <p class="font-mono text-xs text-gray-400 uppercase">${l.label}</p>
+          <p class="font-bold text-white group-hover:text-cyan-400 transition-colors break-all text-sm">${esc(l.value)}</p>
+        </div>
+        ${copyBtn}
+      </a>`;
+  }).join(''));
 }
 
 // ─── Dynamic count labels ─────────────────────────────────────────────────────
@@ -798,6 +812,29 @@ function certLogo(category) {
     google: `<div class="w-10 h-10 rounded bg-[#ea4335] flex items-center justify-center flex-shrink-0"><i class="fab fa-google text-white text-lg"></i></div>`,
   };
   return logos[category] ?? `<div class="w-10 h-10 rounded bg-gray-700 flex items-center justify-center flex-shrink-0"><i class="fas fa-certificate text-white text-lg"></i></div>`;
+}
+
+// ─── Copy email ──────────────────────────────────────────────────────────────
+
+function copyEmail(e, email) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  navigator.clipboard.writeText(email).then(() => {
+    const btn  = document.getElementById('copy-email-btn');
+    const icon = document.getElementById('copy-email-icon');
+    if (!btn || !icon) return;
+
+    icon.className = 'fas fa-check text-xs';
+    btn.style.borderColor  = 'rgba(34,197,94,0.6)';
+    btn.style.color        = '#22c55e';
+
+    setTimeout(() => {
+      icon.className = 'fas fa-copy text-xs';
+      btn.style.borderColor = '';
+      btn.style.color       = '';
+    }, 2000);
+  });
 }
 
 // ─── Start ────────────────────────────────────────────────────────────────────
