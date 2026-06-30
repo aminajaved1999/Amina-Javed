@@ -21,7 +21,7 @@ const PORTFOLIO_DATA = {
       "SQL Server"
     ],
     "photo": "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/profile.png.png",
-    "formspreeId": ""
+    "formspreeId": "xnjkbaro"
   },
   "experience": [
     {
