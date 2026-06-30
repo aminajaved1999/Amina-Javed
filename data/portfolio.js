@@ -85,7 +85,12 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "11/2024 – 06/2025",
       "role": "Backend Engineer",
-      "images": [],
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Zephyr/1.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Zephyr/2.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Zephyr/3.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Zephyr/4.png"
+      ],
       "features": [
         "Multi-layered ASP.NET Web API architecture for scalability and maintainability",
         "JWT authentication with role-based access control (RBAC)",
