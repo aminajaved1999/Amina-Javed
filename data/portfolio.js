@@ -685,98 +685,98 @@ const PORTFOLIO_DATA = {
   ],
   "certifications": [
     {
-      "title": "Full Stack Developer: Front-End & Back-End",
+      "title": "Meta Full Stack Developer: Front-End & Back-End from Scratch",
       "issuer": "Meta",
       "date": "06/2025",
       "category": "meta",
       "credentialUrl": "https://coursera.org/verify/specialization/GDS86I5P383R"
     },
     {
-      "title": "Full-Stack Engineer",
+      "title": "Meta Full-Stack Engineer",
       "issuer": "Meta",
       "date": "02/2024",
       "category": "meta",
       "credentialUrl": ""
     },
     {
-      "title": "Database Engineer",
+      "title": "Meta Database Engineer",
       "issuer": "Meta",
       "date": "02/2024",
       "category": "meta",
       "credentialUrl": "https://coursera.org/verify/professional-cert/24FHYJUVQUCP"
     },
     {
-      "title": "Back-End Developer",
+      "title": "Meta Back-End Developer",
       "issuer": "Meta",
       "date": "01/2024",
       "category": "meta",
       "credentialUrl": "https://coursera.org/verify/professional-cert/W7JGATZ9649F"
     },
     {
-      "title": "Front-End Developer",
+      "title": "Meta Front-End Developer",
       "issuer": "Meta",
       "date": "10/2023",
       "category": "meta",
       "credentialUrl": ""
     },
     {
-      "title": "Front-End Development (Figma, Bootstrap & Git)",
+      "title": "IBM Front-End Development with Figma, Bootstrap & Git",
       "issuer": "IBM",
       "date": "06/2025",
       "category": "ibm",
       "credentialUrl": "https://coursera.org/verify/professional-cert/4UX87VCMDHM7"
     },
     {
-      "title": "Back-End Development",
+      "title": "IBM Back-End Development",
       "issuer": "IBM",
       "date": "06/2025",
       "category": "ibm",
       "credentialUrl": "https://coursera.org/verify/professional-cert/4MMWXAZ01RG6"
     },
     {
-      "title": "JavaScript Backend Developer",
+      "title": "IBM JavaScript Backend Developer",
       "issuer": "IBM",
       "date": "06/2025",
       "category": "ibm",
       "credentialUrl": "https://coursera.org/verify/professional-cert/TQV7PKESIQQS"
     },
     {
-      "title": "Full-Stack JavaScript Developer",
+      "title": "IBM Full-Stack JavaScript Developer",
       "issuer": "IBM",
       "date": "08/2024",
       "category": "ibm",
       "credentialUrl": "https://coursera.org/verify/professional-cert/T2O6HAMC5Z9J"
     },
     {
-      "title": "Full Stack Software Developer",
+      "title": "IBM Full Stack Software Developer",
       "issuer": "IBM",
       "date": "02/2024",
       "category": "ibm",
       "credentialUrl": "https://coursera.org/verify/professional-cert/CES0M4XG70JX"
     },
     {
-      "title": "Full-Stack Developer",
+      "title": "Microsoft Full-Stack Developer",
       "issuer": "Microsoft",
       "date": "06/2025",
       "category": "ms",
       "credentialUrl": "https://coursera.org/verify/professional-cert/2CPTH4F23Y8M"
     },
     {
-      "title": "Back-End Developer",
+      "title": "Microsoft Back-End Developer",
       "issuer": "Microsoft",
       "date": "06/2025",
       "category": "ms",
       "credentialUrl": "https://coursera.org/verify/professional-cert/JVWX27N82JMF"
     },
     {
-      "title": "Front-End Developer",
+      "title": "Microsoft Front-End Developer",
       "issuer": "Microsoft",
       "date": "06/2025",
       "category": "ms",
       "credentialUrl": "https://coursera.org/verify/professional-cert/JM83BAK534V9"
     },
     {
-      "title": "Project Management",
+      "title": "Google Project Management",
       "issuer": "Google",
       "date": "06/2025",
       "category": "google",
