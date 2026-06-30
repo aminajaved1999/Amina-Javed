@@ -839,5 +839,27 @@ const PORTFOLIO_DATA = {
       "icon": "fas fa-users",
       "type": "community"
     }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "Fluent",
+      "type": "fluent"
+    },
+    {
+      "name": "Urdu",
+      "level": "Native",
+      "type": "native"
+    },
+    {
+      "name": "Punjabi",
+      "level": "Native",
+      "type": "native"
+    },
+    {
+      "name": "Arabic",
+      "level": "Basic",
+      "type": "basic"
+    }
   ]
 };

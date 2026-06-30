@@ -24,6 +24,7 @@ function renderAll(data) {
   renderProjects(data.projects);
   renderSkills(data.skills);
   renderCertifications(data.certifications);
+  renderLanguages(data.languages || []);
   renderContact(data.profile);
   updateCounts(data);
   document.getElementById('loading-msg').remove();
@@ -323,6 +324,26 @@ function renderCertifications(certs) {
           <p class="text-gray-400 text-xs font-mono">${esc(cert.date)}</p>
           ${credLink}
         </div>
+      </div>`;
+  }).join(''));
+}
+
+function renderLanguages(languages) {
+  const styles = {
+    native: { border: 'rgba(188,19,254,0.4)', bg: 'rgba(188,19,254,0.08)', level: 'border-magenta-500/40 bg-magenta-500/10 text-magenta-300' },
+    fluent: { border: 'rgba(0,243,255,0.35)', bg: 'rgba(0,243,255,0.06)',  level: 'border-cyan-500/40 bg-cyan-500/10 text-cyan-300'          },
+    basic:  { border: 'rgba(148,163,184,0.3)', bg: 'rgba(148,163,184,0.05)', level: 'border-gray-500/40 bg-gray-500/10 text-gray-400'          },
+  };
+
+  set('languages-list', languages.map(l => {
+    const s = styles[l.type] || styles.basic;
+    return `
+      <div class="flex flex-col items-center gap-2 px-8 py-5 rounded-xl"
+           style="border:1px solid ${s.border}; background:${s.bg}; min-width:120px;">
+        <span class="font-display font-bold text-white text-lg tracking-wide">${esc(l.name)}</span>
+        <span class="inline-flex items-center font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full border ${s.level}">
+          ${esc(l.level)}
+        </span>
       </div>`;
   }).join(''));
 }
