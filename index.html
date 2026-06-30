@@ -143,40 +143,20 @@
     }
     </script>
 
-    <!-- Fonts -->
+    <!-- Fonts (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"></noscript>
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icons (non-blocking) -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans:    ['Inter',        'sans-serif'],
-                        mono:    ['Space Mono',   'monospace'],
-                        display: ['Space Grotesk','sans-serif'],
-                    },
-                    colors: {
-                        void:       '#030305',
-                        cyan:    { 400: '#00f3ff', 500: '#00c3cc' },
-                        magenta: { 400: '#bc13fe', 500: '#9b0fd3' },
-                        glass:       'rgba(10, 15, 30, 0.4)',
-                        glassBorder: 'rgba(0, 243, 255, 0.15)',
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind (pre-built, replaces 124 KiB CDN script) -->
+    <link rel="stylesheet" href="./css/tailwind.min.css?v=20260701e">
 
     <style>
         body {
@@ -515,13 +495,6 @@
             #cert-list { height: auto !important; max-height: 380px; }
         }
     </style>
-
-    <!-- Portfolio data + app (head: SEO meta updates before paint) -->
-    <script src="./js/app.js?v=20260701d"></script>
-    <script src="./data/portfolio.js?v=20260701d"></script>
-    <script>
-        if (typeof PORTFOLIO_DATA !== 'undefined') applyExperienceSEO(PORTFOLIO_DATA);
-    </script>
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-white">
 
@@ -854,8 +827,19 @@
             });
         };
 
-        window.addEventListener('load', initSpaceBackground);
+        window.addEventListener('load', () => {
+            const src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+            const s = document.createElement('script');
+            s.src = src;
+            s.async = true;
+            s.onload = initSpaceBackground;
+            document.body.appendChild(s);
+        });
     </script>
+
+    <!-- Deferred — does not block first paint -->
+    <script defer src="./data/portfolio.js?v=20260701e"></script>
+    <script defer src="./js/app.js?v=20260701e"></script>
 
 </body>
 </html>

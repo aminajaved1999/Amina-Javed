@@ -1,0 +1,23 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "**Official portfolio → [aminajaved.com](https://aminajaved.com)**",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i ./css/tailwind-input.css -o ./css/tailwind.min.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aminajaved1999/Amina-Javed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aminajaved1999/Amina-Javed/issues"
+  },
+  "homepage": "https://github.com/aminajaved1999/Amina-Javed#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
