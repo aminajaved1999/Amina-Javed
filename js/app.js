@@ -25,6 +25,7 @@ function renderAll(data) {
   renderSkills(data.skills);
   renderCertifications(data.certifications);
   renderLanguages(data.languages || []);
+  renderContactForm(data.profile);
   renderContact(data.profile);
   updateCounts(data);
   document.getElementById('loading-msg').remove();
@@ -330,6 +331,86 @@ function renderCertifications(certs) {
         </div>
       </div>`;
   }).join(''));
+}
+
+function renderContactForm(profile) {
+  const wrap = document.getElementById('contact-form-wrap');
+  if (!wrap) return;
+
+  if (!profile.formspreeId) {
+    wrap.innerHTML = `
+      <div class="font-mono text-xs text-gray-600 text-center py-4">
+        <i class="fas fa-info-circle mr-1"></i>
+        Contact form inactive — add your Formspree ID to
+        <span class="text-cyan-800">data/portfolio.js → profile.formspreeId</span>
+      </div>`;
+    return;
+  }
+
+  wrap.innerHTML = `
+    <form id="contact-form" novalidate>
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="form-field">
+          <label class="form-label" for="cf-name">Name *</label>
+          <input class="form-input" type="text" id="cf-name" name="name"
+                 placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="cf-email">Email *</label>
+          <input class="form-input" type="email" id="cf-email" name="email"
+                 placeholder="your@email.com" required>
+        </div>
+      </div>
+      <div class="form-field mb-4">
+        <label class="form-label" for="cf-subject">Subject</label>
+        <input class="form-input" type="text" id="cf-subject" name="subject"
+               placeholder="What's this about?">
+      </div>
+      <div class="form-field mb-5">
+        <label class="form-label" for="cf-message">Message *</label>
+        <textarea class="form-textarea" id="cf-message" name="message"
+                  placeholder="Your message..." required></textarea>
+      </div>
+      <button class="form-submit" type="submit" id="cf-submit">
+        <i class="fas fa-paper-plane"></i>
+        <span id="cf-btn-text">Send Message</span>
+      </button>
+      <div class="form-status" id="cf-status"></div>
+    </form>`;
+
+  document.getElementById('contact-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn     = document.getElementById('cf-submit');
+    const btnText = document.getElementById('cf-btn-text');
+    const status  = document.getElementById('cf-status');
+    const form    = e.target;
+
+    btn.disabled = true;
+    btnText.textContent = 'Sending...';
+    status.className = 'form-status';
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${profile.formspreeId}`, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      });
+
+      if (res.ok) {
+        status.className = 'form-status success';
+        status.textContent = '✓ Message sent — I\'ll get back to you shortly.';
+        form.reset();
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      status.className = 'form-status error';
+      status.textContent = '✗ Something went wrong. Try emailing directly.';
+    } finally {
+      btn.disabled = false;
+      btnText.textContent = 'Send Message';
+    }
+  });
 }
 
 function renderLanguages(languages) {
