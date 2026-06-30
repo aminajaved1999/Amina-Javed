@@ -601,7 +601,9 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "12/2022 – 01/2023",
       "role": "Desktop Application Developer",
-      "images": [],
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Denim-Lables-Utility/1.PNG"
+      ],
       "features": [
         "Automated item-level denim label generation from Excel source data",
         "Multi-format export support: PDF, Word, and Excel",
