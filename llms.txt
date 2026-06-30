@@ -1,6 +1,6 @@
 # Amina Javed
 
-> Full Stack Software Engineer based in Faisalabad, Pakistan, open to work, with 4+ years of .NET enterprise development experience and 14 professional certifications.
+> Full Stack Software Engineer based in Faisalabad, Pakistan, open to work, with .NET enterprise development experience since August 2022 and 14 professional certifications.
 
 Amina Javed builds enterprise backends, REST APIs, WinForms desktop applications, Blazor web apps, and IoT integrations. She is a Software Engineer at Beacon Impex Pvt. Ltd. and a BCS graduate from FAST NUCES (2018–2022).
 

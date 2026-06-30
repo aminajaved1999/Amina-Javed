@@ -11,7 +11,8 @@ const PORTFOLIO_DATA = {
     "resume": "",
     "stats": {
       "expStartYear": 2022,
-      "expStartMonth": 7
+      "expStartMonth": 8,
+      "expStartDay": 1
     },
     "topSkills": [
       "C#",
@@ -28,7 +29,7 @@ const PORTFOLIO_DATA = {
       "role": "Software Engineer",
       "company": "Beacon Impex Pvt. Ltd.",
       "location": "Faisalabad",
-      "period": "07/2022 – Present",
+      "period": "08/2022 – Present",
       "featured": true,
       "points": [
         "Developed and maintained a robust .NET Web Framework to enhance backend functionality and construct WinForms Applications in C#, ensuring system reliability and optimized performance.",

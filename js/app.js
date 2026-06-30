@@ -16,6 +16,7 @@ function bootstrap() {
 // ─── Render coordinator ───────────────────────────────────────────────────────
 
 function renderAll(data) {
+  applyExperienceSEO(data);
   renderHero(data);
   initTypingAnimation();
   renderExperience(data.experience);
@@ -32,16 +33,14 @@ function renderAll(data) {
 
 // ─── Section renderers ────────────────────────────────────────────────────────
 
-function calcYearsExp(startYear, startMonth) {
-  const now   = new Date();
-  const years = now.getFullYear() - startYear;
-  const extra = (now.getMonth() + 1) >= startMonth ? 0 : -1;
-  return (years + extra) + '+';
+function calcYearsExp(startYear, startMonth, startDay) {
+  return calcExperience(startYear, startMonth, startDay).plusLabel;
 }
 
 function renderHero(data) {
   const p        = data.profile;
-  const yearsExp = calcYearsExp(p.stats.expStartYear, p.stats.expStartMonth);
+  const exp      = calcExperience(p.stats.expStartYear, p.stats.expStartMonth, p.stats.expStartDay);
+  const yearsExp = exp.plusLabel;
   const projCount = data.projects.length;
   const certCount = data.certifications.length;
   const initials = p.name.split(' ').map(n => n[0]).join('');
@@ -99,7 +98,7 @@ function renderHero(data) {
       <p class="font-mono text-cyan-400 text-sm mb-6">// ${p.headline.toLowerCase().replace(/\s+/g, '_')}.exe</p>
       <div class="grid grid-cols-3 gap-4 mb-6">
         <div class="bg-black/50 border border-gray-700/50 p-3 rounded text-center">
-          <div class="text-2xl font-display font-bold text-magenta-400">${yearsExp}</div>
+          <div class="text-2xl font-display font-bold text-magenta-400" title="${exp.preciseText} (since ${exp.sinceText})">${yearsExp}</div>
           <div class="text-[10px] font-mono text-gray-300 uppercase tracking-widest">Years Exp</div>
         </div>
         <div class="bg-black/50 border border-gray-700/50 p-3 rounded text-center">
