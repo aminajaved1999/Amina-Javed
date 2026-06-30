@@ -359,6 +359,7 @@ function renderContact(p) {
       icon: 'fas fa-envelope',
       label: 'Email',
       value: p.email,
+      type: 'email',
       external: false
     },
     {
