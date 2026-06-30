@@ -12,6 +12,7 @@
     <meta name="author" content="Amina Javed">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="preload" href="./assets/profile-96.webp" as="image" type="image/webp">
     <link rel="canonical" href="https://aminajaved.com/">
     <link rel="author" href="https://aminajaved.com/">
     <link rel="me" href="https://linkedin.com/in/aminajaved1999">
@@ -515,9 +516,9 @@
         }
     </style>
 
-    <!-- Experience calc + portfolio data (head: SEO meta updates before paint) -->
-    <script src="./js/experience.js?v=20260701c"></script>
-    <script src="./data/portfolio.js?v=20260701c"></script>
+    <!-- Portfolio data + app (head: SEO meta updates before paint) -->
+    <script src="./js/app.js?v=20260701d"></script>
+    <script src="./data/portfolio.js?v=20260701d"></script>
     <script>
         if (typeof PORTFOLIO_DATA !== 'undefined') applyExperienceSEO(PORTFOLIO_DATA);
     </script>
@@ -855,9 +856,6 @@
 
         window.addEventListener('load', initSpaceBackground);
     </script>
-
-    <!-- ═══ App bootstrap ═════════════════════════════════════════════ -->
-    <script src="./js/app.js?v=20260701c"></script>
 
 </body>
 </html>

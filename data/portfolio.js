@@ -21,7 +21,7 @@ const PORTFOLIO_DATA = {
       "Docker",
       "SQL Server"
     ],
-    "photo": "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/profile.png.png",
+    "photo": "./assets/profile-96.webp",
     "openToWork": true
   },
   "experience": [

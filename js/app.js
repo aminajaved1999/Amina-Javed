@@ -1,5 +1,93 @@
 'use strict';
 
+// ─── Experience (SEO + hero stat) ────────────────────────────────────────────
+
+function calcExperience(startYear, startMonth, startDay) {
+  startDay = startDay || 1;
+  const start = new Date(startYear, startMonth - 1, startDay);
+  const now   = new Date();
+
+  let years  = now.getFullYear() - start.getFullYear();
+  let months = now.getMonth() - start.getMonth();
+  let days   = now.getDate() - start.getDate();
+
+  if (days < 0) months--;
+  if (months < 0) { years--; months += 12; }
+
+  const plusYears  = Math.max(0, years);
+  const plusLabel  = `${plusYears}+`;
+  const shortText  = plusYears === 0
+    ? `${Math.max(1, months)} month${months === 1 ? '' : 's'}`
+    : `${plusYears}+ years`;
+
+  const preciseText = years === 0
+    ? `${months} month${months === 1 ? '' : 's'}`
+    : months === 0
+      ? `${years} year${years === 1 ? '' : 's'}`
+      : `${years} year${years === 1 ? '' : 's'} and ${months} month${months === 1 ? '' : 's'}`;
+
+  const monthNames = ['January','February','March','April','May','June',
+                      'July','August','September','October','November','December'];
+  const sinceText = `${monthNames[startMonth - 1]} ${startYear}`;
+
+  return { years, months, plusYears, plusLabel, shortText, preciseText, sinceText };
+}
+
+function applyExperienceSEO(data) {
+  if (!data || !data.profile) return;
+
+  const p   = data.profile;
+  const exp = calcExperience(p.stats.expStartYear, p.stats.expStartMonth, p.stats.expStartDay);
+  const projCount = (data.projects || []).length;
+  const certCount = (data.certifications || []).length;
+  const otw   = p.openToWork ? 'Open to work · ' : '';
+  const expOf = exp.plusYears === 0 ? exp.shortText : `${exp.shortText} of experience`;
+
+  const setMeta = (sel, attr, val) => {
+    const el = document.querySelector(sel);
+    if (el) el.setAttribute(attr, val);
+  };
+
+  setMeta('meta[name="description"]', 'content',
+    `${otw}Full Stack Software Engineer with ${expOf} · .NET 8 · ASP.NET Core · Blazor · C# · Node.js · Python · ${projCount} projects · ${certCount} certifications · Faisalabad, Pakistan`);
+
+  setMeta('meta[property="og:description"]', 'content',
+    `${otw}${exp.shortText} enterprise backend development · .NET · ASP.NET Core · Blazor · C# · ${projCount} projects · ${certCount} certifications across Meta, IBM, Microsoft & Google`);
+
+  setMeta('meta[name="twitter:description"]', 'content',
+    `${otw}Full Stack Software Engineer · .NET · ASP.NET Core · Blazor · C# · ${exp.shortText} · ${projCount} projects · ${certCount} certifications`);
+
+  const ldScript = document.querySelector('script[type="application/ld+json"]');
+  if (ldScript) {
+    try {
+      const graph = JSON.parse(ldScript.textContent)['@graph'];
+      graph.forEach(node => {
+        if (node['@type'] === 'ProfilePage') {
+          node.description = `Professional portfolio of Amina Javed — Full Stack Software Engineer with ${exp.shortText} of .NET enterprise development experience.`;
+        }
+        if (node['@type'] === 'Person') {
+          node.description = `Amina Javed is a Full Stack Software Engineer from Faisalabad, Pakistan with ${exp.preciseText} of professional experience (since ${exp.sinceText}) building enterprise backends, REST APIs, WinForms apps, and cloud-native systems in the .NET ecosystem. She holds ${certCount} professional certifications from Meta, IBM, Microsoft, and Google.`;
+        }
+        if (node['@type'] === 'FAQPage') {
+          node.mainEntity.forEach(q => {
+            if (q.name === 'Who is Amina Javed?') {
+              q.acceptedAnswer.text = `Amina Javed is a Full Stack Software Engineer based in Faisalabad, Pakistan. She has ${exp.preciseText} of professional experience (since ${exp.sinceText}), currently works at Beacon Impex Pvt. Ltd., holds a BCS from FAST NUCES, and has ${certCount} professional certifications from Meta, IBM, Microsoft, and Google. Her portfolio is at https://aminajaved.com`;
+            }
+          });
+        }
+      });
+      ldScript.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+    } catch (_) { /* keep static JSON-LD on parse failure */ }
+  }
+
+  const heroBio = document.getElementById('static-hero-bio');
+  if (heroBio) {
+    heroBio.textContent = `Amina Javed is a Full Stack Software Engineer with ${exp.preciseText} of professional experience (since ${exp.sinceText}) specializing in the .NET ecosystem — C#, ASP.NET Core, Blazor, WinForms, SQL Server, and REST APIs. She builds enterprise backends, desktop applications, and cloud-native systems at Beacon Impex Pvt. Ltd. BCS graduate from FAST NUCES. ${certCount} professional certifications from Meta, IBM, Microsoft, and Google. ${projCount} portfolio projects.`;
+  }
+
+  document.title = document.title.replace(/\d+\+ years?/i, exp.shortText);
+}
+
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 
 function bootstrap() {
@@ -35,6 +123,17 @@ function renderAll(data) {
 
 function calcYearsExp(startYear, startMonth, startDay) {
   return calcExperience(startYear, startMonth, startDay).plusLabel;
+}
+
+function profilePhoto(name, photoSrc) {
+  const src96  = photoSrc.replace(/profile-\d+\.webp$/, 'profile-96.webp');
+  const src192 = photoSrc.replace(/profile-\d+\.webp$/, 'profile-192.webp');
+  return `<picture>
+    <source srcset="${src96} 1x, ${src192} 2x" type="image/webp">
+    <img src="${src96}" alt="${esc(name)}" width="96" height="96" loading="eager"
+         fetchpriority="high" decoding="async"
+         class="w-full h-full object-cover rounded-full">
+  </picture>`;
 }
 
 function renderHero(data) {
@@ -90,7 +189,7 @@ function renderHero(data) {
       <div class="w-24 h-24 rounded-full border-2 border-cyan-400 mb-6 shadow-[0_0_20px_rgba(0,243,255,0.5)] overflow-hidden flex items-center justify-center"
            style="background:#030305;">
         ${p.photo
-          ? `<img src="${p.photo}" alt="${esc(p.name)}" class="w-full h-full object-cover rounded-full">`
+          ? profilePhoto(p.name, p.photo)
           : `<span class="text-2xl font-display font-bold text-cyan-400">${initials}</span>`
         }
       </div>
@@ -863,7 +962,7 @@ function esc(str) {
 function certLogo(category) {
   const logos = {
     meta:   `<div class="w-10 h-10 rounded bg-blue-600 flex items-center justify-center flex-shrink-0"><i class="fab fa-meta text-white text-xl"></i></div>`,
-    ibm:    `<div class="w-10 h-10 rounded bg-[#054ada] flex items-center justify-center flex-shrink-0"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" class="w-7 h-7 object-contain brightness-0 invert"></div>`,
+    ibm:    `<div class="w-10 h-10 rounded bg-[#054ada] flex items-center justify-center flex-shrink-0"><img src="./assets/ibm-logo.svg" alt="IBM" width="28" height="28" class="w-7 h-7 object-contain brightness-0 invert" loading="lazy" decoding="async"></div>`,
     ms:     `<div class="w-10 h-10 rounded bg-[#00a4ef] flex items-center justify-center flex-shrink-0"><i class="fab fa-microsoft text-white text-lg"></i></div>`,
     google: `<div class="w-10 h-10 rounded bg-[#ea4335] flex items-center justify-center flex-shrink-0"><i class="fab fa-google text-white text-lg"></i></div>`,
   };
