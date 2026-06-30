@@ -86,8 +86,12 @@ function renderHero(data) {
 
     <div class="reveal cyber-card p-8 rounded-lg relative hidden md:block">
       <div class="absolute top-0 right-0 p-4 font-mono text-xs text-cyan-400/50">ID: AJ-1999</div>
-      <div class="w-20 h-20 rounded-full border-2 border-cyan-400 flex items-center justify-center text-2xl font-display font-bold text-cyan-400 mb-6 shadow-[0_0_15px_rgba(0,243,255,0.4)]">
-        ${initials}
+      <div class="w-24 h-24 rounded-full border-2 border-cyan-400 mb-6 shadow-[0_0_20px_rgba(0,243,255,0.5)] overflow-hidden flex items-center justify-center"
+           style="background:#030305;">
+        ${p.photo
+          ? `<img src="${p.photo}" alt="${esc(p.name)}" class="w-full h-full object-cover rounded-full">`
+          : `<span class="text-2xl font-display font-bold text-cyan-400">${initials}</span>`
+        }
       </div>
       <h3 class="font-display text-2xl font-bold text-white mb-1">${esc(p.name)}</h3>
       <p class="font-mono text-cyan-400 text-sm mb-6">// ${p.headline.toLowerCase().replace(/\s+/g, '_')}.exe</p>

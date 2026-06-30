@@ -19,7 +19,8 @@ const PORTFOLIO_DATA = {
       "ASP.NET",
       "Docker",
       "SQL Server"
-    ]
+    ],
+    "photo": "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/profile.png.png"
   },
   "experience": [
     {
