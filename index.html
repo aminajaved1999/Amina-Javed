@@ -16,6 +16,8 @@
     <link rel="author" href="https://aminajaved.com/">
     <link rel="me" href="https://linkedin.com/in/aminajaved1999">
     <link rel="me" href="https://github.com/aminajaved1999">
+    <link rel="alternate" type="text/plain" title="LLMs" href="https://aminajaved.com/llms.txt">
+    <link rel="alternate" type="text/plain" title="LLMs Full" href="https://aminajaved.com/llms-full.txt">
 
     <!-- Open Graph — Instagram, WhatsApp, Facebook, LinkedIn previews -->
     <meta property="og:type"            content="website">
@@ -541,7 +543,7 @@
     <!-- ═══ NAV ═══════════════════════════════════════════════════════════ -->
     <nav class="fixed w-full z-40 top-0 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="font-display font-bold text-xl tracking-widest text-white glow-text">
+            <a href="#about" class="font-display font-bold text-xl tracking-widest text-white glow-text">
                 <span class="text-cyan-400">SYS_</span>AMINA<span class="text-magenta-400">.JAVED</span>
             </a>
             <div class="hidden lg:flex space-x-6 font-mono text-xs tracking-widest text-gray-400">
@@ -554,7 +556,10 @@
                 <a href="#contact"      class="hover:text-cyan-400 transition-colors">/CONTACT</a>
             </div>
             <a id="nav-contact-btn" href="#contact" class="hidden lg:block btn-cyber px-5 py-2 rounded-sm">INIT_CONTACT</a>
-            <button class="lg:hidden text-cyan-400 text-2xl" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <button type="button" class="lg:hidden text-cyan-400 text-2xl" id="mobile-menu-btn"
+                    aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden lg:hidden">
@@ -567,6 +572,8 @@
             <a href="#contact"     >/CONTACT</a>
         </div>
     </nav>
+
+    <main id="main-content">
 
     <!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden z-10" id="about">
@@ -599,7 +606,7 @@
                 <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
                     <span class="text-magenta-400 mr-2">//</span> Mission Log
                 </h2>
-                <p class="font-mono text-sm text-gray-400 mt-2">Professional experience timeline</p>
+                <p class="font-mono text-sm text-gray-300 mt-2">Professional experience timeline</p>
             </div>
             <div class="relative border-l border-gray-700 ml-3 md:ml-0 space-y-12" id="experience-list">
                 <!-- rendered by app.js -->
@@ -647,14 +654,14 @@
 
             <!-- Project Filters -->
             <div class="reveal flex flex-wrap justify-center gap-3 mb-12 font-mono text-sm">
-                <button class="filter-btn active border border-gray-600 text-gray-300 px-4 py-2 rounded uppercase tracking-wider"
-                        data-filter="all">All Projects</button>
-                <button class="filter-btn border border-gray-600 text-gray-300 px-4 py-2 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
-                        data-filter="enterprise">Industry Work</button>
-                <button class="filter-btn border border-gray-600 text-gray-300 px-4 py-2 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
-                        data-filter="web">Web & Cloud</button>
-                <button class="filter-btn border border-gray-600 text-gray-300 px-4 py-2 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
-                        data-filter="desktop">Desktop Apps</button>
+                <button type="button" class="filter-btn active border border-gray-600 text-gray-300 px-4 py-2 rounded uppercase tracking-wider"
+                        data-filter="all" aria-label="Show all projects" aria-pressed="true">All Projects</button>
+                <button type="button" class="filter-btn border border-gray-600 text-gray-300 px-4 py-2 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
+                        data-filter="enterprise" aria-label="Show industry work projects" aria-pressed="false">Industry Work</button>
+                <button type="button" class="filter-btn border border-gray-600 text-gray-300 px-4 py-2 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
+                        data-filter="web" aria-label="Show web and cloud projects" aria-pressed="false">Web & Cloud</button>
+                <button type="button" class="filter-btn border border-gray-600 text-gray-300 px-4 py-2 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
+                        data-filter="desktop" aria-label="Show desktop application projects" aria-pressed="false">Desktop Apps</button>
             </div>
 
             <!-- Project Grid -->
@@ -691,16 +698,16 @@
 
                 <!-- Cert Filters -->
                 <div class="reveal flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <button class="cert-filter-btn active border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider"
-                            data-filter="all">All</button>
-                    <button class="cert-filter-btn border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
-                            data-filter="meta">Meta</button>
-                    <button class="cert-filter-btn border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
-                            data-filter="ibm">IBM</button>
-                    <button class="cert-filter-btn border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
-                            data-filter="ms">Microsoft</button>
-                    <button class="cert-filter-btn border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
-                            data-filter="google">Google</button>
+                    <button type="button" class="cert-filter-btn active border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider"
+                            data-filter="all" aria-label="Show all certifications" aria-pressed="true">All</button>
+                    <button type="button" class="cert-filter-btn border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
+                            data-filter="meta" aria-label="Show Meta certifications" aria-pressed="false">Meta</button>
+                    <button type="button" class="cert-filter-btn border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
+                            data-filter="ibm" aria-label="Show IBM certifications" aria-pressed="false">IBM</button>
+                    <button type="button" class="cert-filter-btn border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
+                            data-filter="ms" aria-label="Show Microsoft certifications" aria-pressed="false">Microsoft</button>
+                    <button type="button" class="cert-filter-btn border border-gray-600 text-gray-300 px-3 py-1 rounded uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-400"
+                            data-filter="google" aria-label="Show Google certifications" aria-pressed="false">Google</button>
                 </div>
 
                 <!-- Cert List -->
@@ -739,8 +746,10 @@
         </div>
     </section>
 
+    </main>
+
     <!-- ═══ PROJECT DETAIL MODAL ════════════════════════════════════════ -->
-    <div id="project-modal" role="dialog" aria-modal="true">
+    <div id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
         <div id="modal-backdrop"></div>
         <div id="modal-box">
             <div id="modal-inner"><!-- rendered by app.js --></div>
@@ -842,7 +851,7 @@
 
     <!-- ═══ Portfolio data + app ════════════════════════════════════════ -->
     <script src="./data/portfolio.js?v=20260630k"></script>
-    <script src="./js/app.js?v=20260630c"></script>
+    <script src="./js/app.js?v=20260701a"></script>
 
 </body>
 </html>

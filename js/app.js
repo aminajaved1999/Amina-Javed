@@ -95,7 +95,7 @@ function renderHero(data) {
           : `<span class="text-2xl font-display font-bold text-cyan-400">${initials}</span>`
         }
       </div>
-      <h3 class="font-display text-2xl font-bold text-white mb-1">${esc(p.name)}</h3>
+      <p class="font-display text-2xl font-bold text-white mb-1">${esc(p.name)}</p>
       <p class="font-mono text-cyan-400 text-sm mb-6">// ${p.headline.toLowerCase().replace(/\s+/g, '_')}.exe</p>
       <div class="grid grid-cols-3 gap-4 mb-6">
         <div class="bg-black/50 border border-gray-700/50 p-3 rounded text-center">
@@ -212,7 +212,7 @@ function renderAchievements(achievements) {
         </div>
         <div class="min-w-0 flex-1">
           <div class="flex items-start gap-2 mb-1">
-            <h4 class="font-display font-bold text-white text-sm leading-snug flex-1 min-w-0">${esc(a.title)}</h4>
+            <h3 class="font-display font-bold text-white text-sm leading-snug flex-1 min-w-0">${esc(a.title)}</h3>
             <span class="shrink-0 inline-flex items-center font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border ${c.labelCls}">
               ${esc(c.label)}
             </span>
@@ -259,7 +259,8 @@ function renderProjects(projects) {
         : '';
 
     return `
-      <div class="project-card cyber-card p-6 rounded-lg reveal" data-category="${p.categories.join(' ')}" data-index="${i}">
+      <div class="project-card cyber-card p-6 rounded-lg reveal" data-category="${p.categories.join(' ')}" data-index="${i}"
+           role="button" tabindex="0" aria-label="View details for ${esc(p.title)}">
         <div class="flex justify-between items-start mb-3">
           <i class="${p.icon} text-2xl text-cyan-400"></i>
           <div class="flex flex-wrap gap-1 justify-end">
@@ -286,7 +287,7 @@ function renderSkills(skills) {
 
     return `
       <div class="cyber-card p-5 rounded-lg reveal" style="transition-delay: ${(i * delayStep).toFixed(1)}s;">
-        <h4 class="font-mono text-cyan-400 text-sm mb-3 uppercase border-b border-gray-700 pb-2">
+        <h3 class="font-mono text-cyan-400 text-sm mb-3 uppercase border-b border-gray-700 pb-2">
           <i class="${cat.icon} mr-2"></i>${esc(cat.category)}
         </h4>
         <div class="flex flex-wrap gap-2 font-mono text-[11px]">
@@ -371,14 +372,15 @@ function renderContact(p) {
 
   set('contact-items', links.map(l => {
     const copyBtn = l.type === 'email'
-      ? `<button
+      ? `<button type="button"
            onclick="copyEmail(event,'${l.value}')"
            class="ml-auto shrink-0 w-8 h-8 flex items-center justify-center rounded-lg
                   border border-gray-700 hover:border-cyan-400 text-gray-500
                   hover:text-cyan-400 transition-all"
            title="Copy email address"
+           aria-label="Copy email address to clipboard"
            id="copy-email-btn">
-           <i class="fas fa-copy text-xs" id="copy-email-icon"></i>
+           <i class="fas fa-copy text-xs" id="copy-email-icon" aria-hidden="true"></i>
          </button>`
       : '';
 
@@ -519,8 +521,12 @@ function initProjectFilter() {
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
 
       const filter = btn.dataset.filter;
 
@@ -550,8 +556,12 @@ function initCertFilter() {
 
   certBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      certBtns.forEach(b => b.classList.remove('active'));
+      certBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
 
       const filter = btn.dataset.filter;
 
@@ -636,6 +646,8 @@ function initMobileMenu() {
   btn.addEventListener('click', () => {
     const isOpen = !menu.classList.contains('hidden');
     menu.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
     btn.querySelector('i').className = isOpen ? 'fas fa-bars' : 'fas fa-times';
   });
 
@@ -643,6 +655,8 @@ function initMobileMenu() {
   menu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open navigation menu');
       btn.querySelector('i').className = 'fas fa-bars';
     });
   });
@@ -651,6 +665,8 @@ function initMobileMenu() {
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 1024) {
       menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open navigation menu');
       btn.querySelector('i').className = 'fas fa-bars';
     }
   });
@@ -671,6 +687,14 @@ function initProjectModals() {
     openModal(_projects[Number(card.dataset.index)]);
   });
 
+  grid.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('.project-card');
+    if (!card || card.dataset.index === undefined) return;
+    e.preventDefault();
+    openModal(_projects[Number(card.dataset.index)]);
+  });
+
   document.getElementById('modal-backdrop').addEventListener('click', closeModal);
 
   document.addEventListener('keydown', e => {
@@ -681,7 +705,9 @@ function initProjectModals() {
 function openModal(project) {
   if (!project) return;
   document.getElementById('modal-inner').innerHTML = buildModalHTML(project);
-  document.getElementById('project-modal').classList.add('open');
+  const modal = document.getElementById('project-modal');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
   // image gallery navigation
@@ -708,7 +734,9 @@ function openModal(project) {
 }
 
 function closeModal() {
-  document.getElementById('project-modal').classList.remove('open');
+  const modal = document.getElementById('project-modal');
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 }
 
@@ -719,8 +747,8 @@ function buildModalHTML(p) {
     ? `<div class="modal-img-gallery">
          <img id="modal-gallery-img" src="${imgs[0]}" alt="${esc(p.title)} screenshot">
          ${imgs.length > 1 ? `
-           <button class="modal-img-nav prev" id="modal-prev"><i class="fas fa-chevron-left"></i></button>
-           <button class="modal-img-nav next" id="modal-next"><i class="fas fa-chevron-right"></i></button>
+           <button type="button" class="modal-img-nav prev" id="modal-prev" aria-label="Previous screenshot"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+           <button type="button" class="modal-img-nav next" id="modal-next" aria-label="Next screenshot"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
            <span class="modal-img-counter" id="modal-img-counter">1 / ${imgs.length}</span>
          ` : ''}
        </div>`
@@ -737,7 +765,7 @@ function buildModalHTML(p) {
 
   const features = (p.features || []).length
     ? `<div class="mb-6">
-         <h4 class="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Key Highlights</h4>
+         <h3 class="font-mono text-xs text-gray-400 uppercase tracking-widest mb-3">Key Highlights</h3>
          <ul class="space-y-2">
            ${p.features.map(f => `
              <li class="flex items-start gap-2 text-sm text-gray-300">
@@ -772,11 +800,11 @@ function buildModalHTML(p) {
           <i class="${p.icon} text-2xl text-cyan-400"></i>
           <h2 id="modal-title" class="font-display text-xl md:text-2xl font-bold text-white">${esc(p.title)}</h2>
         </div>
-        <button onclick="closeModal()"
+        <button type="button" onclick="closeModal()" aria-label="Close project details"
           class="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg
                  border border-gray-700 hover:border-cyan-400 text-gray-400
                  hover:text-cyan-400 transition-colors text-sm">
-          <i class="fas fa-times"></i>
+          <i class="fas fa-times" aria-hidden="true"></i>
         </button>
       </div>
 
@@ -787,7 +815,7 @@ function buildModalHTML(p) {
       ${features}
 
       <div class="mb-6">
-        <h4 class="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Tech Stack</h4>
+        <h3 class="font-mono text-xs text-gray-400 uppercase tracking-widest mb-3">Tech Stack</h3>
         <div class="flex flex-wrap gap-2">
           ${p.tags.map(t => `<span class="border border-cyan-500/30 bg-black/50 text-cyan-300 font-mono text-[11px] px-2 py-1 rounded">${esc(t)}</span>`).join('')}
         </div>
