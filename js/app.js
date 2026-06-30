@@ -85,11 +85,6 @@ function applyExperienceSEO(data) {
     heroBio.textContent = buildIdentityText(exp, certCount, projCount);
   }
 
-  const identitySummary = document.getElementById('identity-summary');
-  if (identitySummary) {
-    identitySummary.textContent = buildIdentityText(exp, certCount, projCount);
-  }
-
   document.title = document.title.replace(/\d+\+ years?/i, exp.shortText);
 }
 
@@ -180,7 +175,7 @@ function renderHero(data) {
         <span id="hero-line-2" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 glow-text"></span><span id="hero-cursor-2" class="type-cursor" style="display:none">_</span><br>
         <span id="hero-line-3" class="text-transparent bg-clip-text bg-gradient-to-r from-magenta-400 to-purple-600 glow-text-magenta"></span><span id="hero-cursor-3" class="type-cursor" style="display:none">_</span>
       </h1>
-      <p class="text-gray-300 text-lg md:text-xl font-sans max-w-lg mb-8 leading-relaxed">${esc(buildIdentityText(exp, certCount, projCount))}</p>
+      <p class="text-gray-300 text-lg md:text-xl font-sans max-w-lg mb-8 leading-relaxed">${esc(p.bio)}</p>
       <div class="flex flex-wrap gap-4">
         <a href="#projects" class="btn-cyber px-8 py-3 rounded-sm font-bold">
           <i class="fas fa-satellite-dish mr-2"></i> EXPLORE DATA
