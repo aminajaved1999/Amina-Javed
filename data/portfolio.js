@@ -135,6 +135,41 @@ const PORTFOLIO_DATA = {
       }
     },
     {
+      "title": "EventEase",
+      "icon": "fas fa-ticket-alt",
+      "categories": [
+        "web"
+      ],
+      "featured": true,
+      "description": "Blazor WebAssembly event management app for browsing corporate and social events, registering with validated forms, and tracking attendance. Capstone for Blazor for Front-End Development (Microsoft Front-End Developer Professional Certificate).",
+      "tags": [
+        "Blazor",
+        "WebAssembly",
+        ".NET 8",
+        "C#",
+        "DataAnnotations"
+      ],
+      "github": "https://github.com/aminajaved1999/eventease-blazor",
+      "demo": "https://aminajaved1999.github.io/EventEase-Blazor/",
+      "period": "2025",
+      "role": "Front-End Developer",
+      "images": [],
+      "features": [
+        "Reusable EventCard component with parameters, EventCallback, and live data binding",
+        "Dynamic routing with validated route parameters and graceful 404 fallback",
+        "Registration form with DataAnnotations validation and duplicate detection",
+        "Singleton session service with observer pattern for cross-page state",
+        "Real-time attendance dashboard with per-event capacity tracking",
+        "Deployed to GitHub Pages via GitHub Actions CI/CD"
+      ],
+      "proprietary": false,
+      "source": {
+        "type": "certification",
+        "label": "Microsoft | Coursera",
+        "icon": "fab fa-microsoft"
+      }
+    },
+    {
       "title": "SecondChance — Exchange Platform",
       "icon": "fas fa-recycle",
       "categories": [
