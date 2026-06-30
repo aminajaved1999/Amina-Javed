@@ -85,7 +85,7 @@ function renderHero(data) {
     </div>
 
     <div class="reveal cyber-card p-8 rounded-lg relative hidden md:block">
-      <div class="absolute top-0 right-0 p-4 font-mono text-xs text-cyan-400/50">ID: AJ-1999</div>
+      <div class="absolute top-0 right-0 p-4 font-mono text-xs text-cyan-400/50">ID: aminajaved1999</div>
       <div class="w-24 h-24 rounded-full border-2 border-cyan-400 mb-6 shadow-[0_0_20px_rgba(0,243,255,0.5)] overflow-hidden flex items-center justify-center"
            style="background:#030305;">
         ${p.photo
