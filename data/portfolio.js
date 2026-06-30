@@ -153,7 +153,15 @@ const PORTFOLIO_DATA = {
       "demo": "https://aminajaved1999.github.io/EventEase-Blazor/",
       "period": "2025",
       "role": "Front-End Developer",
-      "images": [],
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/1.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/2.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/3.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/4.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/5.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/6.png",
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/7.png"
+      ],
       "features": [
         "Reusable EventCard component with parameters, EventCallback, and live data binding",
         "Dynamic routing with validated route parameters and graceful 404 fallback",
