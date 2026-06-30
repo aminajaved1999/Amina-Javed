@@ -581,6 +581,22 @@ function initAll() {
   initProjectModals();
   initScrollProgress();
   initBackToTop();
+  initCertListScroll();
+}
+
+function initCertListScroll() {
+  const list = document.getElementById('cert-list');
+  const wrap = list?.closest('.cert-list-wrap');
+  if (!list || !wrap) return;
+
+  function updateFade() {
+    const atBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 8;
+    wrap.classList.toggle('scrolled-end', atBottom);
+  }
+
+  list.addEventListener('scroll', updateFade, { passive: true });
+  updateFade();
+  new MutationObserver(updateFade).observe(list, { childList: true, subtree: true });
 }
 
 const JOURNEY_SECTIONS = [
@@ -799,13 +815,17 @@ function initScrollReveal() {
   });
 
   if ('IntersectionObserver' in window) {
+    const mobile = window.matchMedia('(max-width: 767px)').matches;
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+    }, {
+      threshold: mobile ? 0.05 : 0.08,
+      rootMargin: mobile ? '0px 0px -24px 0px' : '0px 0px -48px 0px',
+    });
 
     elements.forEach(el => observer.observe(el));
   } else {

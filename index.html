@@ -248,6 +248,42 @@
         }
         .cyber-card:hover::before { left: 200%; }
 
+        /* Cert list — must override cyber-card overflow:hidden */
+        #cert-list {
+            height: 450px;
+            max-height: 55vh;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,243,255,0.5) rgba(3,3,5,0.8);
+        }
+        #cert-list::-webkit-scrollbar { width: 5px; }
+        #cert-list::-webkit-scrollbar-track { background: rgba(3,3,5,0.5); border-radius: 4px; }
+        #cert-list::-webkit-scrollbar-thumb {
+            background: rgba(0,243,255,0.45);
+            border-radius: 4px;
+            box-shadow: 0 0 6px rgba(0,243,255,0.3);
+        }
+        .cert-list-wrap {
+            position: relative;
+        }
+        .cert-list-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 8px;
+            height: 2.5rem;
+            background: linear-gradient(to bottom, transparent, rgba(10,15,30,0.95));
+            pointer-events: none;
+            border-radius: 0 0 0.5rem 0.5rem;
+        }
+        .cert-list-wrap.scrolled-end::after { opacity: 0; }
+
+        @media (max-width: 767px) {
+            #cert-list { height: 380px; max-height: 52vh; }
+        }
+
         .glow-text         { text-shadow: 0 0 10px rgba(0,243,255,0.5); }
         .glow-text-magenta { text-shadow: 0 0 10px rgba(188,19,254,0.5); }
 
@@ -652,12 +688,7 @@
             }
         }
 
-        /* ── Cert list: auto height on mobile ── */
-        @media (max-width: 1024px) {
-            #cert-list { height: auto; max-height: 420px; }
-        }
-
-        .project-card { cursor: pointer; }
+        /* ── Filter buttons: tighter on small screens ── */
 
         /* Mobile nav */
         #mobile-menu { border-top: 1px solid rgba(0,243,255,0.1); background: rgba(3,3,5,0.95); }
@@ -675,10 +706,7 @@
             .skills-certs-grid { gap: 3rem !important; }
         }
 
-        /* ── Cert list: override Tailwind h-[450px] ── */
-        @media (max-width: 1023px) {
-            #cert-list { height: auto !important; max-height: 380px; }
-        }
+        .project-card { cursor: pointer; }
     </style>
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-white">
@@ -908,9 +936,11 @@
                 </div>
 
                 <!-- Cert List -->
-                <div class="space-y-3 font-sans h-[450px] overflow-y-auto pr-2 cyber-card p-6 rounded-lg reveal"
-                     id="cert-list" style="transition-delay: 0.1s;">
-                    <!-- rendered by app.js -->
+                <div class="cert-list-wrap">
+                    <div class="space-y-3 font-sans pr-2 cyber-card p-6 rounded-lg reveal"
+                         id="cert-list" style="transition-delay: 0.1s;">
+                        <!-- rendered by app.js -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -1055,8 +1085,8 @@
     </script>
 
     <!-- Deferred — does not block first paint -->
-    <script defer src="./data/portfolio.js?v=20260701j"></script>
-    <script defer src="./js/app.js?v=20260701j"></script>
+    <script defer src="./data/portfolio.js?v=20260701k"></script>
+    <script defer src="./js/app.js?v=20260701k"></script>
 
 </body>
 </html>
