@@ -19,6 +19,7 @@
     <link rel="me" href="https://github.com/aminajaved1999">
     <link rel="alternate" type="text/plain" title="LLMs" href="https://aminajaved.com/llms.txt">
     <link rel="alternate" type="text/plain" title="LLMs Full" href="https://aminajaved.com/llms-full.txt">
+    <link rel="alternate" type="application/json" title="Profile" href="https://aminajaved.com/profile.json">
     <link rel="alternate" type="text/html" title="About" href="https://aminajaved.com/about.html">
 
     <!-- Open Graph — Instagram, WhatsApp, Facebook, LinkedIn previews -->
@@ -583,24 +584,33 @@
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden z-10" id="about">
         <div class="max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center"
              id="hero-content">
-            <!-- Static crawlable content (enhanced by app.js) -->
-            <article itemscope itemtype="https://schema.org/Person">
+            <!-- Static fallback — visible until JS renders animated hero (crawlers always see this in HTML source) -->
+            <article id="hero-fallback" itemscope itemtype="https://schema.org/Person">
                 <meta itemprop="name" content="Amina Javed">
                 <meta itemprop="url" content="https://aminajaved.com/">
                 <meta itemprop="jobTitle" content="Full Stack Software Engineer">
                 <meta itemprop="email" content="aminajaved1999@gmail.com">
-                <h1 class="font-display text-4xl font-bold text-white mb-3" itemprop="name">Amina Javed</h1>
-                <p class="text-cyan-400 font-mono text-sm mb-4" itemprop="jobTitle">Full Stack Software Engineer · Faisalabad, Pakistan · Open to work</p>
+                <h1 class="font-display text-4xl font-bold text-white mb-3" itemprop="name">Amina Javed — Software Engineer — Faisalabad, Pakistan</h1>
+                <p class="text-cyan-400 font-mono text-sm mb-4" itemprop="jobTitle">Full Stack Software Engineer · Beacon Impex Pvt. Ltd. · FAST NUCES · Open to work</p>
                 <p class="text-gray-300 leading-relaxed mb-4" id="static-hero-bio" itemprop="description">
-                    Amina Javed is a Full Stack Software Engineer with professional experience since August 2022 specializing in the .NET ecosystem — C#, ASP.NET Core, Blazor, WinForms, SQL Server, and REST APIs. She builds enterprise backends, desktop applications, and cloud-native systems at Beacon Impex Pvt. Ltd. BCS graduate from FAST NUCES. 14 professional certifications from Meta, IBM, Microsoft, and Google. 17 portfolio projects.
+                    Amina Javed is a Full Stack Software Engineer in Faisalabad, Pakistan with professional experience since August 2022. She builds enterprise backends, REST APIs, WinForms apps, and Blazor web applications in the .NET ecosystem at Beacon Impex Pvt. Ltd. BCS graduate from FAST NUCES. 14 certifications from Meta, IBM, Microsoft, and Google. 17 portfolio projects. GitHub: aminajaved1999.
                 </p>
                 <p class="text-gray-300 text-sm">
+                    <a href="./about.html">Full biography</a> ·
                     <a href="https://linkedin.com/in/aminajaved1999" itemprop="sameAs" rel="me">LinkedIn</a> ·
                     <a href="https://github.com/aminajaved1999" itemprop="sameAs" rel="me">GitHub</a> ·
                     <a href="mailto:aminajaved1999@gmail.com">aminajaved1999@gmail.com</a>
                 </p>
             </article>
+            <div id="hero-left" class="hidden" aria-hidden="true"></div>
+            <div id="hero-card" class="hidden" aria-hidden="true"></div>
         </div>
+        <noscript>
+            <div class="max-w-4xl mx-auto px-6 pb-12 text-gray-300 text-sm leading-relaxed">
+                <p><strong>Amina Javed</strong> is a Full Stack Software Engineer in <strong>Faisalabad, Pakistan</strong>. Software Engineer at Beacon Impex Pvt. Ltd. since August 2022. BCS from FAST NUCES. .NET, ASP.NET Core, Blazor, C#, SQL Server. 14 certifications. 17 projects. Open to work. Website: aminajaved.com · LinkedIn: aminajaved1999 · GitHub: aminajaved1999 · Email: aminajaved1999@gmail.com</p>
+                <p class="mt-2"><a href="./about.html" class="text-cyan-400">Read full biography →</a></p>
+            </div>
+        </noscript>
     </section>
 
     <!-- ═══ EXPERIENCE ════════════════════════════════════════════════════ -->
@@ -862,8 +872,8 @@
     </script>
 
     <!-- Deferred — does not block first paint -->
-    <script defer src="./data/portfolio.js?v=20260701h"></script>
-    <script defer src="./js/app.js?v=20260701h"></script>
+    <script defer src="./data/portfolio.js?v=20260701i"></script>
+    <script defer src="./js/app.js?v=20260701i"></script>
 
 </body>
 </html>

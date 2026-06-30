@@ -1,0 +1,61 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://aminajaved.com/#person",
+  "name": "Amina Javed",
+  "givenName": "Amina",
+  "familyName": "Javed",
+  "alternateName": ["aminajaved1999"],
+  "jobTitle": "Full Stack Software Engineer",
+  "description": "Amina Javed is a Full Stack Software Engineer based in Faisalabad, Pakistan. She works at Beacon Impex Pvt. Ltd. since August 2022, specializes in .NET (C#, ASP.NET Core, Blazor, WinForms), holds a BCS from FAST NUCES, 14 certifications, and 17 portfolio projects. Open to work.",
+  "url": "https://aminajaved.com/",
+  "image": "https://aminajaved.com/og-image.png",
+  "email": "aminajaved1999@gmail.com",
+  "telephone": "+92-323-7382323",
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Faisalabad, Pakistan",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Faisalabad",
+      "addressCountry": "PK"
+    }
+  },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Beacon Impex Pvt. Ltd.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Faisalabad",
+      "addressCountry": "PK"
+    }
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "National University of Computer and Emerging Sciences (FAST NUCES)"
+  },
+  "knowsAbout": [
+    "Full Stack Development", "C#", ".NET 8", "ASP.NET Core", "Blazor",
+    "WinForms", "SQL Server", "REST APIs", "Entity Framework", "Docker", "Azure"
+  ],
+  "sameAs": [
+    "https://aminajaved.com/",
+    "https://aminajaved.com/about.html",
+    "https://linkedin.com/in/aminajaved1999",
+    "https://github.com/aminajaved1999",
+    "https://aminajaved1999.github.io/GeoHealth-Tracker/",
+    "https://aminajaved1999.github.io/EventEase-Blazor/"
+  ],
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "website", "value": "https://aminajaved.com" },
+    { "@type": "PropertyValue", "propertyID": "linkedin", "value": "https://linkedin.com/in/aminajaved1999" },
+    { "@type": "PropertyValue", "propertyID": "github", "value": "https://github.com/aminajaved1999" },
+    { "@type": "PropertyValue", "propertyID": "username", "value": "aminajaved1999" }
+  ],
+  "disambiguatingDescription": "This is Amina Javed the software engineer in Faisalabad, Pakistan (aminajaved.com). Not the microbiology researcher or Lahore HR professional. Identified by GitHub aminajaved1999 and employer Beacon Impex Pvt. Ltd.",
+  "subjectOf": {
+    "@type": "WebPage",
+    "url": "https://aminajaved.com/about.html",
+    "name": "About Amina Javed — Software Engineer — Faisalabad"
+  }
+}

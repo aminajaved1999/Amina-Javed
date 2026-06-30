@@ -167,15 +167,17 @@ function renderHero(data) {
         <span>STATUS: ONLINE &amp; READY</span>
        </div>`;
 
-  set('hero-content', `
+  set('hero-left', `
     <div class="reveal">
       ${statusBadge}
+      <p class="font-mono text-cyan-400 text-sm mb-4">Amina Javed · Full Stack Software Engineer · Faisalabad, Pakistan${p.openToWork ? ' · Open to work' : ''}</p>
       <h1 class="font-display text-[1.9rem] sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-4 uppercase">
-        <span id="hero-line-1"></span><span id="hero-cursor-1" class="type-cursor">_</span><br>
-        <span id="hero-line-2" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 glow-text"></span><span id="hero-cursor-2" class="type-cursor" style="display:none">_</span><br>
-        <span id="hero-line-3" class="text-transparent bg-clip-text bg-gradient-to-r from-magenta-400 to-purple-600 glow-text-magenta"></span><span id="hero-cursor-3" class="type-cursor" style="display:none">_</span>
+        <span id="hero-line-1">Architecting</span><span id="hero-cursor-1" class="type-cursor">_</span><br>
+        <span id="hero-line-2" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 glow-text">Enterprise</span><span id="hero-cursor-2" class="type-cursor" style="display:none">_</span><br>
+        <span id="hero-line-3" class="text-transparent bg-clip-text bg-gradient-to-r from-magenta-400 to-purple-600 glow-text-magenta">Systems.</span><span id="hero-cursor-3" class="type-cursor" style="display:none">_</span>
       </h1>
-      <p class="text-gray-300 text-lg md:text-xl font-sans max-w-lg mb-8 leading-relaxed">${esc(p.bio)}</p>
+      <p class="text-gray-300 text-lg md:text-xl font-sans max-w-lg mb-2 leading-relaxed">${esc(p.bio)}</p>
+      <p class="text-gray-400 text-sm font-mono mb-8">Beacon Impex Pvt. Ltd. · FAST NUCES · .NET · Blazor · aminajaved1999</p>
       <div class="flex flex-wrap gap-4">
         <a href="#projects" class="btn-cyber px-8 py-3 rounded-sm font-bold">
           <i class="fas fa-satellite-dish mr-2"></i> EXPLORE DATA
@@ -187,8 +189,10 @@ function renderHero(data) {
         ${githubBtn}${resumeBtn}
       </div>
     </div>
+  `);
 
-    <div class="reveal cyber-card p-8 rounded-lg relative hidden md:block">
+  set('hero-card', `
+    <div class="reveal cyber-card p-8 rounded-lg relative">
       <div class="absolute top-0 right-0 p-4 font-mono text-xs text-cyan-300">ID: aminajaved1999</div>
       <div class="w-24 h-24 rounded-full border-2 border-cyan-400 mb-6 shadow-[0_0_20px_rgba(0,243,255,0.5)] overflow-hidden flex items-center justify-center"
            style="background:#030305;">
@@ -218,6 +222,20 @@ function renderHero(data) {
       </div>
     </div>
   `);
+
+  const fallback = document.getElementById('hero-fallback');
+  const left     = document.getElementById('hero-left');
+  const card     = document.getElementById('hero-card');
+  if (fallback) fallback.style.display = 'none';
+  if (left) {
+    left.classList.remove('hidden');
+    left.removeAttribute('aria-hidden');
+  }
+  if (card) {
+    card.classList.remove('hidden');
+    card.classList.add('md:block');
+    card.removeAttribute('aria-hidden');
+  }
 
   // wire navbar contact button
   const navBtn = document.getElementById('nav-contact-btn');
@@ -530,6 +548,7 @@ function initTypingAnimation() {
       if (prev) prev.style.display = 'none';
     }
     cursorEl.style.display = 'inline';
+    textEl.textContent = '';
 
     let i = 0;
     const interval = setInterval(() => {
