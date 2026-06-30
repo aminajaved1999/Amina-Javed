@@ -265,7 +265,7 @@ const PORTFOLIO_DATA = {
         "OpenStreetMap"
       ],
       "github": "https://github.com/aminajaved1999/GeoHealth-Tracker",
-      "demo": "https://aminajaved1999.github.io/intro-to-web-dev-portfolio",
+      "demo": "https://aminajaved1999.github.io/GeoHealth-Tracker/",
       "period": "2024",
       "role": "Frontend Developer",
       "images": [
