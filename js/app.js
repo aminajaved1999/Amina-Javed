@@ -576,10 +576,82 @@ function initAll() {
   initScrollReveal();
   initCardTilt();
   initMobileMenu();
+  initMobileScrollJourney();
   initNavbarScroll();
   initProjectModals();
   initScrollProgress();
   initBackToTop();
+}
+
+const JOURNEY_SECTIONS = [
+  { id: 'about',        label: 'Home'      },
+  { id: 'experience',   label: 'Work'      },
+  { id: 'education',    label: 'Education' },
+  { id: 'achievements', label: 'Wins'      },
+  { id: 'projects',     label: 'Projects'  },
+  { id: 'skills',       label: 'Tech'      },
+  { id: 'languages',    label: 'Languages' },
+  { id: 'contact',      label: 'Contact'   },
+];
+
+function initMobileScrollJourney() {
+  const journey = document.getElementById('scroll-journey');
+  const dotsEl  = document.getElementById('journey-dots');
+  const labelEl = document.getElementById('journey-label');
+  const hint    = document.getElementById('scroll-hint');
+  if (!journey || !dotsEl || !labelEl) return;
+
+  const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+  if (!isMobile()) return;
+
+  dotsEl.innerHTML = '';
+  JOURNEY_SECTIONS.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'journey-dot' + (i === 0 ? ' active' : '');
+    btn.setAttribute('aria-label', `Go to ${s.label}`);
+    btn.addEventListener('click', () => {
+      const el = document.getElementById(s.id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    dotsEl.appendChild(btn);
+  });
+
+  const sections = JOURNEY_SECTIONS.map(s => document.getElementById(s.id)).filter(Boolean);
+  let currentIdx = 0;
+  let contactGlowDone = false;
+
+  function update() {
+    if (!isMobile()) return;
+
+    const scrollY = window.scrollY;
+    if (hint) hint.classList.toggle('hidden-hint', scrollY > 60);
+    journey.classList.toggle('visible', scrollY > 100);
+
+    const mid = scrollY + window.innerHeight * 0.38;
+    let active = 0;
+    sections.forEach((el, i) => {
+      if (el && el.offsetTop <= mid) active = i;
+    });
+
+    if (active !== currentIdx) {
+      currentIdx = active;
+      const s = JOURNEY_SECTIONS[active];
+      labelEl.textContent = `${s.label} · ${active + 1}/${JOURNEY_SECTIONS.length}`;
+      dotsEl.querySelectorAll('.journey-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === active);
+        dot.classList.toggle('done', i < active);
+      });
+    }
+
+    if (!contactGlowDone && active === JOURNEY_SECTIONS.length - 1) {
+      contactGlowDone = true;
+      document.getElementById('contact')?.classList.add('contact-glow');
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
 
 function initScrollProgress() {

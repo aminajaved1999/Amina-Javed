@@ -328,6 +328,167 @@
             transform: translateX(0);
         }
 
+        /* ── Mobile scroll journey ── */
+        #scroll-hint {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            z-index: 20;
+            pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        #scroll-hint.hidden-hint {
+            opacity: 0;
+            transform: translateX(-50%) translateY(8px);
+        }
+        #scroll-hint span {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            color: rgba(0, 243, 255, 0.55);
+        }
+        #scroll-hint i {
+            color: #00f3ff;
+            font-size: 0.85rem;
+            animation: scroll-hint-bounce 2s ease-in-out infinite;
+        }
+        @keyframes scroll-hint-bounce {
+            0%, 100% { transform: translateY(0); opacity: 0.6; }
+            50%       { transform: translateY(6px); opacity: 1; }
+        }
+
+        #scroll-journey {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 140;
+            padding: 0.55rem 0.85rem calc(0.55rem + env(safe-area-inset-bottom, 0px));
+            background: linear-gradient(to top, rgba(3,3,5,0.97) 70%, transparent);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(0,243,255,0.12);
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+            pointer-events: none;
+        }
+        #scroll-journey.visible {
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        #scroll-journey .journey-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            color: #00f3ff;
+            text-align: center;
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+        }
+        #scroll-journey .journey-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        #scroll-journey .journey-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,243,255,0.35);
+            background: transparent;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+        #scroll-journey .journey-dot.active {
+            width: 18px;
+            border-radius: 999px;
+            background: #00f3ff;
+            border-color: #00f3ff;
+            box-shadow: 0 0 10px rgba(0,243,255,0.55);
+        }
+        #scroll-journey .journey-dot.done {
+            background: rgba(0,243,255,0.35);
+            border-color: rgba(0,243,255,0.5);
+        }
+
+        .section-divider {
+            display: none;
+        }
+        .section-pad {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+
+        @media (max-width: 767px) {
+            .section-pad { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+            #about { min-height: 88svh; min-height: 88vh; }
+            #scroll-hint { display: flex; }
+            #scroll-journey { display: block; }
+            #back-to-top { bottom: 4.75rem; right: 1rem; }
+            .reveal { transform: translateY(40px); }
+            .reveal-left { transform: translateX(-32px); }
+
+            /* Horizontal swipe projects — less vertical fatigue */
+            #project-grid {
+                display: flex !important;
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                gap: 1rem;
+                padding: 0.25rem 0.5rem 1.25rem;
+                scroll-padding-inline: 1rem;
+            }
+            #project-grid .project-card {
+                flex: 0 0 86vw;
+                max-width: 86vw;
+                scroll-snap-align: center;
+            }
+            #project-grid::-webkit-scrollbar { height: 3px; }
+            #project-grid::-webkit-scrollbar-thumb { background: rgba(0,243,255,0.35); border-radius: 4px; }
+
+            .projects-swipe-hint {
+                display: block;
+                text-align: center;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 0.15em;
+                color: rgba(0,243,255,0.45);
+                margin-bottom: 0.75rem;
+            }
+
+            .section-divider {
+                display: block;
+                height: 1px;
+                max-width: 8rem;
+                margin: 0 auto 2.5rem;
+                background: linear-gradient(90deg, transparent, rgba(0,243,255,0.45), rgba(188,19,254,0.45), transparent);
+            }
+
+            /* Subtle section tint rotation */
+            #experience  { background: linear-gradient(180deg, transparent, rgba(0,243,255,0.02) 50%, transparent); }
+            #projects    { background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(188,19,254,0.03) 40%, rgba(0,0,0,0.5)); }
+            #contact     { box-shadow: inset 0 1px 0 rgba(0,243,255,0.2); }
+            #contact.contact-glow { animation: contact-pulse 2s ease-in-out 1; }
+            @keyframes contact-pulse {
+                0%, 100% { box-shadow: inset 0 1px 0 rgba(0,243,255,0.2); }
+                50%       { box-shadow: inset 0 0 40px rgba(0,243,255,0.08); }
+            }
+        }
+
+        @media (min-width: 768px) {
+            #scroll-hint, #scroll-journey { display: none !important; }
+            .projects-swipe-hint { display: none; }
+        }
+
         .timeline-dot {
             position:absolute; left:-25px; top:5px;
             width:12px; height:12px; border-radius:50%;
@@ -531,6 +692,12 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
+    <!-- Mobile scroll journey (section dots + label) -->
+    <nav id="scroll-journey" aria-label="Page sections">
+        <div class="journey-label" id="journey-label">Home · 1/8</div>
+        <div class="journey-dots" id="journey-dots"></div>
+    </nav>
+
     <div id="webgl-container"></div>
 
     <!-- HUD Frame -->
@@ -611,10 +778,16 @@
                 <p class="mt-2"><a href="./about.html" class="text-cyan-400">Read full biography →</a></p>
             </div>
         </noscript>
+        <div id="scroll-hint" aria-hidden="true">
+            <span>EXPLORE</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
 
+    <div class="section-divider" aria-hidden="true"></div>
+
     <!-- ═══ EXPERIENCE ════════════════════════════════════════════════════ -->
-    <section class="py-24 relative z-10" id="experience">
+    <section class="section-pad relative z-10" id="experience">
         <div class="max-w-4xl mx-auto px-6">
             <div class="reveal mb-12">
                 <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
@@ -628,8 +801,10 @@
         </div>
     </section>
 
+    <div class="section-divider" aria-hidden="true"></div>
+
     <!-- ═══ EDUCATION ═════════════════════════════════════════════════════ -->
-    <section class="py-24 relative z-10" id="education">
+    <section class="section-pad relative z-10" id="education">
         <div class="max-w-4xl mx-auto px-6">
             <div class="reveal mb-12">
                 <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
@@ -643,8 +818,10 @@
         </div>
     </section>
 
+    <div class="section-divider" aria-hidden="true"></div>
+
     <!-- ═══ ACHIEVEMENTS ════════════════════════════════════════════════ -->
-    <section class="py-24 relative z-10" id="achievements">
+    <section class="section-pad relative z-10" id="achievements">
         <div class="max-w-4xl mx-auto px-6">
             <div class="reveal mb-12">
                 <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
@@ -658,8 +835,10 @@
         </div>
     </section>
 
+    <div class="section-divider" aria-hidden="true"></div>
+
     <!-- ═══ PROJECTS ══════════════════════════════════════════════════════ -->
-    <section class="py-24 relative z-10 bg-black/40 border-y border-gray-800" id="projects">
+    <section class="section-pad relative z-10 bg-black/40 border-y border-gray-800" id="projects">
         <div class="max-w-7xl mx-auto px-6">
             <div class="reveal mb-10 text-center">
                 <h2 class="section-heading-lg font-display text-4xl font-bold text-white uppercase glow-text tracking-wider">Data Archive</h2>
@@ -678,6 +857,8 @@
                         data-filter="desktop" aria-label="Show desktop application projects" aria-pressed="false">Desktop Apps</button>
             </div>
 
+            <p class="projects-swipe-hint" aria-hidden="true">← SWIPE PROJECTS →</p>
+
             <!-- Project Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="project-grid">
                 <!-- rendered by app.js -->
@@ -685,8 +866,10 @@
         </div>
     </section>
 
+    <div class="section-divider" aria-hidden="true"></div>
+
     <!-- ═══ SKILLS + CERTS ════════════════════════════════════════════════ -->
-    <section class="py-24 relative z-10" id="skills">
+    <section class="section-pad relative z-10" id="skills">
         <div class="skills-certs-grid max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
 
             <!-- Skills Matrix -->
@@ -734,7 +917,7 @@
     </section>
 
     <!-- ═══ LANGUAGES ══════════════════════════════════════════════════ -->
-    <section class="py-16 relative z-10" id="languages">
+    <section class="section-pad relative z-10" id="languages">
         <div class="max-w-4xl mx-auto px-6">
             <div class="reveal mb-8 text-center">
                 <h2 class="section-heading font-display text-3xl font-bold text-white uppercase glow-text tracking-wider">
@@ -748,7 +931,7 @@
     </section>
 
     <!-- ═══ CONTACT ═══════════════════════════════════════════════════════ -->
-    <section class="py-24 relative z-10 bg-black/80 border-t border-cyan-900/50" id="contact">
+    <section class="section-pad relative z-10 bg-black/80 border-t border-cyan-900/50" id="contact">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="section-heading-lg font-display text-4xl font-bold text-white uppercase glow-text mb-6">Initialize Communication</h2>
             <p class="text-gray-300 font-sans text-lg mb-12">
@@ -872,8 +1055,8 @@
     </script>
 
     <!-- Deferred — does not block first paint -->
-    <script defer src="./data/portfolio.js?v=20260701i"></script>
-    <script defer src="./js/app.js?v=20260701i"></script>
+    <script defer src="./data/portfolio.js?v=20260701j"></script>
+    <script defer src="./js/app.js?v=20260701j"></script>
 
 </body>
 </html>
