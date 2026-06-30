@@ -229,17 +229,6 @@ function renderProjects(projects) {
       ? `<span class="bg-magenta-500/20 border border-magenta-500/50 text-magenta-300 font-mono text-[10px] px-2 py-1 rounded uppercase">Featured</span>`
       : '';
 
-    const githubBtn = p.github
-      ? `<a href="${p.github}" target="_blank" rel="noopener noreferrer"
-            class="flex-1 flex items-center justify-center gap-2 py-2 px-3
-                   border border-gray-600 hover:border-cyan-400
-                   text-gray-400 hover:text-cyan-400
-                   font-mono text-[11px] uppercase tracking-wider rounded
-                   transition-all duration-200">
-           <i class="fab fa-github"></i> Code
-         </a>`
-      : '';
-
     const demoBtn = p.demo
       ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer"
             class="flex-1 flex items-center justify-center gap-2 py-2 px-3
@@ -262,10 +251,8 @@ function renderProjects(projects) {
 
     const links = p.proprietary
       ? proprietaryBadge
-      : (p.github || p.demo)
-        ? `<div class="flex gap-2 mt-4 pt-4 border-t border-gray-700/40">
-             ${githubBtn}${demoBtn}
-           </div>`
+      : p.demo
+        ? `<div class="flex gap-2 mt-4 pt-4 border-t border-gray-700/40">${demoBtn}</div>`
         : '';
 
     return `
@@ -731,15 +718,6 @@ function buildModalHTML(p) {
        </div>`
     : '';
 
-  const githubBtn = p.github
-    ? `<a href="${p.github}" target="_blank" rel="noopener noreferrer"
-          class="flex-1 flex items-center justify-center gap-2 py-2.5 px-4
-                 border border-gray-600 hover:border-cyan-400
-                 text-gray-400 hover:text-cyan-400
-                 font-mono text-xs uppercase tracking-wider rounded transition-all">
-         <i class="fab fa-github"></i> View Code
-       </a>` : '';
-
   const demoBtn = p.demo
     ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer"
           class="flex-1 flex items-center justify-center gap-2 py-2.5 px-4
@@ -787,8 +765,8 @@ function buildModalHTML(p) {
 
       ${p.proprietary
           ? modalProprietaryNote
-          : (githubBtn || demoBtn)
-            ? `<div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-700/50">${githubBtn}${demoBtn}</div>`
+          : p.demo
+            ? `<div class="flex gap-3 pt-4 border-t border-gray-700/50">${demoBtn}</div>`
             : ''}
     </div>`;
 }
