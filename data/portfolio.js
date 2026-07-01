@@ -129,6 +129,8 @@ const PORTFOLIO_DATA = {
       "images": [
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/DevPort/thumbnail.png"
       ],
+      "features": [
+        "Secure user authentication via ASP.NET Identity",
         "RESTful API with server-side response caching for performance",
         "Blazor UI components for interactive portfolio display",
         "CI/CD pipeline with GitHub Actions for automated deployments",
@@ -243,6 +245,8 @@ const PORTFOLIO_DATA = {
       "images": [
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Little-Lemon/thumbnail.png"
       ],
+      "features": [
+        "Django REST Framework API with menu and reservation endpoints",
         "MySQL database integration for persistent data storage",
         "Djoser-powered secure user authentication and token management",
         "React frontend with React Router for seamless navigation",
@@ -446,6 +450,8 @@ const PORTFOLIO_DATA = {
       "images": [
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/TruckDestino/thumbnail.png"
       ],
+      "features": [
+        "Legacy Silverlight/SOAP to modern RESTful API migration",
         "Full API documentation for frontend and mobile team integration",
         "Legacy bug resolution and data consistency enforcement",
         "Extended fleet tracking functionality via new API endpoints",
@@ -523,6 +529,8 @@ const PORTFOLIO_DATA = {
       "images": [
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GPMS/thumbnail.png"
       ],
+      "features": [
+        "WCF Service Layer for decoupled, high-performance API transactions",
         "Entity Framework with SQL Server for efficient data management",
         "Optimized database queries for production throughput requirements",
         "Comprehensive unit testing ensuring system reliability",
@@ -595,6 +603,8 @@ const PORTFOLIO_DATA = {
       "images": [
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracko-IS/thumbnail.png"
       ],
+      "features": [
+        "Database-First RESTful APIs via ADO.NET for efficient SQL Server interaction",
         "SIM lifecycle management automation module reducing manual effort significantly",
         "Multiple WinForms automation modules for operational workflows",
         "Complex legacy bug resolution and application performance optimization",
@@ -666,6 +676,8 @@ const PORTFOLIO_DATA = {
       "images": [
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Warehouse-Management-System/thumbnail.png"
       ],
+      "features": [
+        "Entity Framework Code-First approach for clean schema management",
         "RESTful APIs designed for high-throughput warehouse operations",
         "Seamless data integration with existing business systems",
         "Optimized backend for performance under heavy operational load",
