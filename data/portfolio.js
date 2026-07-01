@@ -87,6 +87,7 @@ const PORTFOLIO_DATA = {
       "period": "11/2024 – 06/2025",
       "role": "Backend Engineer",
       "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Zephyr/thumbnail.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Zephyr/1.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Zephyr/2.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Zephyr/3.png",
@@ -160,6 +161,7 @@ const PORTFOLIO_DATA = {
       "period": "2025",
       "role": "Front-End Developer",
       "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/thumbnail.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/1.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/2.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/EventEase/3.png",
@@ -202,8 +204,9 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "02/2024",
       "role": "Backend Developer",
-      "images": [],
-      "assetsFolder": "SecondChance",
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/SecondChance/thumbnail.png"
+      ],
       "features": [
         "Secure RESTful APIs for item listings, search, and filtering",
         "JWT-based user authentication and session management",
@@ -271,6 +274,7 @@ const PORTFOLIO_DATA = {
       "period": "2024",
       "role": "Frontend Developer",
       "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GeoHealth-Tracker/thumbnail.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GeoHealth-Tracker/1.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GeoHealth-Tracker/2.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GeoHealth-Tracker/3.png",
@@ -350,6 +354,7 @@ const PORTFOLIO_DATA = {
       "period": "07/2025 – Present",
       "role": "Desktop Application Developer",
       "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/thumbnail.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/0.PNG",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/1.PNG",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Wip-Analysis-Tool/2.PNG",
@@ -395,6 +400,7 @@ const PORTFOLIO_DATA = {
       "period": "2024",
       "role": "Backend Developer",
       "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/thumbnail.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/1.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/2.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracket/3.png",
@@ -472,6 +478,7 @@ const PORTFOLIO_DATA = {
       "period": "12/2023 – 01/2025",
       "role": "Desktop Application Developer",
       "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/QuickBook-IIF-Generator/thumbnail.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/QuickBook-IIF-Generator/1.PNG",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/QuickBook-IIF-Generator/2.PNG",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/QuickBook-IIF-Generator/3.PNG",
@@ -546,8 +553,9 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "2021 – 2022",
       "role": "Full Stack Developer",
-      "images": [],
-      "assetsFolder": "MEZBAN",
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/MEZBAN/thumbnail.png"
+      ],
       "features": [
         "MEAN stack full architecture: MongoDB, Express, Angular, Node.js",
         "Google Places API for real-time location and amenity data",
