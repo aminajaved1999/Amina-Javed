@@ -126,9 +126,9 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "06/2025",
       "role": "Full Stack Developer",
-      "images": [],
-      "features": [
-        "Secure user authentication via ASP.NET Identity",
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/DevPort/thumbnail.png"
+      ],
         "RESTful API with server-side response caching for performance",
         "Blazor UI components for interactive portfolio display",
         "CI/CD pipeline with GitHub Actions for automated deployments",
@@ -240,9 +240,9 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "01/2024",
       "role": "Full Stack Developer",
-      "images": [],
-      "features": [
-        "Django REST Framework API with menu and reservation endpoints",
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Little-Lemon/thumbnail.png"
+      ],
         "MySQL database integration for persistent data storage",
         "Djoser-powered secure user authentication and token management",
         "React frontend with React Router for seamless navigation",
@@ -314,6 +314,7 @@ const PORTFOLIO_DATA = {
       "period": "2024",
       "role": "Full Stack & DevOps",
       "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Ecommerce-DevOps-PoC/thumbnail.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Ecommerce-DevOps-PoC/1.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Ecommerce-DevOps-PoC/2.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Ecommerce-DevOps-PoC/3.png",
@@ -442,9 +443,9 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "08/2022 – 12/2024",
       "role": "Backend Developer",
-      "images": [],
-      "features": [
-        "Legacy Silverlight/SOAP to modern RESTful API migration",
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/TruckDestino/thumbnail.png"
+      ],
         "Full API documentation for frontend and mobile team integration",
         "Legacy bug resolution and data consistency enforcement",
         "Extended fleet tracking functionality via new API endpoints",
@@ -519,9 +520,9 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "03/2024 – 05/2024",
       "role": "Backend Developer",
-      "images": [],
-      "features": [
-        "WCF Service Layer for decoupled, high-performance API transactions",
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/GPMS/thumbnail.png"
+      ],
         "Entity Framework with SQL Server for efficient data management",
         "Optimized database queries for production throughput requirements",
         "Comprehensive unit testing ensuring system reliability",
@@ -591,9 +592,9 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "2023 – 2024",
       "role": "Backend & Desktop Developer",
-      "images": [],
-      "features": [
-        "Database-First RESTful APIs via ADO.NET for efficient SQL Server interaction",
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Tracko-IS/thumbnail.png"
+      ],
         "SIM lifecycle management automation module reducing manual effort significantly",
         "Multiple WinForms automation modules for operational workflows",
         "Complex legacy bug resolution and application performance optimization",
@@ -626,6 +627,7 @@ const PORTFOLIO_DATA = {
       "period": "12/2022 – 01/2023",
       "role": "Desktop Application Developer",
       "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Denim-Lables-Utility/thumbnail.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Denim-Lables-Utility/1.PNG"
       ],
       "features": [
@@ -661,9 +663,9 @@ const PORTFOLIO_DATA = {
       "demo": "",
       "period": "2024",
       "role": "Backend Developer",
-      "images": [],
-      "features": [
-        "Entity Framework Code-First approach for clean schema management",
+      "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Warehouse-Management-System/thumbnail.png"
+      ],
         "RESTful APIs designed for high-throughput warehouse operations",
         "Seamless data integration with existing business systems",
         "Optimized backend for performance under heavy operational load",
@@ -696,6 +698,7 @@ const PORTFOLIO_DATA = {
       "period": "2022 – 2023",
       "role": "Software Engineer",
       "images": [
+        "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Terminal-Management-System/thumbnail.png",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Terminal-Management-System/1.PNG",
         "https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects/Terminal-Management-System/2.PNG"
       ],
