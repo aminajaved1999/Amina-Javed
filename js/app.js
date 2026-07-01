@@ -1054,7 +1054,7 @@ function openModal(project) {
   trapModalFocus(modal);
 
   // image gallery navigation
-  const imgs = project.images || [];
+  const imgs = getProjectGalleryImages(project);
   if (imgs.length > 1) {
     let cur = 0;
     const imgEl  = document.getElementById('modal-gallery-img');
@@ -1089,8 +1089,32 @@ function closeModal() {
   _modalReturnFocus = null;
 }
 
+const PORTFOLIO_ASSETS_BASE = 'https://raw.githubusercontent.com/aminajaved1999/my-portfolio-assets/main/projects';
+const THUMBNAIL_FOLDERS = new Set([
+  'Zephyr', 'EventEase', 'GeoHealth-Tracker', 'Wip-Analysis-Tool',
+  'Tracket', 'QuickBook-IIF-Generator', 'MEZBAN', 'SecondChance',
+]);
+
+function projectAssetsFolder(p) {
+  if (p.assetsFolder) return p.assetsFolder;
+  const first = (p.images || [])[0];
+  if (!first) return '';
+  const match = first.match(/my-portfolio-assets\/main\/projects\/([^/]+)\//);
+  return match ? match[1] : '';
+}
+
+function getProjectGalleryImages(p) {
+  const shots = [...(p.images || [])];
+  const folder = projectAssetsFolder(p);
+  if (!folder || !THUMBNAIL_FOLDERS.has(folder)) return shots;
+
+  const thumb = `${PORTFOLIO_ASSETS_BASE}/${folder}/thumbnail.png`;
+  if (shots.some(u => u.includes('/thumbnail.png'))) return shots;
+  return [thumb, ...shots];
+}
+
 function buildModalHTML(p) {
-  const imgs = p.images || [];
+  const imgs = getProjectGalleryImages(p);
 
   const gallery = imgs.length
     ? `<div class="modal-img-gallery">

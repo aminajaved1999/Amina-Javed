@@ -203,6 +203,7 @@ const PORTFOLIO_DATA = {
       "period": "02/2024",
       "role": "Backend Developer",
       "images": [],
+      "assetsFolder": "SecondChance",
       "features": [
         "Secure RESTful APIs for item listings, search, and filtering",
         "JWT-based user authentication and session management",
@@ -546,6 +547,7 @@ const PORTFOLIO_DATA = {
       "period": "2021 – 2022",
       "role": "Full Stack Developer",
       "images": [],
+      "assetsFolder": "MEZBAN",
       "features": [
         "MEAN stack full architecture: MongoDB, Express, Angular, Node.js",
         "Google Places API for real-time location and amenity data",
